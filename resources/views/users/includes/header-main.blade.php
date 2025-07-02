@@ -4,7 +4,7 @@
     <!--Nav Outer -->
     <div class="nav-outer">
       <div class="logo-box">
-        <div class="logo"><a href="{{url('')}}"><img src="images/logo.svg" alt="" title=""></a></div>
+        <div class="logo"><a href="{{url('')}}"><img src="{{asset('assets/images/logo.svg')}}" alt="" title=""></a></div>
       </div>
 
       <nav class="nav main-menu">

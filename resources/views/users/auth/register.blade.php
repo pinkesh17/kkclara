@@ -28,6 +28,17 @@
 
 
           <div class="form-group">
+            <label for="phone">{{ __('Mobile Number') }}</label>
+            <input class="form-control @error('phone') is-invalid @enderror" type="number" id="phone" name="phone" placeholder="Mobile Number" value="{{ old('phone') }}" required autocomplete="phone">
+            @error('phone')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+          </div>
+
+
+          <div class="form-group">
             <label for="email">{{ __('Email Address') }}</label>
             <input class="form-control @error('email') is-invalid @enderror" type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email">
             @error('email')
