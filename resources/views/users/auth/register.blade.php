@@ -16,15 +16,18 @@
          @csrf
 
 
-          <div class="form-group">
-            <label for="name">{{ __('Name') }}</label>
-            <input class="form-control @error('name') is-invalid @enderror" type="text" id="name"  name="name" value="{{ old('name') }}"  placeholder="Full Name"required autocomplete="name" autofocus>
-            @error('name')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-          </div>
+
+         @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
 
 
           <div class="form-group">
@@ -38,34 +41,8 @@
           </div>
 
 
-          <div class="form-group">
-            <label for="email">{{ __('Email Address') }}</label>
-            <input class="form-control @error('email') is-invalid @enderror" type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required autocomplete="email">
-            @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-          </div>
+   
 
-
-
-          <div class="form-group">
-            <label for="password">{{ __('Password') }}</label>
-            <input class="form-control @error('password') is-invalid @enderror" id="password" type="password" name="password" placeholder="Password" required autocomplete="new-password">
-            @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-          </div>
-
-
-          <div class="form-group">
-            <label for="password-confirm">{{ __('Confirm Password') }}</label>
-            <input class="form-control @error('password') is-invalid @enderror" id="password-confirm" type="password" name="password_confirmation" placeholder="Confirm password" required autocomplete="new-password">
-            
-          </div>
 
 
           <div class="form-group">

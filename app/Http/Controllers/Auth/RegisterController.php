@@ -8,6 +8,13 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 class RegisterController extends Controller
 {
     /*
@@ -53,6 +60,30 @@ class RegisterController extends Controller
         return view('users.auth.register');
     }
 
+    public function register(Request $request){
+        $this->phoneValidator($request->all())->validate();
+
+        event(new Registered($user = $this->otpCreate($request->all())));
+
+        $this->guard()->login($user);
+
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+                    ? new JsonResponse([], 201)
+                    : redirect($this->redirectPath());
+    }
+
+    protected function phoneValidator(array $data){
+        return Validator::make($data, [
+            'phone' => ['required', 'digits:10', 'unique:users'],
+
+        ]);
+    }
+
+
     
 
 
@@ -73,13 +104,23 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data){
         return User::create([
             'name' => $data['name'],
             'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => 1,
+            'status' => 1
+
+            
+        ]);
+    }
+
+    protected function otpCreate(array $data){
+        return User::create([
+            'phone' => $data['phone']
+ 
         ]);
     }
 }
