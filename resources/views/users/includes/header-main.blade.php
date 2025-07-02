@@ -266,18 +266,7 @@
         </div>
 
     @endguest
-
-    
-
-
-
-      
-
-
     </div>
-
-
-
 
   </div>
 
@@ -302,4 +291,3 @@
   <!-- Mobile Nav -->
   <div id="nav-mobile"></div>
 </header>
-<!--End Main Header --
