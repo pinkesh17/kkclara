@@ -1,0 +1,15 @@
+import './js/jquery.js';
+import './js/popper.min.js';
+import './js/chosen.min.js';
+import './js/bootstrap.min.js';
+import './js/jquery.fancybox.js';
+import './js/jquery.modal.min.js';
+import './js/mmenu.polyfills.js';
+import './js/mmenu.js';
+import './js/appear.js';
+import './js/anm.min.js';
+import './js/ScrollMagic.min.js';
+import './js/rellax.min.js';
+import './js/owl.js';
+import './js/wow.js';
+import './js/script.js';
