@@ -1,8 +1,8 @@
 <?php return array (
   0 => 'hashing',
-  8 => 'concurrency',
-  10 => 'broadcasting',
-  11 => 'view',
+  3 => 'concurrency',
+  4 => 'view',
+  11 => 'broadcasting',
   12 => 'cors',
   'app' => 
   array (
@@ -12,7 +12,7 @@
     'url' => 'http://localhost/kkclara/',
     'frontend_url' => 'http://localhost:3000',
     'asset_url' => 'http://localhost/kkclara/public',
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Kolkata',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
@@ -163,8 +163,8 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/storage/framework/cache/data',
-        'lock_path' => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/storage/framework/cache/data',
+        'path' => '/opt/lampp/htdocs/kkclara/storage/framework/cache/data',
+        'lock_path' => '/opt/lampp/htdocs/kkclara/storage/framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -234,7 +234,7 @@
         'port' => '3306',
         'database' => 'kkclara',
         'username' => 'root',
-        'password' => '',
+        'password' => 'gaugedb',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -254,7 +254,7 @@
         'port' => '3306',
         'database' => 'kkclara',
         'username' => 'root',
-        'password' => '',
+        'password' => 'gaugedb',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
         'collation' => 'utf8mb4_unicode_ci',
@@ -274,7 +274,7 @@
         'port' => '3306',
         'database' => 'kkclara',
         'username' => 'root',
-        'password' => '',
+        'password' => 'gaugedb',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -289,7 +289,7 @@
         'port' => '3306',
         'database' => 'kkclara',
         'username' => 'root',
-        'password' => '',
+        'password' => 'gaugedb',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -337,7 +337,7 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/storage/app/private',
+        'root' => '/opt/lampp/htdocs/kkclara/storage/app/private',
         'serve' => true,
         'throw' => false,
         'report' => false,
@@ -345,7 +345,7 @@
       'public' => 
       array (
         'driver' => 'local',
-        'root' => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/storage/app/public',
+        'root' => '/opt/lampp/htdocs/kkclara/storage/app/public',
         'url' => 'http://localhost/kkclara//storage',
         'visibility' => 'public',
         'throw' => false,
@@ -367,7 +367,7 @@
     ),
     'links' => 
     array (
-      '/Applications/XAMPP/xamppfiles/htdocs/kkclara/public/storage' => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/storage/app/public',
+      '/opt/lampp/htdocs/kkclara/public/storage' => '/opt/lampp/htdocs/kkclara/storage/app/public',
     ),
   ),
   'logging' => 
@@ -392,14 +392,14 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/storage/logs/laravel.log',
+        'path' => '/opt/lampp/htdocs/kkclara/storage/logs/laravel.log',
         'level' => 'debug',
         'replace_placeholders' => true,
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/storage/logs/laravel.log',
+        'path' => '/opt/lampp/htdocs/kkclara/storage/logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
         'replace_placeholders' => true,
@@ -464,7 +464,7 @@
       ),
       'emergency' => 
       array (
-        'path' => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/storage/logs/laravel.log',
+        'path' => '/opt/lampp/htdocs/kkclara/storage/logs/laravel.log',
       ),
     ),
   ),
@@ -542,7 +542,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/resources/views/vendor/mail',
+        0 => '/opt/lampp/htdocs/kkclara/resources/views/vendor/mail',
       ),
     ),
   ),
@@ -661,7 +661,7 @@
     'lifetime' => 120,
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/storage/framework/sessions',
+    'files' => '/opt/lampp/htdocs/kkclara/storage/framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -699,6 +699,14 @@
   'concurrency' => 
   array (
     'default' => 'process',
+  ),
+  'view' => 
+  array (
+    'paths' => 
+    array (
+      0 => '/opt/lampp/htdocs/kkclara/resources/views',
+    ),
+    'compiled' => '/opt/lampp/htdocs/kkclara/storage/framework/views',
   ),
   'broadcasting' => 
   array (
@@ -755,14 +763,6 @@
         'driver' => 'null',
       ),
     ),
-  ),
-  'view' => 
-  array (
-    'paths' => 
-    array (
-      0 => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/resources/views',
-    ),
-    'compiled' => '/Applications/XAMPP/xamppfiles/htdocs/kkclara/storage/framework/views',
   ),
   'cors' => 
   array (

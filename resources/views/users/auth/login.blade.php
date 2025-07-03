@@ -13,16 +13,24 @@
         <!--Login Form-->
 
 
+
+        @if ($errors->any())
+           @foreach ($errors->all() as $error)
+               <div>{{$error}}</div>
+           @endforeach
+       @endif
+
+
         <form method="POST" action="{{ route('login') }}">
           @csrf
 
 
           <div class="form-group">
 
-            <label for="email">{{ __('Username') }}</label>
+            <label for="username">{{ __('Username') }}</label>
 
-            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-            @error('email')
+            <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+            @error('username')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

@@ -3,10 +3,40 @@
 @section('content')
 
     <section class="job-categories">
+
       <div class="auto-container">
         <div class="sec-title text-center">
           <h2>Popular Job Categories</h2>
           <div class="text">2020 jobs live - 293 added today.</div>
+
+          @guest
+      <div class="btn-box">
+
+        @if (Route::has('login'))
+            <a href="{{url('login')}}" class="theme-btn btn-style-three">Login</a>
+        @endif
+
+        @if (Route::has('register'))
+            <a href="{{url('register')}}" class="theme-btn btn-style-one">Register</a>
+        @endif
+      </div>
+  @else
+
+
+
+      <p>{{ Auth::user()->username }}</p>
+      <p>ds</p>
+      <p>{{ Auth::user()->id }}</p>
+      <p>{{ Auth::user()->phone }}</p>
+
+      <p>{{ Auth::user()->steps }}</p>
+      <p>{{ Auth::user()->role }}</p>
+      <p>{{ Auth::user()->status }}</p>
+      <p>{{ Auth::user()->password }}</p>
+
+  @endguest
+
+
         </div>
 
         <div class="row wow fadeInUp">

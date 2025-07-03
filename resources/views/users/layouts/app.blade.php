@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Superio | Just another HTML Template | Home Page 01</title>
-
+  <title>@yield('title', 'KKS')</title>
+  <link rel="canonical" href="@yield('canonical', '')" />
+  <meta name="description" content="@yield('description', '')">
 
   @vite(['resources/usersassets/app.css'])
 
@@ -14,8 +15,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 </head>
 
+
 <body>
-    <div class="page-wrapper">
+    <div class="page-wrapper @yield('page-class', '')">
         <div class="preloader"></div>
             @include('users.includes.header-main')
 
@@ -24,7 +26,6 @@
             @include('users.includes.footer-main')
 
   </div>
-
 
 
 
@@ -46,6 +47,8 @@
   <script src="{{asset('assets/js/jquery-validation/jquery.validate.min.js')}}"></script>
   <script src="{{asset('assets/js/jquery-validation/additional-methods.min.js')}}"></script>
   <script src="{{asset('assets/js/script.js')}}"></script>
+
+  @yield('scripts')
 
    {{--  @vite(['resources/usersassets/app.js']);
 
