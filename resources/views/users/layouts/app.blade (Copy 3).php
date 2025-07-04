@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>@yield('title', 'KKS')</title>
   <link rel="canonical" href="@yield('canonical', '')" />
   <meta name="description" content="@yield('description', '')">

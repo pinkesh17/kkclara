@@ -17,7 +17,7 @@ Route::post('/otp', [RegisterController::class, 'showRegistrationOtpFormPost'])-
 
 
 
-Route::namespace('UserDashboard')->prefix('dashboard')->name('users.dashboard.')->group(function () {
+Route::middleware(['htmlMinifier'])->namespace('UserDashboard')->prefix('dashboard')->name('users.dashboard.')->group(function () {
 
 
         Route::get('/',[DashboardController::class, 'index']);

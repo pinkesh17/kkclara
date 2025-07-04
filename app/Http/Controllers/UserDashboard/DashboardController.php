@@ -22,8 +22,6 @@ class DashboardController extends Controller{
 
     public function index(Request $request){
 
-        echo "Hello Admin";
-
        return view('users.dashboard.home');
     }
 
