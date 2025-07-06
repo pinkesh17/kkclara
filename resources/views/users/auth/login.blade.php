@@ -1,28 +1,28 @@
 @extends('users.layouts.app')
 
+@section('title', 'Login')
+@section('description', 'Log in to your Kochaisa Kurmi Samaj member account to access community resources, events, and member services. Connect with fellow community members.')
+@section('canonical', URL::current())
+
+
 @section('content')
 
-
+<dic class="signin whitish medium-opacity register">
+<div class="bg-image" style="background-image:url({{asset('assets/images/bg/theme-bg.jpg')}})"></div>
 <div class="login-section">
-  <div class="image-layer" style="background-image: url('{{asset("assets/images/background/120.jpg")}}');"></div>
+
+
+
   <div class="outer-box">
     <!-- Login Form -->
     <div class="login-form default-form">
-      <div class="form-inner">
-        <h3>Login to Superio</h3>
+      <div class="form-inner reg-from">
+        <h3>Create Account</h3>
+
         <!--Login Form-->
+        <form method="POST" action="{{ route('login') }}" autocomplete="off">
+         @csrf
 
-
-
-        @if ($errors->any())
-           @foreach ($errors->all() as $error)
-               <div>{{$error}}</div>
-           @endforeach
-       @endif
-
-
-        <form method="POST" action="{{ route('login') }}">
-          @csrf
 
 
           <div class="form-group">
@@ -50,47 +50,50 @@
 
           </div>
 
-
-
           <div class="form-group">
             <div class="field-outer">
               <div class="input-group checkboxes square">
                 <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : ''}}>
                 <label for="remember" class="remember"><span class="custom-checkbox"></span> {{ __('Remember Me') }}</label>
               </div>
-              <a href="#" class="pwd">Forgot password?</a>
+
+
+              @if (Route::has('password.request'))
+                <a class="pwd" href="{{ route('password.request') }}">
+                  {{ __('Forgot Your Password?') }}
+                </a>
+              @endif
+
+
+
             </div>
           </div>
 
           <div class="form-group">
              <button type="submit"  class="theme-btn btn-style-one">{{ __('Login') }}</button>
           </div>
+
+
         </form>
-
-        @if (Route::has('password.request'))
-          <a class="btn btn-link" href="{{ route('password.request') }}">
-            {{ __('Forgot Your Password?') }}
-          </a>
-        @endif
-
 
 
         <div class="bottom-box">
-          <div class="text">Don't have an account? <a href="register.html">Signup</a></div>
-          <div class="divider"><span>or</span></div>
-          <div class="btn-box row">
-            <div class="col-lg-6 col-md-12">
-              <a href="#" class="theme-btn social-btn-two facebook-btn"><i class="fab fa-facebook-f"></i> Log In via Facebook</a>
-            </div>
-            <div class="col-lg-6 col-md-12">
-              <a href="#" class="theme-btn social-btn-two google-btn"><i class="fab fa-google"></i> Log In via Gmail</a>
-            </div>
-          </div>
+          <a class="btn btn-link" href="{{url('register')}}">
+            {{ __("Don't have an account? Signup") }}
+         </a>
         </div>
+
+
+
       </div>
     </div>
     <!--End Login Form -->
   </div>
 </div>
+</dic>
+
+
+
+
 
 @endsection

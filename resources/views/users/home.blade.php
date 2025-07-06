@@ -1,5 +1,12 @@
 @extends('users.layouts.app')
 
+@section('title', 'Kochaisa Kurmi Samaj - Preserving Culture, Uniting Community')
+@section('description', 'Join Kochaisa Kurmi Samaj - a vibrant community dedicated to preserving Kurmi traditions, organizing cultural events, and supporting members. Explore membership benefits, upcoming events, and our rich heritage.')
+@section('canonical', URL::current())
+
+
+
+
 @section('content')
 
     <section class="job-categories">

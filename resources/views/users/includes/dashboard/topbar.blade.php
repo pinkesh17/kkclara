@@ -1,6 +1,6 @@
 <div class="topbar stick">
 		<div class="logo">
-			<a title="" href="{{url('dashboard')}}"><img src="{{asset('userdash/images/logo.png')}}" alt=""></a>
+			<a title="" href="{{url('dashboard')}}"><img src="{{asset('assets/images/logo.png')}}" alt=""></a>
 		</div>
 		<div class="top-area">
 			<div class="main-menu">
@@ -548,7 +548,11 @@
 						<li><a href="setting.html" title=""><i class="ti-pencil-alt"></i>edit profile</a></li>
 						<li><a href="#" title=""><i class="ti-target"></i>activity log</a></li>
 						<li><a href="setting.html" title=""><i class="ti-settings"></i>account setting</a></li>
-						<li><a href="logout.html" title=""><i class="ti-power-off"></i>log out</a></li>
+
+						<li>
+						 	<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="ti-power-off"></i>log out
+						 		<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+						 </li>
 					</ul>
 				</div>
 			</div>

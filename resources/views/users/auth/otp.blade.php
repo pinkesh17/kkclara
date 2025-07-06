@@ -1,17 +1,27 @@
 @extends('users.layouts.app')
 
-@section('content')
+@section('title', 'OTP verification - Kochaisa Kurmi Samaj Member Portal')
+@section('description', 'OTP verification - Kochaisa Kurmi Samaj Member Portalß')
+@section('canonical', URL::current())
 
  
+
+@section('content')
+
+
+
+<dic class="signin whitish medium-opacity register">
+<div class="bg-image" style="background-image:url({{asset('assets/images/bg/theme-bg.jpg')}})"></div>
 <div class="login-section">
-  <div class="image-layer" style="background-image: url(images/background/12.jpg);"></div>
+
+
+
   <div class="outer-box">
     <!-- Login Form -->
     <div class="login-form default-form">
-      <div class="form-inner">
-        <h3>Enter OTP</h3>
+      <div class="form-inner reg-from">
+        <h3>OTP Verification</h3>
 
-        <!--Login Form-->
         <form method="POST" action="{{ route('otp') }}">
          @csrf
 
@@ -31,6 +41,8 @@
 
 
           <div class="form-group">
+
+
             <p>
             <?php
 
@@ -40,17 +52,15 @@
           </p>
 
 
-          @if(session()->has('user_otp'))
-              <p>dsdsdsd</p>
-          @else 
-              <p>dsdsddss*sd</p>
-          @endif
-
+      
          
 
 
-            <label for="otp">{{ __('6 Digit OTP') }}</label>
-            <input class="form-control @error('otp') is-invalid @enderror" type="number" id="otp" name="otp" placeholder="6 Digit OTP" value="{{ old('otp') }}" required autocomplete="otp">
+            <label for="otp">
+              {{ __('Enter the 6-digit OTP sent to your mobile number') }} 
+              @if(session()->has('phone')) {{session('phone')}} @endif
+            </label>
+            <input class="form-control @error('otp') is-invalid @enderror" type="number" id="otp" name="otp" placeholder=" 6-digit OTP" value="{{ old('otp') }}" required>
             @error('phone')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -58,14 +68,26 @@
             @enderror
           </div>
 
-          @if(session()->has('user_otp'))
-              <input type="hidden" name="phone" value="{{session('phone')}}" />
-          @endif
 
+          <div class="form-group">
+            <div class="field-outer">
 
-          
+              <div>
+                <a href="{{url('register')}}">
+                  {{ __("Change phone number?") }}
+               </a>
+              </div>
 
+              <div>
+                <a href="{{url('register')}}">
+                  {{ __("Resend OTP") }}
+               </a>
+              </div>
 
+            </div>
+          </div>
+
+  
    
 
 
@@ -75,22 +97,17 @@
           </div>
         </form>
 
-        <div class="bottom-box">
-          <div class="divider"><span>or</span></div>
-          <div class="btn-box row">
-            <div class="col-lg-6 col-md-12">
-              <a href="#" class="theme-btn social-btn-two facebook-btn"><i class="fab fa-facebook-f"></i> Log In via Facebook</a>
-            </div>
-            <div class="col-lg-6 col-md-12">
-              <a href="#" class="theme-btn social-btn-two google-btn"><i class="fab fa-google"></i> Log In via Gmail</a>
-            </div>
-          </div>
-        </div>
+
+        
+
+
+
       </div>
     </div>
     <!--End Login Form -->
   </div>
 </div>
+</dic>
 
 
 @endsection

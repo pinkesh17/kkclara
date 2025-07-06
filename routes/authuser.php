@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\UserDashboard\DashboardController;
+use App\Http\Controllers\UserDashboard\SettingController;
+
+
 
 
 
@@ -17,10 +20,33 @@ Route::post('/otp', [RegisterController::class, 'showRegistrationOtpFormPost'])-
 
 
 
-Route::middleware(['htmlMinifier'])->namespace('UserDashboard')->prefix('dashboard')->name('users.dashboard.')->group(function () {
+
+Route::middleware(['htmlMinifier'])->namespace('UserDashboard')->prefix('dashboard')->group(function () {
 
 
-        Route::get('/',[DashboardController::class, 'index']);
+    Route::middleware(['userSteps'])->group(function () {
+         Route::get('/',[DashboardController::class, 'index']);
+    });
+
+
+       
+
+
+
+
+    Route::get('setting',[SettingController::class, 'index']);
+    Route::get('profile-information',[SettingController::class, 'profileInformation'])->name('profile-information');
+    Route::post('profile-information',[SettingController::class, 'profileInformationPost'])->name('profile-information');
+
+
+    
+
+    Route::get('address-update',[SettingController::class, 'addressUpdate']);
+
+
+
+
+
        /* Route::post('login',[AuthAdminController::class, 'postLogin']);
 
         Route::get('registration',[AuthAdminController::class, 'registration']);

@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>@yield('title', 'Dashboard')</title>
+    <title>@yield('title', 'Kochaisa Kurmi Samaj') - kochaisakurmi.in </title>
     <link rel="canonical" href="@yield('canonical', '')" />
     <meta name="description" content="@yield('description', '')">
 
@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{asset('userdash/css/main.min.css')}}">
     <link rel="stylesheet" href="{{asset('userdash/css/weather-icons.min.css')}}">
     <link rel="stylesheet" href="{{asset('userdash/css/toast-notification.css')}}">
+    <link rel="stylesheet" href="{{asset('vendors/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}">
+
 
     {{-- 
     <link rel="stylesheet" href="{{asset('userdash/css/page-tour.css')}}">--}}
@@ -26,7 +28,11 @@
 
     <link rel="stylesheet" href="{{asset('userdash/css/color.css')}}">
     <link rel="stylesheet" href="{{asset('userdash/css/responsive.css')}}">
-    <link rel="stylesheet" href="{{asset('userdash/css/main.min.css')}}">
+    <link rel="stylesheet" href="{{asset('userdash/css/custom.css')}}">
+
+
+
+    
 
     @yield('stylesheet')
 
@@ -36,6 +42,20 @@
 
 
 <body>
+
+    {{-- 
+    <div class="wavy-wraper">
+        <div class="wavy">
+          <span style="--i:1;">kochaisa</span>
+          <span style="--i:2;"> &nbsp;  </span>
+          <span style="--i:3;">kurmi</span>
+          <span style="--i:4;">.</span>
+          <span style="--i:5;">.</span>
+          <span style="--i:6;">.</span>
+        </div>
+    </div>--}}
+
+
     @yield('content')
 
 
@@ -52,6 +72,9 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3vI4IQqzxRU1449lbIHThUb2gCeDW47w&amp;callback=initMap"></script>
 <script src="{{asset('userdash/js/locationpicker.jquery.js')}}"></script>
 <script src="{{asset('userdash/js/map-init.js')}}"></script> --}}
+
+
+<script src="{{asset('vendors/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 
 
 <script src="{{asset('userdash/js/stories-zuck.js')}}"></script>

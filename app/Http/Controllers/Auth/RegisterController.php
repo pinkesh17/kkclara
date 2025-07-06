@@ -37,7 +37,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -69,6 +69,9 @@ class RegisterController extends Controller
 
         $request->session()->put('user_otp', $otp);
         $request->session()->put('phone', $request->post('phone'));
+        $request->session()->put('first_name', $request->post('first_name'));
+        $request->session()->put('last_name', $request->post('last_name'));
+        $request->session()->put('password', $request->post('password'));
 
         //return redirect('otp', [$otp]);
 
@@ -122,13 +125,25 @@ class RegisterController extends Controller
         $input_otp = $request->post('otp');
         $session_otp = $request->session()->get('user_otp');
 
+        
+
         if($input_otp == $session_otp){
 
             echo "<p>OTP MATCH *** </p>";
 
                  //event(new Registered($user = $this->otpCreate($request->all())));
 
-            event(new Registered($user = $this->otpCreate($request->all())));
+
+             $userData = [
+                'first_name' => $request->session()->get('first_name'),
+                'last_name' => $request->session()->get('last_name'),
+                'phone' => $request->session()->get('phone'),
+                'password' => $request->session()->get('password'),
+
+            ];
+
+
+            event(new Registered($user = $this->otpCreate($userData)));
 
 
             echo "<hr>";
@@ -151,8 +166,7 @@ class RegisterController extends Controller
             $this->guard()->login($user);
             $this->updateUserId();
 
-            $request->session()->forget(['user_otp', 'phone']);
-
+            $request->session()->forget(['user_otp', 'phone', 'first_name', 'last_name' ,'password']);
 
             return redirect($this->redirectPath());
 
@@ -301,17 +315,34 @@ class RegisterController extends Controller
 
 
 
-
-
-
-
-
     protected function phoneValidator(array $data){
         return Validator::make($data, [
-            'phone' => ['required', 'digits:10'],
+            'first_name' => ['required', 'string', 'max:50'],
+            'last_name' => ['required', 'string', 'max:50'],
+            'phone' => ['required', 'digits:10', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ],
+        [
+            // Custom messages for each rule
+           // 'name.required' => 'The name field is required.',
+            //'name.max' => 'The name may not be greater than 255 characters.',
+            
+            'phone.required' => 'Mobile number is required.',
+            'phone.digits' => 'Mobile number must be exactly 10 digits.',
+            'phone.unique' => 'This mobile number is already registered with us.',
+            
+           // 'email.required' => 'Email address is required.',
+           // 'email.email' => 'Please enter a valid email address.',
+           // 'email.max' => 'Email may not be greater than 255 characters.',
+           // 'email.unique' => 'This email is already registered.',
+            
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 6 characters.',
+            'password.confirmed' => 'Password confirmation does not match.',
+        ]
 
-        ]);
-    }
+
+    );}
 
     protected function otpValidator(array $data){
         return Validator::make($data, [
@@ -332,7 +363,8 @@ class RegisterController extends Controller
             'phone' => ['required', 'digits:10', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ]
+    );
     }
 
     /**
@@ -355,18 +387,20 @@ class RegisterController extends Controller
     }
 
     protected function otpCreate(array $data){
+
         return User::create([
+            'is_primary' => 1,
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'phone' => $data['phone'],
             'phone_verified_at' => now(),
-            'password' => Hash::make($data['otp']),
-            'steps' =>0,
+            'password' => Hash::make($data['password']),
+            'steps' => 0,
             'role' => 1,
             'status' => 1
  
         ]);
     }
-
-
 
     protected function updateUserId(){
         $id = Auth::user()->id;

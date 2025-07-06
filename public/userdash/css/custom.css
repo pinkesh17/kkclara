@@ -1,0 +1,57 @@
+.form-main  textarea,
+.form-main  input{
+    background: #edf2f6 none repeat scroll 0 0;
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 14px 15px;
+    width: 100%;
+    color: #535165;
+    border: 1px solid #e4e4e4;
+}
+.form-main  input{height:40px}
+
+.form-main label {
+    display:block;
+    margin-bottom: .1rem;
+    font-size:14px; font-weight:500;
+}
+.form-main  .form-group, .form-main .form-radio {
+    position: relative;
+    margin-top: 0px;
+    margin-bottom:20px;
+}
+
+.form-main .chosen-single{
+    height: 40px;
+    padding: 6px 12px;
+    background: #edf2f6 none repeat scroll 0 0;
+    width: 100%;
+    color: #535165;
+    border: 1px solid #e4e4e4;
+    box-shadow: none;
+}
+.form-main .chosen-container-single .chosen-single div b {background: url(chosen-sprite.png) no-repeat 0 9px;}
+
+.form-main .chosen-container-active.chosen-with-drop .chosen-single div b {
+    background-position: -18px 9px;
+}
+
+.datepicker td, .datepicker th {width: 36px;height: 30px;}
+
+
+
+
+
+
+
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
