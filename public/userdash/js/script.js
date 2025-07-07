@@ -7,6 +7,8 @@ $(window).load(function(){
 jQuery(document).ready(function($) {
 	
 	"use strict";
+
+	let csrfToken = $('meta[name="csrf-token"]').attr('content');
 	
 //----- popup display on window load	
 	function delay(){
@@ -21,6 +23,7 @@ jQuery(document).ready(function($) {
 // popup end
 
 // show hide the top new post div
+/*
 $(window).scroll(function() {
 	if ($(this).scrollTop()>150)
 	 {
@@ -30,7 +33,7 @@ $(window).scroll(function() {
 	{
 		$('.recent-posts').hide(100);
 	 }
- });
+ });*/
 	
 //------- Notifications Dropdowns
   $('.top-area > .setting-area > li > a').on("click",function(){

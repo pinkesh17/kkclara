@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 
 use App\Http\Controllers\UserDashboard\DashboardController;
+use App\Http\Controllers\UserDashboard\ProfileController;
+
 use App\Http\Controllers\UserDashboard\SettingController;
 
 
@@ -27,6 +29,10 @@ Route::middleware(['htmlMinifier'])->namespace('UserDashboard')->prefix('dashboa
     Route::middleware(['userSteps'])->group(function () {
          Route::get('/',[DashboardController::class, 'index']);
     });
+
+
+
+    Route::get('my-profile',[ProfileController::class, 'index'])->name('my-profile');
 
 
        

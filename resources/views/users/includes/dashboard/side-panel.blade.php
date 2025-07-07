@@ -442,6 +442,8 @@
   </div>
 </div><!-- The Scrolling Modal image with comment -->
 
+
+{{-- 
 <div class="recent-posts">
     <i class="ti-arrow-up"></i>
     <ul>
@@ -451,3 +453,5 @@
     </ul>
     <span>New Posts</span>
 </div>
+
+--}}

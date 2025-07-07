@@ -63,8 +63,12 @@
 
 
 <script src="{{asset('userdash/js/main.min.js')}}"></script>
+
+{{-- 
 <script src="{{asset('userdash/js/TweenMax.min.js')}}"></script>
 <script src="{{asset('userdash/js/jquery-stories.js')}}"></script>
+--}}
+
 <script src="{{asset('userdash/js/toast-notificatons.js')}}"></script>
 
 {{-- 
@@ -76,10 +80,12 @@
 
 <script src="{{asset('vendors/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 
-
+{{-- 
 <script src="{{asset('userdash/js/stories-zuck.js')}}"></script>
 <script src="{{asset('userdash/js/stories-zuck-necessery.js')}}"></script>
 <script src="{{asset('userdash/js/stories-zuck-init.js')}}"></script>
+
+--}}
 
 <script src="{{asset('assets/js/jquery-validation/jquery.validate.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery-validation/additional-methods.min.js')}}"></script>
