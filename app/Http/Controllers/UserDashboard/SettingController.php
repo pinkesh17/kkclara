@@ -34,7 +34,7 @@ class SettingController extends Controller{
 
     public function index(Request $request){
 
-       return view('users.dashboard.setting.setting');
+       return view('users.dashboard.settings.setting');
     }
 
     public function  profileInformation(Request $request){
@@ -45,7 +45,7 @@ class SettingController extends Controller{
       $months =  $this->getMonths();*/
 
       
-       return view('users.dashboard.setting.profile-information', ['prefixes'=>$prefixes]);
+       return view('users.dashboard.settings.profile-information', ['prefixes'=>$prefixes]);
     }
 
     public function  profileInformationPost(Request $request){
@@ -85,7 +85,7 @@ class SettingController extends Controller{
       $months =  $this->getMonths();
 
       
-       return view('users.dashboard.setting.address-update', ['prefixes'=>$prefixes, 'years'=>$years, 'days'=>$days, 'months'=>$months]);
+       return view('users.dashboard.settings.address-update', ['prefixes'=>$prefixes, 'years'=>$years, 'days'=>$days, 'months'=>$months]);
     }
 
 

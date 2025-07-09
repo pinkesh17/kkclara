@@ -13,7 +13,7 @@ class HtmlMinifierMiddleware{
         $response = $next($request);
 
         // Check if the response is HTML
-        if (
+       /* if (
             $response instanceof Response &&
             str_contains($response->headers->get('Content-Type'), 'text/html') &&
             !$request->is('no-minify*') // Optional: Skip minify on certain routes
@@ -32,7 +32,7 @@ class HtmlMinifierMiddleware{
             ], $content);
 
             $response->setContent($minified);
-        }
+        }*/
 
         return $response;
     }

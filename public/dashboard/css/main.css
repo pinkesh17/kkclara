@@ -1,0 +1,52 @@
+.formvalid input.error{
+  border-width: 1px;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity, 1));
+  border-color: rgb(225 29 72 / var(--tw-border-opacity, 1));
+  
+}
+.formvalid input.error:focus{--tw-ring-color: transparent;}
+
+.formvalid label.error{display:block;font-size:14px;--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity));}
+
+
+
+
+
+/*
+.text-red-900 {
+    color: var(--color-red-900);
+}
+
+
+.bg-red-50 {
+    background-color: var(--color-red-50);
+}
+.border-red-500 {
+    border-color: var(--color-red-500);
+}
+*/
+
+/*
+.formvalid input[type='text'], input[type='password'], input[type='email'], input[type='number'], input[type='url'], input[type='date'], input[type='datetime-local'], input[type='month'], input[type='week'], input[type='time'], input[type='search'], input[type='tel'], input[type='checkbox'], input[type='radio'], select, select[multiple], textarea {
+    border-color: transparent;
+    --tw-bg-opacity: 1;
+    background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+*/
+
+
+/* Style invalid inputs *
+input[aria-invalid="true"],
+textarea[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: red;
+  background-color: #ffe6e6;
+}
+
+/* Style valid inputs (optional) *
+input[aria-invalid="false"],
+textarea[aria-invalid="false"],
+select[aria-invalid="false"] {
+  border-color: green;
+  background-color: #e6ffe6;
+}*/

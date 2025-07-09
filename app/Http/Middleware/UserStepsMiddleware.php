@@ -19,7 +19,7 @@ class UserStepsMiddleware{
 
 
         if(Auth::user()->role == 1 && Auth::user()->steps == 0){
-            return redirect()->route('my-profile');
+            return redirect()->route('user-setting');
         }
 
         //...$roles

@@ -2,7 +2,6 @@
 
 @section('title', 'Dashboard - Kochaisa Kurmi Samaj Member Portal')
 @section('description', 'Your personalized Kochaisa Kurmi Samaj member dashboard - manage your profile, view upcoming events, connect with community members, and access exclusive resources.')
-@section('canonical', URL::current())
 
 
 @section('stylesheet')
@@ -12,1818 +11,962 @@
 
 
 @section('content')
+ 
+<div id="wrapper">
+    @include('users.includes.dashboard.header')
+    @include('users.includes.dashboard.sidebar-left')
+
+        
+        
+
+        <!-- main contents -->
+        <main id="site__main" class="2xl:ml-[--w-side]  xl:ml-[--w-side-sm] p-2.5 h-[calc(100vh-var(--m-top))] mt-[--m-top]">
+
+            <!-- timeline -->
+            <div class="lg:flex 2xl:gap-16 gap-12 max-w-[1065px] mx-auto"  id="js-oversized">
+
+                <div class="max-w-[680px] mx-auto">
+
+                    <!-- stories -->
+                    <div class="mb-8">
+
+                        <h3 class="font-extrabold text-2xl  text-black dark:text-white hidden"> Stories</h3>
+
+                        <div class="relative" tabindex="-1" uk-slider="auto play: true;finite: true" uk-lightbox="">
+        
+                            <div class="py-5 uk-slider-container">
 
 
-<div class="theme-layout">
-	
-	<div class="postoverlay"></div>
+                                <ul class="uk-slider-items w-[calc(100%+14px)]" uk-scrollspy="target: > li; cls: uk-animation-scale-up; delay: 20;repeat:true">
+                                    <li class="md:pr-3" uk-scrollspy-class="uk-animation-fade">
+                                        <div class="md:w-16 md:h-16 w-12 h-12 rounded-full relative border-2 border-dashed grid place-items-center bg-slate-200 border-slate-300 dark:border-slate-700 dark:bg-dark2 shrink-0"
+                                             uk-toggle="target: #create-story">
+                                            <ion-icon name="camera" class="text-2xl"></ion-icon>
+                                        </div>
+                                    </li>
+                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                        <a href="{{asset('dashboard/images/avatars/avatar-lg-1.jpg')}}" data-caption="Caption 1">
+                                            <div class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                <img src="{{asset('dashboard/images/avatars/avatar-2.jpg')}}" alt="" class="absolute w-full h-full object-cover">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                        <a href="{{asset('dashboard/images/avatars/avatar-lg-2.jpg')}}" data-caption="Caption 1">
+                                            <div class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="absolute w-full h-full object-cover">
+                                            </div>
+                                        </a>
+                                    </li> 
+                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                        <a href="{{asset('dashboard/images/avatars/avatar-lg-4.jpg')}}" data-caption="Caption 1">
+                                            <div class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                <img src="{{asset('dashboard/images/avatars/avatar-5.jpg')}}" alt="" class="absolute w-full h-full object-cover">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                        <a href="{{asset('dashboard/images/avatars/avatar-lg-5.jpg')}}" data-caption="Caption 1">
+                                            <div class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                <img src="{{asset('dashboard/images/avatars/avatar-6.jpg')}}" alt="" class="absolute w-full h-full object-cover">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                        <a href="{{asset('dashboard/images/avatars/avatar-lg-1.jpg')}}" data-caption="Caption 1">
+                                            <div class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                <img src="{{asset('dashboard/images/avatars/avatar-7.jpg')}}" alt="" class="absolute w-full h-full object-cover">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                        <a href="{{asset('dashboard/images/avatars/avatar-lg-1.jpg')}}" data-caption="Caption 1">
+                                            <div class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                <img src="{{asset('dashboard/images/avatars/avatar-2.jpg')}}" alt="" class="absolute w-full h-full object-cover">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                        <a href="{{asset('dashboard/images/avatars/avatar-lg-2.jpg')}}" data-caption="Caption 1">
+                                            <div class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="absolute w-full h-full object-cover">
+                                            </div>
+                                        </a>
+                                    </li> 
+                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                        <a href="{{asset('dashboard/images/avatars/avatar-lg-4.jpg')}}" data-caption="Caption 1">
+                                            <div class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                <img src="{{asset('dashboard/images/avatars/avatar-5.jpg')}}" alt="" class="absolute w-full h-full object-cover">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                        <a href="{{asset('dashboard/images/avatars/avatar-lg-5.jpg')}}" data-caption="Caption 1">
+                                            <div class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                <img src="{{asset('dashboard/images/avatars/avatar-6.jpg')}}" alt="" class="absolute w-full h-full object-cover">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="md:pr-3 pr-2 hover:scale-[1.15] hover:-rotate-2 duration-300">
+                                        <a href="{{asset('dashboard/images/avatars/avatar-lg-1.jpg')}}" data-caption="Caption 1">
+                                            <div class="md:w-16 md:h-16 w-12 h-12 relative md:border-4 border-2 shadow border-white rounded-full overflow-hidden dark:border-slate-700">
+                                                <img src="{{asset('dashboard/images/avatars/avatar-7.jpg')}}" alt="" class="absolute w-full h-full object-cover">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="md:pr-3 pr-2">
+                                        <div class="md:w-16 md:h-16 w-12 h-12 bg-slate-200/60 rounded-full dark:bg-dark2 animate-pulse"></div>
+                                    </li>
+                                </ul>
+                        
+                            </div>
+                        
+                            <div class="max-md:hidden">
 
-	 @include('users.includes.dashboard.responsive-header')
-	 @include('users.includes.dashboard.topbar')
+                                <button type="button" class="absolute -translate-y-1/2 bg-white shadow rounded-full top-1/2 -left-3.5 grid w-8 h-8 place-items-center dark:bg-dark3" uk-slider-item="previous"> <ion-icon name="chevron-back" class="text-2xl"></ion-icon></button>
+                                <button type="button" class="absolute -right-2 -translate-y-1/2 bg-white shadow rounded-full top-1/2 grid w-8 h-8 place-items-center dark:bg-dark3" uk-slider-item="next"> <ion-icon name="chevron-forward" class="text-2xl"></ion-icon> </button>
 
-	 @include('users.includes.dashboard.fixed-sidebar-right')
-	 @include('users.includes.dashboard.fixed-sidebar-left')
-
-
-	<section>
-		<div class="gap2 gray-bg">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="row merged20" id="page-contents">
-							<div class="col-lg-3">
-								<aside class="sidebar static left">
-									<div class="widget">
-										<div class="weather-widget low-opacity bluesh">
-											<div class="bg-image" style="background-image: url(images/resources/weather.jpg)"></div>
-											<span class="refresh-content"><i class="fa fa-refresh"></i></span>
-											<div class="weather-week">
-												<div class="icon sun-shower">
-												  <div class="cloud"></div>
-												  <div class="sun">
-													<div class="rays"></div>
-												  </div>
-												  <div class="rain"></div>
-												</div>
-											</div>
-											<div class="weather-infos">
-												<span class="weather-tem">25</span>
-												<h3>Cloudy Skyes<i>Sicklervilte, New Jersey</i></h3>
-												<div class="weather-date skyblue-bg">
-													<span>MAY<strong>21</strong></span>
-												</div>
-											</div>
-											<div class="monthly-weather">
-												<ul>
-													<li>
-														<span>Sun</span>
-														<a href="#" title=""><i class="wi wi-day-sunny"></i></a>
-														<em>40°</em>
-													</li>
-													<li>
-														<span>Mon</span>
-														<a href="#" title=""><i class="wi wi-day-cloudy"></i></a>
-														<em>10°</em>
-													</li>
-													<li>
-														<span>Tue</span>
-														<a href="#" title=""><i class="wi wi-day-hail"></i></a>
-														<em>20°</em>
-													</li>
-													<li>
-														<span>Wed</span>
-														<a href="#" title=""><i class="wi wi-day-lightning"></i></a>
-														<em>34°</em>
-													</li>
-													<li>
-														<span>Thu</span>
-														<a href="#" title=""><i class="wi wi-day-showers"></i></a>
-														<em>22°</em>
-													</li>
-													<li>
-														<span>Fri</span>
-														<a href="#" title=""><i class="wi wi-day-windy"></i></a>
-														<em>26°</em>
-													</li>
-													<li>
-														<span>Sat</span>
-														<a href="#" title=""><i class="wi wi-day-sunny-overcast"></i></a>
-														<em>30°</em>
-													</li>
-												</ul>
-											</div>
-											
-                            			</div><!-- Weather Widget -->
-									</div><!-- weather widget-->
-									<div class="widget whitish low-opacity">
-										<div style="background-image: url(images/resources/dob2.png)" class="bg-image"></div>
-										<div class="dob-head">
-											<img src="images/resources/sug-page-5.jpg" alt="">
-											<span>22nd Birthday</span>
-											<div class="dob">
-												<i>19</i>
-												<span>September</span>
-											</div>
-										</div>
-										<div class="dob-meta">
-											<figure><img src="images/resources/dob-cake.gif" alt=""></figure>
-											<h6><a href="#" title="">Lucy Carbel</a> valentine's birthday</h6>
-											<p>leave a message with your best wishes on his profile.</p>
-										</div>
-									</div><!-- birthday widget -->
-									<div class="widget">
-										<h4 class="widget-title">Who's follownig</h4>
-										<ul class="followers">
-											<li>
-												<figure><img src="images/resources/friend-avatar2.jpg" alt=""></figure>
-												<div class="friend-meta">
-													<h4><a href="time-line.html" title="">Kelly Bill</a></h4>
-													<a href="#" title="" class="underline">Add Friend</a>
-												</div>
-											</li>
-											<li>
-												<figure><img src="images/resources/friend-avatar4.jpg" alt=""></figure>
-												<div class="friend-meta">
-													<h4><a href="time-line.html" title="">Issabel</a></h4>
-													<a href="#" title="" class="underline">Add Friend</a>
-												</div>
-											</li>
-											<li>
-												<figure><img src="images/resources/friend-avatar6.jpg" alt=""></figure>
-												<div class="friend-meta">
-													<h4><a href="time-line.html" title="">Andrew</a></h4>
-													<a href="#" title="" class="underline">Add Friend</a>
-												</div>
-											</li>
-											<li>
-												<figure><img src="images/resources/friend-avatar8.jpg" alt=""></figure>
-												<div class="friend-meta">
-													<h4><a href="time-line.html" title="">Sophia</a></h4>
-													<a href="#" title="" class="underline">Add Friend</a>
-												</div>
-											</li>
-											<li>
-												<figure><img src="images/resources/friend-avatar3.jpg" alt=""></figure>
-												<div class="friend-meta">
-													<h4><a href="time-line.html" title="">Allen</a></h4>
-													<a href="#" title="" class="underline">Add Friend</a>
-												</div>
-											</li>
-										</ul>
-									</div><!-- who's following -->
-									<div class="widget">
-										<h4 class="widget-title">Twitter feed</h4>
-										<ul class="twiter-feed">
-											<li>
-												<i class="fa-brands fa-twitter"></i>
-												<span>
-													<i>jhon william</i>
-													@jhonwilliam
-												</span>
-												<p>tomorrow with the company we were working and 5 child run away from the working place. <a href="#" title="">#daydream5k</a> </p>
-												<em>2 hours ago</em>
-											</li>
-											<li>
-												<i class="fa-brands fa-twitter"></i>
-												<span>
-													<i>Kelly watson</i>
-													@kelly
-												</span>
-												<p>tomorrow with the company we were working and 5 child run away from the working place. <a href="#" title="">#daydream5k</a> </p>
-												<em>2 hours ago</em>
-											</li>
-											<li>
-												<i class="fa-brands fa-twitter"></i>
-												<span>
-													<i>Jony bravo</i>
-													@jonibravo
-												</span>
-												<p>tomorrow with the company we were working and 5 child run away from the working place. <a href="#" title="">#daydream5k</a> </p>
-												<em>2 hours ago</em>
-											</li>
-										</ul>
-									</div><!-- twitter feed-->
-									<div class="advertisment-box">
-										<h4 class="">advertisment</h4>
-										<figure>
-											<a href="#" title="Advertisment"><img src="images/resources/ad-widget.gif" alt=""></a>
-										</figure>
-									</div><!-- advertisment box -->
-									<div class="widget">
-										<h4 class="widget-title">Recent Activity</h4>
-										<ul class="activitiez">
-											<li>
-												<div class="activity-meta">
-													<i>10 hours Ago</i>
-													<span><a href="#" title="">Commented on Video posted </a></span>
-													<h6>by <a href="time-line.html">black demon.</a></h6>
-												</div>
-											</li>
-											<li>
-												<div class="activity-meta">
-													<i>30 Days Ago</i>
-													<span><a href="#" title="">Posted your status. “Hello guys, how are you?”</a></span>
-												</div>
-											</li>
-											<li>
-												<div class="activity-meta">
-													<i>2 Years Ago</i>
-													<span><a href="#" title="">Share a video on her timeline.</a></span>
-													<h6>"<a href="#">you are so funny mr.been.</a>"</h6>
-												</div>
-											</li>
-										</ul>
-									</div><!-- recent activites -->
-									<div class="widget stick-widget">
-										<h4 class="widget-title">Shortcuts</h4>
-										<ul class="naves">
-											<li>
-												<i class="ti-clipboard"></i>
-												<a href="newsfeed.html" title="">News feed</a>
-											</li>
-											<li>
-												<i class="ti-mouse-alt"></i>
-												<a href="inbox.html" title="">Inbox</a>
-											</li>
-											<li>
-												<i class="ti-files"></i>
-												<a href="fav-page.html" title="">My pages</a>
-											</li>
-											<li>
-												<i class="ti-user"></i>
-												<a href="timeline-friends.html" title="">friends</a>
-											</li>
-											<li>
-												<i class="ti-image"></i>
-												<a href="timeline-photos.html" title="">images</a>
-											</li>
-											<li>
-												<i class="ti-video-camera"></i>
-												<a href="timeline-videos.html" title="">videos</a>
-											</li>
-											<li>
-												<i class="ti-comments-smiley"></i>
-												<a href="messages.html" title="">Messages</a>
-											</li>
-											<li>
-												<i class="ti-bell"></i>
-												<a href="notifications.html" title="">Notifications</a>
-											</li>
-											<li>
-												<i class="ti-share"></i>
-												<a href="people-nearby.html" title="">People Nearby</a>
-											</li>
-											<li>
-												<i class="fa-regular fa-bar-chart"></i>
-												<a href="insights.html" title="">insights</a>
-											</li>
-											<li>
-												<i class="ti-power-off"></i>
-												<a href="landing.html" title="">Logout</a>
-											</li>
-										</ul>
-									</div><!-- Shortcuts -->
-									
-								</aside>
-							</div><!-- sidebar -->
-							<div class="col-lg-6">
-								<div class="central-meta expressions">
-									<span class="create-post"><i class="fa-regular fa-stars"></i> Stories<a href="#" title="">Add New</a>
-									</span>
-									<div id="stories" class="storiesWrapper"></div>
-								</div><!-- Storis -->
-								<div class="central-meta postbox">
-									<span class="create-post">Create post</span>
-									<div class="new-postbox">
-										<figure>
-											<img src="images/resources/admin.jpg" alt="">
-										</figure>
-										<div class="newpst-input">
-											<form method="post">
-												<textarea rows="2" placeholder="Share some what you are thinking?"></textarea>
-											</form>
-										</div>
-										<div class="attachments">
-											<ul>
-												<li>
-													<span class="add-loc">
-														<i class="fa-light fa-location-dot"></i>
-													</span>
-												</li>
-												<li>
-													<i class="fa-light fa-music"></i>
-													<label class="fileContainer">
-														<input type="file">
-													</label>
-												</li>
-												<li>
-													<i class="fa-light fa-image"></i>
-													<label class="fileContainer">
-														<input type="file">
-													</label>
-												</li>
-												<li>
-													<i class="fa-light fa-camcorder"></i>
-													<label class="fileContainer">
-														<input type="file">
-													</label>
-												</li>
-												<li>
-													<i class="fa-brands fa-instagram"></i>
-													<label class="fileContainer">
-														<input type="file">
-													</label>
-												</li>
-												<li class="preview-btn">
-													<button class="post-btn-preview" type="submit" data-ripple="">Preview</button>
-												</li>
-											</ul>
-											<button class="post-btn" type="submit" data-ripple="">Post</button>
-										</div>
-										<div class="add-location-post">
-											<span>Drag map point to selected area</span>
-											<div class="row">
-
-											    <div class="col-lg-6">
-											      	<label class="control-label">Lat :</label>
-											      	<input type="text" class="" id="us3-lat" />
-											    </div>
-											    <div class="col-lg-6">
-											      	<label>Long :</label>
-											      	<input type="text" class="" id="us3-lon" />
-											    </div>
-											</div>
-										  	<!-- map -->
-										  	<div id="us3"></div>
-										</div>
-									</div>	
-								</div><!-- add post new box -->
-								<div class="promote-baner blackish low-opacity">
-									<div class="bg-image" style="background-image: url(images/resources/coming-soon-bg.jpg)"></div>
-									<span>Create Your Goal and boostup your posts, content, and get more contacts and comments</span>
-									<ul class="ads-links">
-										<li><a href="ad-center.html" title="Create a new ad from scratch" data-toggle="tooltip"><i class="fa fa-edit"></i> Choose a Goal</a></li>
-									</ul>
-								</div>
-								<div class="central-meta">
-									<span class="create-post">Reels <a href="#" title="">See All</a></span>
-									<div class="story-postbox">
-										<div class="row">
-											<div class="col-lg-3 col-md-3 col-sm-3">
-												<div class="story-box">
-													<figure>
-														<img src="images/resources/story-1.jpg" alt="">
-														<span>Add Your Story</span>
-													</figure>
-													<div class="story-thumb" data-toggle="tooltip" title="Add Your Story">
-														<i class="ti-plus"></i>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-3 col-sm-3">
-												<div class="story-box">
-													<figure>
-														<img src="images/resources/story-2.jpg" alt="">
-														<span>Adam James</span>
-													</figure>
-													<div class="story-thumb" data-toggle="tooltip" title="Adam James">
-														<img src="images/resources/thumb-2.jpg" alt="">
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-3 col-sm-3">
-												<div class="story-box">
-													<figure>
-														<img src="images/resources/story-3.jpg" alt="">
-														<span>Emily grey</span>
-													</figure>
-													<div class="story-thumb" data-toggle="tooltip" title="Emily grey">
-														<img src="images/resources/thumb-3.jpg" alt="">
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-3 col-md-3 col-sm-3">
-												<div class="story-box">
-													<figure>
-														<img src="images/resources/story-4.jpg" alt="">
-														<span>Jhon Deo</span>
-													</figure>
-													<div class="story-thumb" data-toggle="tooltip" title="Jhon Deo">
-														<img src="images/resources/thumb-4.jpg" alt="">
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="stories-wraper">
-											<div class="status-story">
-												<span class="close-story"><i class="ti-close"></i></span>
-												<div class="row">
-													<div class="col-lg-4">
-														<div class="stories-users">
-															<h5>Stories</h5>
-															<div class="my-status">
-																<figure><img src="images/resources/friend-avatar10.jpg" alt=""></figure>
-																<a href="#" title="" class="main-btn">Add New</a>
-																<div class="story-user">
-																	<span>My Story</span>
-																	<ins>No updates</ins>
-																</div>
-															</div>
-															<ul class="frnds-stories">
-																<li>
-																	<figure><img src="images/resources/friend-avatar11.jpg" alt=""></figure>
-																	<div class="story-user">
-																		<span>Emily doll</span>
-																		<ins>yesterday</ins>
-																	</div>
-																</li>
-																<li>
-																	<figure><img src="images/resources/friend-avatar15.jpg" alt=""></figure>
-																	<div class="story-user">
-																		<span>Jhon Borny</span>
-																		<ins>3 days ago</ins>
-																	</div>
-																</li>
-																<li>
-																	<figure><img src="images/resources/friend-avatar12.jpg" alt=""></figure>
-																	<div class="story-user">
-																		<span>Sarah Khan</span>
-																		<ins>2 days ago</ins>
-																	</div>
-																</li>
-																<li>
-																	<figure><img src="images/resources/friend-avatar13.jpg" alt=""></figure>
-																	<div class="story-user">
-																		<span>Zara Hayat</span>
-																		<ins>1 day ago</ins>
-																	</div>
-																</li>
-																<li>
-																	<figure><img src="images/resources/friend-avatar14.jpg" alt=""></figure>
-																	<div class="story-user">
-																		<span>Zing Jang</span>
-																		<ins>2 days ago</ins>
-																	</div>
-																</li>
-																
-																<li>
-																	<figure><img src="images/resources/friend-avatar16.jpg" alt=""></figure>
-																	<div class="story-user">
-																		<span>Emma watson</span>
-																		<ins>jan,12 2024</ins>
-																	</div>
-																</li>
-															</ul>
-														</div>
-													</div>
-													<div class="col-lg-8">
-														<div id="btns-wrapper"></div>
-														<div id="slideshow">
-															<img class="slide" src="images/stories/storyfull-1.jpg" alt="1"/>
-															<img class="slide" src="images/stories/storyfull-6.jpg" alt="2"/>
-															<img class="slide" src="images/stories/storyfull-3.jpg" alt="3"/>
-															<img class="slide" src="images/stories/storyfull-4.jpg" alt="4"/>
-															<img class="slide" src="images/stories/storyfull-5.jpg" alt="5"/>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div><!-- top stories -->
-								<div class="central-meta">
-									<span class="create-post">Invites <a href="#" title="">See All</a></span>
-									<ul class="suggested-frnd-caro invite">
-										<li>
-											<img src="images/resources/recent1.jpg" alt="">
-											<div class="sugtd-frnd-meta">
-												<a href="#" title="">Olivia</a>
-												<span>1 mutual friend</span>
-												<a href="#" title="" class="send-invitation" data-ripple="">Invite</a>
-											</div>
-										</li>
-										<li>
-											<img src="images/resources/recent2.jpg" alt="">
-											<div class="sugtd-frnd-meta">
-												<a href="#" title="">Emma watson</a>
-												<span>2 mutual friend</span>
-												<a href="#" title="" class="send-invitation" data-ripple="">Invite</a>
-											</div>
-										</li>
-										<li>
-											<img src="images/resources/recent3.jpg" alt="">
-											<div class="sugtd-frnd-meta">
-												<a href="#" title="">Isabella</a>
-												<span><a href="#" title="">Emmy</a> is mutual friend</span>
-												<a href="#" title="" class="send-invitation" data-ripple="">Invite</a>
-											</div>
-										</li>
-										<li>
-											<img src="images/resources/recent4.jpg" alt="">
-											<div class="sugtd-frnd-meta">
-												<a href="#" title="">Amelia</a>
-												<span>5 mutual friend</span>
-												<a href="#" title="" class="send-invitation" data-ripple="">Invite</a>
-											</div>
-										</li>
-										<li>
-											<img src="images/resources/recent5.jpg" alt="">
-											<div class="sugtd-frnd-meta">
-												<a href="#" title="">Sophia</a>
-												<span>1 mutual friend</span>
-												<a href="#" title="" class="send-invitation" data-ripple="">Invite</a>
-											</div>
-										</li>
-										<li>
-											<img src="images/resources/recent6.jpg" alt="">
-											<div class="sugtd-frnd-meta">
-												<a href="#" title="">Amelia</a>
-												<span>3 mutual friend</span>
-												<a href="#" title="" class="send-invitation" data-ripple="">Invite</a>
-											</div>
-										</li>
-									</ul>
-								</div><!-- Invite friends -->
-								<div class="central-meta">
-									<div class="user-post">
-										<div class="friend-info">
-											<figure>
-												<i class="ti-crown"></i>
-											</figure>
-											<div class="friend-name">
-												<ins><a title="" href="#">Suggested</a></ins>
-												<span><i class="ti-bookmark-alt"></i> Follow similar People</span>
-											</div>
-											<ul class="suggested-caro">
-												<li>
-													<figure><img src="images/resources/speak-1.jpg" alt=""></figure>
-													<span>Amy Watson</span>
-													<ins>Ontario, Canada</ins>
-													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
-												</li>
-												<li>
-													<figure><img src="images/resources/speak-2.jpg" alt=""></figure>
-													<span>Muhammad Khan</span>
-													<ins>Newyork, USA</ins>
-													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
-												</li>
-												<li>
-													<figure><img src="images/resources/speak-3.jpg" alt=""></figure>
-													<span>Sadia Gill</span>
-													<ins>Islamabad, Pakistan</ins>
-													<a href="#" title="" data-ripple=""><i class="icofont-star"></i> Follow</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div><!-- suggested friends -->
-								<div class="adb" style="display: inline-block;">
-										<div class="adv-baner">
-											<span>Advertisment</span>
-											<img alt="" src="images/resources/adv-baner.jpg">
-										</div>
-									</div>
-								<div class="loadMore">
-									<div class="central-meta item">
-										<div class="user-post">
-											<div class="friend-info">
-												<figure>
-													<img src="images/resources/nearly1.jpg" alt="">
-												</figure>
-												<div class="friend-name">
-													<div class="more">
-														<div class="more-post-optns"><i class="ti-more-alt"></i>
-															<ul>
-																<li><i class="fa-sharp fa-regular fa-square-pen"></i> Edit Post</li>
-																<li><i class="fa-regular fa-trash"></i> Delete Post</li>
-																<li class="bad-report"><i class="fa-solid fa-flag-checkered"></i> Report Post</li>
-																<li><i class="fa-regular fa-address-card"></i> Boost This Post</li>
-																<li><i class="fa-regular fa-alarm-clock"></i> Schedule Post</li>
-																<li><i class="fa-regular fa-fire-flame"></i> Select as featured</li>
-																<li><i class="fa-sharp fa-regular fa-bell"></i> Turn off Notifications</li>
-															</ul>
-														</div>
-													</div>
-													<ins><a href="time-line.html" title="">Jack Carter</a> Post Album</ins>
-													<span><i class="fa fa-globe"></i> published: September,15 2024 19:PM </span>
-												</div>
-												<div class="post-meta">
-													<p>
-														Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero. <a href="social-post-detail.html" title="">Read More</a>
-													</p>
-													<figure>
-														<div class="img-bunch">
-															<div class="row">
-																<div class="col-lg-6 col-md-6 col-sm-6">
-																	<figure>
-																		<a href="#" title="" data-toggle="modal" data-target="#img-comt">
-																		<img src="images/resources/album1.jpg" alt="">
-																		</a>
-																	</figure>
-																	<figure>
-																		<a href="#" title="" data-toggle="modal" data-target="#img-comt">
-																		<img src="images/resources/album2.jpg" alt="">
-																		</a>
-																	</figure>
-																</div>
-																<div class="col-lg-6 col-md-6 col-sm-6">
-																	<figure>
-																		<a href="#" title="" data-toggle="modal" data-target="#img-comt">
-																		<img src="images/resources/album6.jpg" alt="">
-																		</a>
-																	</figure>
-																	<figure>
-																		<a href="#" title="" data-toggle="modal" data-target="#img-comt">
-																		<img src="images/resources/album5.jpg" alt="">
-																		</a>
-																	</figure>
-																	<figure>
-																		<a href="#" title="" data-toggle="modal" data-target="#img-comt">
-																		<img src="images/resources/album4.jpg" alt="">
-																		</a>
-																		<div class="more-photos">
-																			<span>+15</span>
-																		</div>
-																	</figure>
-																</div>
-															</div>
-														</div>	
-														<ul class="like-dislike">
-															<li><a class="bg-purple" href="#" title="Save to Pin Post"><i class="ti-pin2"></i></a></li>
-															<li><a class="bg-blue" href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-															<li><a class="bg-red" href="#" title="dislike Post"><i class="ti-thumb-down"></i></a></li>
-														</ul>
-													</figure>	
-													<div class="we-video-info">
-														<ul>
-															<li>
-																<span class="views" title="views">
-																	<i class="fa fa-eye"></i>
-																	<ins>1.2k</ins>
-																</span>
-															</li>
-															<li>
-																<div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
-															</li>
-															<li>
-																<span class="comment" title="Comments">
-																	<i class="fa fa-commenting"></i>
-																	<ins>52</ins>
-																</span>
-															</li>
-
-															<li>
-																<span>
-																	<a class="share-pst" href="#" title="Share">
-																		<i class="fa fa-share-alt"></i>
-																	</a>
-																	<ins>20</ins>
-																</span>	
-															</li>
-														</ul>
-														<div class="users-thumb-list">
-															<a data-toggle="tooltip" title="Anderw" href="#">
-																<img alt="" src="images/resources/userlist-1.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="frank" href="#">
-																<img alt="" src="images/resources/userlist-2.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Sara" href="#">
-																<img alt="" src="images/resources/userlist-3.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Amy" href="#">
-																<img alt="" src="images/resources/userlist-4.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Ema" href="#">
-																<img alt="" src="images/resources/userlist-5.jpg">  
-															</a>
-															<span><strong>You</strong>, <b>Sarah</b> and <a href="#" title="">24+ more</a> liked</span>
-														</div>
-													</div>
-												</div>
-												<div class="coment-area" style="display: block;">
-													<ul class="we-comet">
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/nearly3.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Jason borne</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-
-														</li>
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/comet-4.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Sophia</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster.
-																	<i class="em em-smiley"></i>
-																</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-														</li>
-														<li>
-															<a href="#" title="" class="showmore underline">more comments+</a>
-														</li>
-														<li class="post-comment">
-															<div class="comet-avatar">
-																<img src="images/resources/nearly1.jpg" alt="">
-															</div>
-															<div class="post-comt-box">
-																<form method="post">
-																	<textarea placeholder="Post your comment"></textarea>
-																	<div class="add-smiles">
-																		<div class="uploadimage">
-																			<i class="fa fa-image"></i>
-																			<label class="fileContainer">
-																				<input type="file">
-																			</label>
-																		</div>
-																		<span class="em em-expressionless" title="add icon"></span>
-																		<div class="smiles-bunch">
-																			<i class="em em---1"></i>
-																			<i class="em em-smiley"></i>
-																			<i class="em em-anguished"></i>
-																			<i class="em em-laughing"></i>
-																			<i class="em em-angry"></i>
-																			<i class="em em-astonished"></i>
-																			<i class="em em-blush"></i>
-																			<i class="em em-disappointed"></i>
-																			<i class="em em-worried"></i>
-																			<i class="em em-kissing_heart"></i>
-																			<i class="em em-rage"></i>
-																			<i class="em em-stuck_out_tongue"></i>
-																		</div>
-																	</div>
-
-																	<button type="submit"></button>
-																</form>	
-															</div>
-														</li>
-													</ul>
-												</div>
-											</div>
-
-										</div>
-									</div><!-- album post -->
-									<div class="central-meta item">
-										<div class="user-post">
-											<div class="friend-info">
-												<figure>
-													<img src="images/resources/nearly1.jpg" alt="">
-												</figure>
-												<div class="friend-name">
-													<div class="more">
-														<div class="more-post-optns"><i class="ti-more-alt"></i>
-															<ul>
-																<li><i class="fa-sharp fa-regular fa-square-pen"></i> Edit Post</li>
-																<li><i class="fa-regular fa-trash"></i> Delete Post</li>
-																<li class="bad-report"><i class="fa-solid fa-flag-checkered"></i> Report Post</li>
-																<li><i class="fa-regular fa-address-card"></i> Boost This Post</li>
-																<li><i class="fa-regular fa-alarm-clock"></i> Schedule Post</li>
-																<li><i class="fa-regular fa-fire-flame"></i> Select as featured</li>
-																<li><i class="fa-sharp fa-regular fa-bell"></i> Turn off Notifications</li>
-															</ul>
-														</div>
-													</div>
-													<ins><a href="time-line.html" title="">Jack Carter</a> share <a href="#" title="">link</a></ins>
-													<span><i class="fa fa-globe"></i> published: january,5 2010 19:PM </span>
-												</div>
-												<div class="post-meta">
-													<figure>
-														<a href="https://www.youtube.com/watch?v=fF382gwEnG8" title="" data-strip-group="mygroup" class="strip vdeo-link" data-strip-options="width: 700,height: 450,youtube: { autoplay: 1 }">
-														<img src="images/resources/user-post.jpg" alt="">
-															<i>
-																<svg version="1.1" class="play" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="55px" width="55px"
-																 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
-															  <path class="stroke-solid" fill="none" stroke=""  d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7
-																C97.3,23.7,75.7,2.3,49.9,2.5"/>
-															  <path class="icon" fill="" d="M38,69c-1,0.5-1.8,0-1.8-1.1V32.1c0-1.1,0.8-1.6,1.8-1.1l34,18c1,0.5,1,1.4,0,1.9L38,69z"/>
-																</svg>
-															</i>
-															<h2>Canada tourist spots you must visit in 2024</h2>
-														</a>
-														<ul class="like-dislike">
-															<li><a class="bg-purple" href="#" title="Save to Pin Post"><i class="ti-pin2"></i></a></li>
-															<li><a class="bg-blue" href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-															<li><a class="bg-red" href="#" title="dislike Post"><i class="ti-thumb-down"></i></a></li>
-														</ul>
-
-													</figure>												
-													<div class="description">
-														<p>
-															Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc. <a href="social-post-detail.html" title="">Read More</a>
-														</p>
-													</div>
-													<div class="we-video-info">
-														<ul>
-															<li>
-																<span class="views" title="views">
-																	<i class="fa fa-eye"></i>
-																	<ins>1.2k</ins>
-																</span>
-															</li>
-															<li>
-																<div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
-															</li>
-															<li>
-																<span class="comment" title="Comments">
-																	<i class="fa fa-commenting"></i>
-																	<ins>52</ins>
-																</span>
-															</li>
-
-															<li>
-																<span>
-																	<a class="share-pst" href="#" title="Share">
-																		<i class="fa fa-share-alt"></i>
-																	</a>
-																	<ins>20</ins>
-																</span>	
-															</li>
-														</ul>
-														<div class="users-thumb-list">
-															<a data-toggle="tooltip" title="Anderw" href="#">
-																<img alt="" src="images/resources/userlist-1.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="frank" href="#">
-																<img alt="" src="images/resources/userlist-2.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Sara" href="#">
-																<img alt="" src="images/resources/userlist-3.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Amy" href="#">
-																<img alt="" src="images/resources/userlist-4.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Ema" href="#">
-																<img alt="" src="images/resources/userlist-5.jpg">  
-															</a>
-															<span><strong>You</strong>, <b>Sarah</b> and <a href="#" title="">24+ more</a> liked</span>
-														</div>
-													</div>
-												</div>
-												<div class="coment-area" >
-													<ul class="we-comet">
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/nearly3.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Jason borne</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-
-														</li>
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/comet-4.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Sophia</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster.
-																	<i class="em em-smiley"></i>
-																</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-														</li>
-														<li>
-															<a href="#" title="" class="showmore underline">more comments+</a>
-														</li>
-														<li class="post-comment">
-															<div class="comet-avatar">
-																<img src="images/resources/nearly1.jpg" alt="">
-															</div>
-															<div class="post-comt-box">
-																<form method="post">
-																	<textarea placeholder="Post your comment"></textarea>
-																	<div class="add-smiles">
-																		<div class="uploadimage">
-																			<i class="fa fa-image"></i>
-																			<label class="fileContainer">
-																				<input type="file">
-																			</label>
-																		</div>
-																		<span class="em em-expressionless" title="add icon"></span>
-																		<div class="smiles-bunch">
-																			<i class="em em---1"></i>
-																			<i class="em em-smiley"></i>
-																			<i class="em em-anguished"></i>
-																			<i class="em em-laughing"></i>
-																			<i class="em em-angry"></i>
-																			<i class="em em-astonished"></i>
-																			<i class="em em-blush"></i>
-																			<i class="em em-disappointed"></i>
-																			<i class="em em-worried"></i>
-																			<i class="em em-kissing_heart"></i>
-																			<i class="em em-rage"></i>
-																			<i class="em em-stuck_out_tongue"></i>
-																		</div>
-																	</div>
-																	<button type="submit"></button>
-																</form>	
-															</div>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div><!-- video post -->
-									<div class="central-meta item">
-										<div class="user-post">
-											<div class="friend-info">
-												<figure>
-													<img src="images/resources/nearly1.jpg" alt="">
-												</figure>
-												<div class="friend-name">
-													<div class="more">
-														<div class="more-post-optns"><i class="ti-more-alt"></i>
-															<ul>
-																<li><i class="fa-sharp fa-regular fa-square-pen"></i> Edit Post</li>
-																<li><i class="fa-regular fa-trash"></i> Delete Post</li>
-																<li class="bad-report"><i class="fa-solid fa-flag-checkered"></i> Report Post</li>
-																<li><i class="fa-regular fa-address-card"></i> Boost This Post</li>
-																<li><i class="fa-regular fa-alarm-clock"></i> Schedule Post</li>
-																<li><i class="fa-regular fa-fire-flame"></i> Select as featured</li>
-																<li><i class="fa-sharp fa-regular fa-bell"></i> Turn off Notifications</li>
-															</ul>
-														</div>
-													</div>
-													<ins><a href="time-line.html" title="">Digital Market</a></ins>
-													<span>sponsored <i class="fa fa-globe"></i></span>
-													
-												</div>
-												<div class="post-meta">
-													<figure>
-														<img src="images/sponsors.gif" alt="">
-														<ul class="like-dislike">
-															<li><a class="bg-purple" href="#" title="Save to Pin Post"><i class="ti-pin2"></i></a></li>
-															<li><a class="bg-blue" href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-															<li><a class="bg-red" href="#" title="dislike Post"><i class="ti-thumb-down"></i></a></li>
-														</ul>
-													</figure>	
-													<div class="description">
-														<a href="#" class="learnmore" data-ripple="">Learn More</a>
-														<p>
-															Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc. <a href="social-post-detail.html" title="">Read More</a>
-														</p>
-													</div>
-													<div class="we-video-info">
-														<ul>
-															<li>
-																<span class="views" title="views">
-																	<i class="fa fa-eye"></i>
-																	<ins>1.2k</ins>
-																</span>
-															</li>
-															<li>
-																<div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
-															</li>
-															<li>
-																<span class="comment" title="Comments">
-																	<i class="fa fa-commenting"></i>
-																	<ins>52</ins>
-																</span>
-															</li>
-
-															<li>
-																<span>
-																	<a class="share-pst" href="#" title="Share">
-																		<i class="fa fa-share-alt"></i>
-																	</a>
-																	<ins>20</ins>
-																</span>	
-															</li>
-														</ul>
-														<div class="users-thumb-list">
-															<a data-toggle="tooltip" title="Anderw" href="#">
-																<img alt="" src="images/resources/userlist-1.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="frank" href="#">
-																<img alt="" src="images/resources/userlist-2.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Sara" href="#">
-																<img alt="" src="images/resources/userlist-3.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Amy" href="#">
-																<img alt="" src="images/resources/userlist-4.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Ema" href="#">
-																<img alt="" src="images/resources/userlist-5.jpg">  
-															</a>
-															<span><strong>You</strong>, <b>Sarah</b> and <a href="#" title="">24+ more</a> liked</span>
-														</div>
-													</div>
-												</div>
-												<div class="coment-area" >
-													<ul class="we-comet">
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/nearly3.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Jason borne</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-
-														</li>
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/comet-4.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Sophia</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster.
-																	<i class="em em-smiley"></i>
-																</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-														</li>
-														<li>
-															<a href="#" title="" class="showmore underline">more comments+</a>
-														</li>
-														<li class="post-comment">
-															<div class="comet-avatar">
-																<img src="images/resources/nearly1.jpg" alt="">
-															</div>
-															<div class="post-comt-box">
-																<form method="post">
-																	<textarea placeholder="Post your comment"></textarea>
-																	<div class="add-smiles">
-																		<div class="uploadimage">
-																			<i class="fa fa-image"></i>
-																			<label class="fileContainer">
-																				<input type="file">
-																			</label>
-																		</div>
-																		<span class="em em-expressionless" title="add icon"></span>
-																		<div class="smiles-bunch">
-																			<i class="em em---1"></i>
-																			<i class="em em-smiley"></i>
-																			<i class="em em-anguished"></i>
-																			<i class="em em-laughing"></i>
-																			<i class="em em-angry"></i>
-																			<i class="em em-astonished"></i>
-																			<i class="em em-blush"></i>
-																			<i class="em em-disappointed"></i>
-																			<i class="em em-worried"></i>
-																			<i class="em em-kissing_heart"></i>
-																			<i class="em em-rage"></i>
-																			<i class="em em-stuck_out_tongue"></i>
-																		</div>
-																	</div>
-
-																	<button type="submit"></button>
-																</form>	
-															</div>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div><!-- digital sponsors -->
-									<div class="central-meta item">
-										<div class="user-post">
-											<div class="friend-info">
-												<figure>
-													<img alt="" src="images/resources/friend-avatar10.jpg">
-												</figure>
-												<div class="friend-name">
-													<div class="more">
-														<div class="more-post-optns"><i class="ti-more-alt"></i>
-															<ul>
-																<li><i class="fa-sharp fa-regular fa-square-pen"></i> Edit Post</li>
-																<li><i class="fa-regular fa-trash"></i> Delete Post</li>
-																<li class="bad-report"><i class="fa-solid fa-flag-checkered"></i> Report Post</li>
-																<li><i class="fa-regular fa-address-card"></i> Boost This Post</li>
-																<li><i class="fa-regular fa-alarm-clock"></i> Schedule Post</li>
-																<li><i class="fa-regular fa-fire-flame"></i> Select as featured</li>
-																<li><i class="fa-sharp fa-regular fa-bell"></i> Turn off Notifications</li>
-															</ul>
-														</div>
-													</div>
-													<ins><a title="" href="time-line.html">Janice Griffith</a></ins>
-													<span>published: june,2 2010 19:PM</span>
-												</div>
-												<div class="description">
-													<p>
-														Curabitur World's most beautiful car in <a title="" href="#">#test drive booking !</a> the most beatuiful car available in america and the saudia arabia, you can book your test drive by our official website <a href="social-post-detail.html" title="">Read More</a>
-													</p>
-												</div>
-												<div class="post-meta">
-													<div class="linked-image align-left">
-														<a title="" href="#"><img alt="" src="images/resources/page1.jpg"></a>
-													</div>
-													<div class="detail">
-														<span>Love Maid - HighChill</span>
-														<p>Lorem ipsum dolor sit amet, consectetur ipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... </p>
-														<a title="" href="#">www.sample.com</a>
-													</div>		
-													
-													<ul class="like-dislike">
-															<li><a class="bg-purple" href="#" title="Save to Pin Post"><i class="ti-pin2"></i></a></li>
-															<li><a class="bg-blue" href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-															<li><a class="bg-red" href="#" title="dislike Post"><i class="ti-thumb-down"></i></a></li>
-														</ul>
-													<div class="we-video-info">
-														<ul>
-															<li>
-																<span class="views" title="views">
-																	<i class="fa fa-eye"></i>
-																	<ins>1.2k</ins>
-																</span>
-															</li>
-															<li>
-																<div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
-															</li>
-															<li>
-																<span class="comment" title="Comments">
-																	<i class="fa fa-commenting"></i>
-																	<ins>52</ins>
-																</span>
-															</li>
-
-															<li>
-																<span>
-																	<a class="share-pst" href="#" title="Share">
-																		<i class="fa fa-share-alt"></i>
-																	</a>
-																	<ins>20</ins>
-																</span>	
-															</li>
-														</ul>
-														<div class="users-thumb-list">
-															<a data-toggle="tooltip" title="Anderw" href="#">
-																<img alt="" src="images/resources/userlist-1.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="frank" href="#">
-																<img alt="" src="images/resources/userlist-2.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Sara" href="#">
-																<img alt="" src="images/resources/userlist-3.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Amy" href="#">
-																<img alt="" src="images/resources/userlist-4.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Ema" href="#">
-																<img alt="" src="images/resources/userlist-5.jpg">  
-															</a>
-															<span><strong>You</strong>, <b>Sarah</b> and <a href="#" title="">24+ more</a> liked</span>
-														</div>
-													</div>
-												</div>
-												<div class="coment-area" >
-													<ul class="we-comet">
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/nearly3.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Jason borne</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-
-														</li>
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/comet-4.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Sophia</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster.
-																	<i class="em em-smiley"></i>
-																</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-														</li>
-														<li>
-															<a href="#" title="" class="showmore underline">more comments+</a>
-														</li>
-														<li class="post-comment">
-															<div class="comet-avatar">
-																<img src="images/resources/nearly1.jpg" alt="">
-															</div>
-															<div class="post-comt-box">
-																<form method="post">
-																	<textarea placeholder="Post your comment"></textarea>
-																	<div class="add-smiles">
-																		<div class="uploadimage">
-																			<i class="fa fa-image"></i>
-																			<label class="fileContainer">
-																				<input type="file">
-																			</label>
-																		</div>
-																		<span class="em em-expressionless" title="add icon"></span>
-																		<div class="smiles-bunch">
-																			<i class="em em---1"></i>
-																			<i class="em em-smiley"></i>
-																			<i class="em em-anguished"></i>
-																			<i class="em em-laughing"></i>
-																			<i class="em em-angry"></i>
-																			<i class="em em-astonished"></i>
-																			<i class="em em-blush"></i>
-																			<i class="em em-disappointed"></i>
-																			<i class="em em-worried"></i>
-																			<i class="em em-kissing_heart"></i>
-																			<i class="em em-rage"></i>
-																			<i class="em em-stuck_out_tongue"></i>
-																		</div>
-																	</div>
-
-																	<button type="submit"></button>
-																</form>	
-															</div>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div><!-- love post -->
-									<div class="central-meta item">
-										<div class="user-post">
-											<div class="friend-info">
-												<figure>
-													<img src="images/resources/friend-avatar10.jpg" alt="">
-												</figure>
-												<div class="friend-name">
-													<div class="more">
-														<div class="more-post-optns"><i class="ti-more-alt"></i>
-															<ul>
-																<li><i class="fa-sharp fa-regular fa-square-pen"></i> Edit Post</li>
-																<li><i class="fa-regular fa-trash"></i> Delete Post</li>
-																<li class="bad-report"><i class="fa-solid fa-flag-checkered"></i> Report Post</li>
-																<li><i class="fa-regular fa-address-card"></i> Boost This Post</li>
-																<li><i class="fa-regular fa-alarm-clock"></i> Schedule Post</li>
-																<li><i class="fa-regular fa-fire-flame"></i> Select as featured</li>
-																<li><i class="fa-sharp fa-regular fa-bell"></i> Turn off Notifications</li>
-															</ul>
-														</div>
-													</div>
-													<ins><a href="time-line.html" title="">Mathilda Brinker</a></ins>
-													<span>published: june,2 2024 19:PM</span>
-												</div>
-												<div class="post-meta">
-													<div class="description">
-														<p>
-															World's most beautiful car in Curabitur <a href="#" title="">#test drive booking !</a> the most beatuiful car available in america and the saudia arabia, you can book your test drive by our official website <a href="social-post-detail.html" title="">Read More</a>
-														</p>
-													</div>
-													
-													<ul class="like-dislike">
-														<li><a href="#" title="Save to Pin Post"><i class="ti-pin2"></i></a></li>
-														<li><a href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-														<li><a href="#" title="dislike Post"><i class="ti-thumb-down"></i></a></li>
-													</ul>
-													<div class="we-video-info">
-														<ul>
-															<li>
-																<span class="views" title="views">
-																	<i class="fa fa-eye"></i>
-																	<ins>1.2k</ins>
-																</span>
-															</li>
-															<li>
-																<div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
-															</li>
-															<li>
-																<span class="comment" title="Comments">
-																	<i class="fa fa-commenting"></i>
-																	<ins>52</ins>
-																</span>
-															</li>
-
-															<li>
-																<span>
-																	<a class="share-pst" href="#" title="Share">
-																		<i class="fa fa-share-alt"></i>
-																	</a>
-																	<ins>20</ins>
-																</span>	
-															</li>
-														</ul>
-														<div class="users-thumb-list">
-															<a data-toggle="tooltip" title="Anderw" href="#">
-																<img alt="" src="images/resources/userlist-1.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="frank" href="#">
-																<img alt="" src="images/resources/userlist-2.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Sara" href="#">
-																<img alt="" src="images/resources/userlist-3.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Amy" href="#">
-																<img alt="" src="images/resources/userlist-4.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Ema" href="#">
-																<img alt="" src="images/resources/userlist-5.jpg">  
-															</a>
-															<span><strong>You</strong>, <b>Sarah</b> and <a href="#" title="">24+ more</a> liked</span>
-														</div>
-													</div>
-												</div>
-												<div class="coment-area" >
-													<ul class="we-comet">
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/nearly3.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Jason borne</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-
-														</li>
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/comet-4.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Sophia</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster.
-																	<i class="em em-smiley"></i>
-																</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-														</li>
-														<li>
-															<a href="#" title="" class="showmore underline">more comments+</a>
-														</li>
-														<li class="post-comment">
-															<div class="comet-avatar">
-																<img src="images/resources/nearly1.jpg" alt="">
-															</div>
-															<div class="post-comt-box">
-																<form method="post">
-																	<textarea placeholder="Post your comment"></textarea>
-																	<div class="add-smiles">
-																		<div class="uploadimage">
-																			<i class="fa fa-image"></i>
-																			<label class="fileContainer">
-																				<input type="file">
-																			</label>
-																		</div>
-																		<span class="em em-expressionless" title="add icon"></span>
-																		<div class="smiles-bunch">
-																			<i class="em em---1"></i>
-																			<i class="em em-smiley"></i>
-																			<i class="em em-anguished"></i>
-																			<i class="em em-laughing"></i>
-																			<i class="em em-angry"></i>
-																			<i class="em em-astonished"></i>
-																			<i class="em em-blush"></i>
-																			<i class="em em-disappointed"></i>
-																			<i class="em em-worried"></i>
-																			<i class="em em-kissing_heart"></i>
-																			<i class="em em-rage"></i>
-																			<i class="em em-stuck_out_tongue"></i>
-																		</div>
-																	</div>
-
-																	<button type="submit"></button>
-																</form>	
-															</div>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div><!-- without image -->
-									<div class="central-meta item">
-										<div class="user-post">
-											<div class="friend-info">
-												<figure>
-													<img src="images/resources/nearly6.jpg" alt="">
-												</figure>
-												<div class="friend-name">
-													<div class="more">
-														<div class="more-post-optns"><i class="ti-more-alt"></i>
-															<ul>
-																<li><i class="fa-sharp fa-regular fa-square-pen"></i> Edit Post</li>
-																<li><i class="fa-regular fa-trash"></i> Delete Post</li>
-																<li class="bad-report"><i class="fa-solid fa-flag-checkered"></i> Report Post</li>
-																<li><i class="fa-regular fa-address-card"></i> Boost This Post</li>
-																<li><i class="fa-regular fa-alarm-clock"></i> Schedule Post</li>
-																<li><i class="fa-regular fa-fire-flame"></i> Select as featured</li>
-																<li><i class="fa-sharp fa-regular fa-bell"></i> Turn off Notifications</li>
-															</ul>
-														</div>
-													</div>
-													<ins><a href="time-line.html" title="">Sophia</a> shared location</ins>
-													<span><i class="fa fa-globe"></i> published: january,5 2010 19:PM</span>
-												</div>
-												<div class="post-meta">
-													<div class="post-map">
-														<div class="nearby-map">
-															<div id="map-canvas"></div>
-														</div>
-														<ul class="like-dislike">
-															<li><a class="bg-purple" href="#" title="Save to Pin Post"><i class="ti-pin2"></i></a></li>
-															<li><a class="bg-blue" href="#" title="Like Post"><i class="ti-thumb-up"></i></a></li>
-															<li><a class="bg-red" href="#" title="dislike Post"><i class="ti-thumb-down"></i></a></li>
-														</ul>
-													</div><!-- near by map -->
-
-													<div class="description">
-														<p>
-															Curabitur Lonely Cat Enjoying in Summer <a href="#" title="">#mypage</a> ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, <a href="social-post-detail.html" title="">Read More</a>
-														</p>
-													</div>
-													<div class="we-video-info">
-														<ul>
-															<li>
-																<span class="views" title="views">
-																	<i class="fa fa-eye"></i>
-																	<ins>1.2k</ins>
-																</span>
-															</li>
-															<li>
-																<div class="likes heart" title="Like/Dislike">❤ <span>2K</span></div>
-															</li>
-															<li>
-																<span class="comment" title="Comments">
-																	<i class="fa fa-commenting"></i>
-																	<ins>52</ins>
-																</span>
-															</li>
-
-															<li>
-																<span>
-																	<a class="share-pst" href="#" title="Share">
-																		<i class="fa fa-share-alt"></i>
-																	</a>
-																	<ins>20</ins>
-																</span>	
-															</li>
-														</ul>
-														<div class="users-thumb-list">
-															<a data-toggle="tooltip" title="Anderw" href="#">
-																<img alt="" src="images/resources/userlist-1.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="frank" href="#">
-																<img alt="" src="images/resources/userlist-2.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Sara" href="#">
-																<img alt="" src="images/resources/userlist-3.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Amy" href="#">
-																<img alt="" src="images/resources/userlist-4.jpg">  
-															</a>
-															<a data-toggle="tooltip" title="Ema" href="#">
-																<img alt="" src="images/resources/userlist-5.jpg">  
-															</a>
-															<span><strong>You</strong>, <b>Sarah</b> and <a href="#" title="">24+ more</a> liked</span>
-														</div>
-													</div>
-												</div>
-												<div class="coment-area" >
-													<ul class="we-comet">
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/nearly3.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Jason borne</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster. please vote this video and like our channel</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-
-														</li>
-														<li>
-															<div class="comet-avatar">
-																<img src="images/resources/comet-4.jpg" alt="">
-															</div>
-															<div class="we-comment">
-																<h5><a href="time-line.html" title="">Sophia</a></h5>
-																<p>we are working for the dance and sing songs. this video is very awesome for the youngster.
-																	<i class="em em-smiley"></i>
-																</p>
-																<div class="inline-itms">
-																	<span>1 year ago</span>
-																	<a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-																	<a href="#" title=""><i class="fa fa-heart"></i><span>20</span></a>
-																</div>
-															</div>
-														</li>
-														<li>
-															<a href="#" title="" class="showmore underline">more comments+</a>
-														</li>
-														<li class="post-comment">
-															<div class="comet-avatar">
-																<img src="images/resources/nearly1.jpg" alt="">
-															</div>
-															<div class="post-comt-box">
-																<form method="post">
-																	<textarea placeholder="Post your comment"></textarea>
-																	<div class="add-smiles">
-																		<div class="uploadimage">
-																			<i class="fa fa-image"></i>
-																			<label class="fileContainer">
-																				<input type="file">
-																			</label>
-																		</div>
-																		<span class="em em-expressionless" title="add icon"></span>
-																		<div class="smiles-bunch">
-																			<i class="em em---1"></i>
-																			<i class="em em-smiley"></i>
-																			<i class="em em-anguished"></i>
-																			<i class="em em-laughing"></i>
-																			<i class="em em-angry"></i>
-																			<i class="em em-astonished"></i>
-																			<i class="em em-blush"></i>
-																			<i class="em em-disappointed"></i>
-																			<i class="em em-worried"></i>
-																			<i class="em em-kissing_heart"></i>
-																			<i class="em em-rage"></i>
-																			<i class="em em-stuck_out_tongue"></i>
-																		</div>
-																	</div>
-
-																	<button type="submit"></button>
-																</form>	
-															</div>
-														</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div><!-- map location post -->
-									
-							    </div>
-							</div><!-- centerl meta -->
-							<div class="col-lg-3">
-								<aside class="sidebar static right">
-									<div class="widget">
-										<h4 class="widget-title">How Pitnik Works</h4>
-										<div class="how-to">
-											<a href="https://youtu.be/TDGq4aeevgY" title="" data-strip-group="mygroup" class="strip" data-strip-options="width: 700,height: 450,youtube: { autoplay: 1 }"><img src="images/resources/how-its-work.jpg" alt="">
-												<i>
-													<svg version="1.1" class="play" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="50px" width="50px"
-													 viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
-												  <path class="stroke-solid" fill="none" stroke=""  d="M49.9,2.5C23.6,2.8,2.1,24.4,2.5,50.4C2.9,76.5,24.7,98,50.3,97.5c26.4-0.6,47.4-21.8,47.2-47.7
-													C97.3,23.7,75.7,2.3,49.9,2.5"/>
-												  <path class="icon" fill="" d="M38,69c-1,0.5-1.8,0-1.8-1.1V32.1c0-1.1,0.8-1.6,1.8-1.1l34,18c1,0.5,1,1.4,0,1.9L38,69z"/>
-													</svg>
-												</i>
-											</a>
-										</div>
-									</div><!-- how it's work -->
-									<div class="widget">
-										<h4 class="widget-title">Your page</h4>	
-										<div class="your-page">
-											<figure>
-												<a href="#" title=""><img src="images/resources/friend-avatar9.jpg" alt=""></a>
-											</figure>
-											<div class="page-meta">
-												<a href="#" title="" class="underline">My Creative Page</a>
-												<span><i class="ti-comment"></i><a href="insight.html" title="">Messages <em>9</em></a></span>
-												<span><i class="ti-bell"></i><a href="insight.html" title="">Notifications <em>2</em></a></span>
-											</div>
-											<ul class="page-publishes">
-												<li>
-													<span><i class="ti-pencil-alt"></i>Publish</span>
-												</li>
-												<li>
-													<span><i class="ti-camera"></i>Photo</span>
-												</li>
-												<li>
-													<span><i class="ti-video-camera"></i>Live</span>
-												</li>
-												<li>
-													<span><i class="ti-user"></i>Invite</span>
-												</li>
-											</ul>
-											<div class="page-likes">
-												<ul class="nav nav-tabs likes-btn">
-													<li class="nav-item"><a class="active" href="#link1" data-toggle="tab" data-ripple="">likes</a></li>
-													 <li class="nav-item"><a class="" href="#link2" data-toggle="tab" data-ripple="">views</a></li>
-												</ul>
-												<!-- Tab panes -->
-												<div class="tab-content">
-												  <div class="tab-pane active fade show " id="link1" >
-													<span><i class="ti-heart"></i>884</span>
-													  <a href="#" title="weekly-likes">35 new likes this week</a>
-													  <div class="users-thumb-list">
-														<a href="#" title="Anderw" data-toggle="tooltip">
-															<img src="images/resources/userlist-1.jpg" alt="">  
-														</a>
-														<a href="#" title="frank" data-toggle="tooltip">
-															<img src="images/resources/userlist-2.jpg" alt="">  
-														</a>
-														<a href="#" title="Sara" data-toggle="tooltip">
-															<img src="images/resources/userlist-3.jpg" alt="">  
-														</a>
-														<a href="#" title="Amy" data-toggle="tooltip">
-															<img src="images/resources/userlist-4.jpg" alt="">  
-														</a>
-														<a href="#" title="Ema" data-toggle="tooltip">
-															<img src="images/resources/userlist-5.jpg" alt="">  
-														</a>
-														<a href="#" title="Sophie" data-toggle="tooltip">
-															<img src="images/resources/userlist-6.jpg" alt="">  
-														</a>
-														<a href="#" title="Maria" data-toggle="tooltip">
-															<img src="images/resources/userlist-7.jpg" alt="">  
-														</a>  
-													  </div>
-												  </div>
-												  <div class="tab-pane fade" id="link2" >
-													  <span><i class="fa fa-eye"></i>440</span>
-													  <a href="#" title="weekly-likes">440 new views this week</a>
-													  <div class="users-thumb-list">
-														<a href="#" title="Anderw" data-toggle="tooltip">
-															<img src="images/resources/userlist-1.jpg" alt="">  
-														</a>
-														<a href="#" title="frank" data-toggle="tooltip">
-															<img src="images/resources/userlist-2.jpg" alt="">  
-														</a>
-														<a href="#" title="Sara" data-toggle="tooltip">
-															<img src="images/resources/userlist-3.jpg" alt="">  
-														</a>
-														<a href="#" title="Amy" data-toggle="tooltip">
-															<img src="images/resources/userlist-4.jpg" alt="">  
-														</a>
-														<a href="#" title="Ema" data-toggle="tooltip">
-															<img src="images/resources/userlist-5.jpg" alt="">  
-														</a>
-														<a href="#" title="Sophie" data-toggle="tooltip">
-															<img src="images/resources/userlist-6.jpg" alt="">  
-														</a>
-														<a href="#" title="Maria" data-toggle="tooltip">
-															<img src="images/resources/userlist-7.jpg" alt="">  
-														</a>  
-													  </div>
-												  </div>
-												</div>
-											</div>
-										</div>
-									</div><!-- page like widget -->
-									<div class="widget">
-										<h4 class="widget-title">Explor Events <a title="" href="#" class="see-all">See All</a></h4>
-										<div class="rec-events bg-purple">
-											<i class="ti-gift"></i>
-											<h6><a href="#" title="">Ocean Motel good night event in columbia</a></h6>
-											<img src="images/clock.png" alt="">
-										</div>
-										<div class="rec-events bg-blue">
-											<i class="ti-microphone"></i>
-											<h6><a href="#" title="">2016 The 3rd International Conference</a></h6>
-											<img src="images/clock.png" alt="">
-										</div>
-									</div><!-- explore events -->
-									<div class="widget">
-										<div class="post-creat">
-											<div class="bg-feature">
-												<img src="images/resources/post-createbg.jpg" alt="">
-												<span>Create</span>
-											</div>
-											<div class="create-meta">
-												<img src="images/logo2.png" alt="">
-												<p>
-													The Best Post on Pitnik for you, Pulled from the most active communities on pitnik. Check here to see the most shared, upvoted, and commented content on the internet.
-												</p>
-												<a class="main-btn2" href="#" title="">Create Post</a>
-											</div>
-										</div>
-									</div>
-									<div class="widget">
-										<h4 class="widget-title">Profile intro</h4>
-										<ul class="short-profile">
-											<li>
-												<span>about</span>
-												<p>Hi, i am jhon kates, i am 32 years old and worked as a web developer in microsoft </p>
-											</li>
-											<li>
-												<span>fav tv show</span>
-												<p>Sacred Games, Spartcus Blood, Games of Theron </p>
-											</li>
-											<li>
-												<span>favourit music</span>
-												<p>Justin Biber, Shakira, Nati Natasah</p>
-											</li>
-										</ul>
-									</div><!-- profile intro widget -->
-									<div class="widget stick-widget">
-										<h4 class="widget-title">Recent Links <a title="" href="#" class="see-all">See All</a></h4>
-										<ul class="recent-links">
-											<li>
-												<figure><img src="images/resources/recentlink-1.jpg" alt=""></figure>
-												<div class="re-links-meta">
-													<h6><a href="#" title="">moira's fade reaches much farther than you think.</a></h6>
-													<span>2 weeks ago </span>
-												</div>
-											</li>
-											<li>
-												<figure><img src="images/resources/recentlink-2.jpg" alt=""></figure>
-												<div class="re-links-meta">
-													<h6><a href="#" title="">daniel asks if we want him to do the voice of doomfist</a></h6>
-													<span>3 months ago </span>
-												</div>
-											</li>
-											<li>
-												<figure><img src="images/resources/recentlink-3.jpg" alt=""></figure>
-												<div class="re-links-meta">
-													<h6><a href="#" title="">the pitnik overwatch scandals.</a></h6>
-													<span>1 day before</span>
-												</div>
-											</li>
-										</ul>
-									</div><!-- recent links -->
-								</aside>
-							</div><!-- sidebar -->
-						</div>	
-					</div>
-				</div>
-			</div>
-		</div>	
-	</section>
+                            </div>
 
 
-	@include('users.includes.dashboard.bottombar')
+                        </div>
 
-	
+                    </div>
 
-</div>
+                    <!-- feed story -->
+                    <div class="md:max-w-[580px] mx-auto flex-1 xl:space-y-6 space-y-3">
+
+                        <!-- add story -->
+                        <div class="bg-white rounded-xl shadow-sm md:p-4 p-2 space-y-4 text-sm font-medium border1 dark:bg-dark2">
+
+                            <div class="flex items-center md:gap-3 gap-1">
+                                <div class="flex-1 bg-slate-100 hover:bg-opacity-80 transition-all rounded-lg cursor-pointer dark:bg-dark3" uk-toggle="target: #create-status"> 
+                                    <div class="py-2.5 text-center dark:text-white"> What do you have in mind? </div>
+                                </div>
+                                <div class="cursor-pointer hover:bg-opacity-80 p-1 px-1.5 rounded-xl transition-all bg-pink-100/60 hover:bg-pink-100 dark:bg-white/10 dark:hover:bg-white/20" uk-toggle="target: #create-status">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 stroke-pink-600 fill-pink-200/70" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M15 8h.01" />
+                                        <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" />
+                                        <path d="M3.5 15.5l4.5 -4.5c.928 -.893 2.072 -.893 3 0l5 5" />
+                                        <path d="M14 14l1 -1c.928 -.893 2.072 -.893 3 0l2.5 2.5" />
+                                    </svg>
+                                </div>
+                                <div class="cursor-pointer hover:bg-opacity-80 p-1 px-1.5 rounded-xl transition-all bg-sky-100/60 hover:bg-sky-100 dark:bg-white/10 dark:hover:bg-white/20" uk-toggle="target: #create-status">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 stroke-sky-600 fill-sky-200/70 " viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4z" />
+                                        <path d="M3 6m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z" />
+                                    </svg>
+                                </div> 
+                            </div>
+                            
+                        </div>
+                        
+                        <!--  post image-->
+                        <div class="bg-white rounded-xl shadow-sm text-sm font-medium border1 dark:bg-dark2">
+
+                            <!-- post heading -->
+                            <div class="flex gap-3 sm:p-4 p-2.5 text-sm font-medium">
+                                <a href="timeline.html"> <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="w-9 h-9 rounded-full"> </a>  
+                                <div class="flex-1">
+                                    <a href="timeline.html"> <h4 class="text-black dark:text-white"> Monroe Parker </h4> </a>  
+                                    <div class="text-xs text-gray-500 dark:text-white/80"> 2 hours ago</div>
+                                </div>
+
+                                <div class="-mr-1">
+                                    <button type="button" class="button-icon w-8 h-8"> <ion-icon class="text-xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                    <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                        <nav> 
+                                            <a href="#"> <ion-icon class="text-xl shrink-0" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                            <a href="#"> <ion-icon class="text-xl shrink-0" name="notifications-off-outline"></ion-icon> Mute Notification </a>  
+                                            <a href="#"> <ion-icon class="text-xl shrink-0" name="flag-outline"></ion-icon>  Report this post </a>  
+                                            <a href="#"> <ion-icon class="text-xl shrink-0" name="share-outline"></ion-icon>  Share your profile </a>  
+                                            <hr>
+                                            <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl shrink-0" name="stop-circle-outline"></ion-icon>  Unfollow </a>  
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- post image -->
+                            <a href="#preview_modal" uk-toggle>
+                                <div class="relative w-full lg:h-96 h-full sm:px-4">
+                                    <img src="{{asset('dashboard/images/post/img-2.jpg')}}" alt="" class="sm:rounded-lg w-full h-full object-cover">
+                                </div>
+                            </a>
+                            
+                            <!-- post icons -->
+                            <div class="sm:p-4 p-2.5 flex items-center gap-4 text-xs font-semibold">
+                                <div>
+                                    <div class="flex items-center gap-2.5">
+                                        <button type="button" class="button-icon text-red-500 bg-red-100 dark:bg-slate-700"> <ion-icon class="text-lg" name="heart"></ion-icon> </button>
+                                        <a href="#">1,300</a>
+                                    </div>
+                                    <div    class="p-1 px-2 bg-white rounded-full drop-shadow-md w-[212px] dark:bg-slate-700 text-2xl"
+                                            uk-drop="offset:10;pos: top-left; animate-out: true; animation: uk-animation-scale-up uk-transform-origin-bottom-left"> 
+                                        
+                                        <div class="flex gap-2"  uk-scrollspy="target: > button; cls: uk-animation-scale-up; delay: 100 ;repeat: true">
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 👍 </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> ❤️ </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😂 </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😯 </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😢 </span></button>
+                                        </div>
+                                        
+                                        <div class="w-2.5 h-2.5 absolute -bottom-1 left-3 bg-white rotate-45 hidden"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" class="button-icon bg-slate-200/70 dark:bg-slate-700"> <ion-icon class="text-lg" name="chatbubble-ellipses"></ion-icon> </button>
+                                    <span>260</span>
+                                </div>
+                                <button type="button" class="button-icon ml-auto"> <ion-icon class="text-xl" name="paper-plane-outline"></ion-icon> </button>
+                                <button type="button" class="button-icon"> <ion-icon class="text-xl" name="share-outline"></ion-icon> </button>
+                            </div>
+
+                            <!-- comments -->
+                            <div class="sm:p-4 p-2.5 border-t border-gray-100 font-normal space-y-3 relative dark:border-slate-700/40"> 
+                        
+                                <div class="flex items-start gap-3 relative">
+                                    <a href="timeline.html"> <img src="{{asset('dashboard/images/avatars/avatar-2.jpg')}}" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
+                                    <div class="flex-1">
+                                        <a href="timeline.html" class="text-black font-medium inline-block dark:text-white"> Steeve </a>
+                                        <p class="mt-0.5">What a beautiful photo! I love it. 😍 </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 relative">
+                                    <a href="timeline.html"> <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
+                                    <div class="flex-1">
+                                        <a href="timeline.html" class="text-black font-medium inline-block dark:text-white"> Monroe </a>
+                                        <p class="mt-0.5">   You captured the moment.😎 </p>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="flex items-center gap-1.5 text-gray-500 hover:text-blue-500 mt-2">
+                                    <ion-icon name="chevron-down-outline" class="ml-auto duration-200 group-aria-expanded:rotate-180"></ion-icon>
+                                    More Comment
+                                </button>
+
+                            </div>
+
+                            <!-- add comment -->
+                            <div class="sm:px-4 sm:py-3 p-2.5 border-t border-gray-100 flex items-center gap-1 dark:border-slate-700/40">
+                                
+                                <img src="{{asset('dashboard/images/avatars/avatar-7.jpg')}}" alt="" class="w-6 h-6 rounded-full">
+                                
+                                <div class="flex-1 relative overflow-hidden h-10">
+                                    <textarea placeholder="Add Comment...." rows="1" class="w-full resize-none !bg-transparent px-4 py-2 focus:!border-transparent focus:!ring-transparent"></textarea>
+
+                                    <div class="!top-2 pr-2" uk-drop="pos: bottom-right; mode: click">
+                                        <div class="flex items-center gap-2" uk-scrollspy="target: > svg; cls: uk-animation-slide-right-small; delay: 100 ;repeat: true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-sky-600">
+                                                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 fill-pink-600">
+                                                <path d="M3.25 4A2.25 2.25 0 001 6.25v7.5A2.25 2.25 0 003.25 16h7.5A2.25 2.25 0 0013 13.75v-7.5A2.25 2.25 0 0010.75 4h-7.5zM19 4.75a.75.75 0 00-1.28-.53l-3 3a.75.75 0 00-.22.53v4.5c0 .199.079.39.22.53l3 3a.75.75 0 001.28-.53V4.75z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+
+                                <button type="submit" class="text-sm rounded-full py-1.5 px-3.5 bg-secondery"> Replay</button>
+                            </div> 
+
+                        </div>
+    
+                        <!--  post image with slider-->
+                        <div class="bg-white rounded-xl shadow-sm text-sm font-medium border1 dark:bg-dark2">
+
+                            <!-- post heading -->
+                            <div class="flex gap-3 sm:p-4 p-2.5 text-sm font-medium">
+                                <a href="timeline.html"> <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="w-9 h-9 rounded-full"> </a>  
+                                <div class="flex-1">
+                                    <a href="timeline.html"> <h4 class="text-black dark:text-white"> Monroe Parker </h4> </a>  
+                                    <div class="text-xs text-gray-500 dark:text-white/80"> 2 hours ago</div>
+                                </div>
+
+                                <div class="-mr-1">
+                                    <button type="button" class="button-icon w-8 h-8"> <ion-icon class="text-xl" name="ellipsis-horizontal"></ion-icon> </button>
+                                    <div  class="w-[245px]" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                        <nav> 
+                                            <a href="#"> <ion-icon class="text-xl shrink-0" name="bookmark-outline"></ion-icon>  Add to favorites </a>  
+                                            <a href="#"> <ion-icon class="text-xl shrink-0" name="notifications-off-outline"></ion-icon> Mute Notification </a>  
+                                            <a href="#"> <ion-icon class="text-xl shrink-0" name="flag-outline"></ion-icon>  Report this post </a>  
+                                            <a href="#"> <ion-icon class="text-xl shrink-0" name="share-outline"></ion-icon>  Share your profile </a>  
+                                            <hr>
+                                            <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl shrink-0" name="stop-circle-outline"></ion-icon>  Unfollow </a>  
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- post image -->
+                            <div class="relative uk-visible-toggle sm:px-4" tabindex="-1" uk-slideshow="animation: push;ratio: 4:3">
+
+                                <ul class="uk-slideshow-items overflow-hidden rounded-xl" uk-lightbox="animation: fade"> 
+                                    <li class="w-full">
+                                        <a class="inline" href="https://getuikit.com/docs/images/photo3.jpg')}}" data-caption="Caption 1"> 
+                                            <img src="{{asset('dashboard/images/post/img-2.jpg')}}" alt="" class="w-full h-full absolute object-cover insta-0">
+                                        </a>
+                                    </li>
+                                    <li class="w-full">
+                                        <a class="inline" href="https://getuikit.com/docs/images/photo2.jpg')}}" data-caption="Caption 2"> 
+                                            <img src="{{asset('dashboard/images/post/img-3.jpg')}}" alt="" class="w-full h-full absolute object-cover insta-0">
+                                        </a>
+                                    </li>
+                                    <li class="w-full">
+                                        <a class="inline" href="https://getuikit.com/docs/images/photo.jpg')}}" data-caption="Caption 3"> 
+                                            <img src="{{asset('dashboard/images/post/img-4.png')}}" alt="" class="w-full h-full absolute object-cover insta-0">
+                                        </a>
+                                    </li> 
+                                </ul>
+                                
+                                <a class="nav-prev left-6" href="#" uk-slideshow-item="previous"> <ion-icon name="chevron-back" class="text-2xl"></ion-icon> </a>
+                                <a class="nav-next right-6" href="#" uk-slideshow-item="next"> <ion-icon name="chevron-forward" class="text-2xl"></ion-icon></a>
+                            
+                            </div>
+
+                            <!-- post icons -->
+                            <div class="sm:p-4 p-2.5 flex items-center gap-4 text-xs font-semibold">
+                                <div>
+                                    <div class="flex items-center gap-2.5">
+                                        <button type="button" class="button-icon text-red-500 bg-red-100 dark:bg-slate-700"> <ion-icon class="text-lg" name="heart"></ion-icon> </button>
+                                        <a href="#">1,300</a>
+                                    </div>
+                                    <div    class="p-1 px-2 bg-white rounded-full drop-shadow-md w-[212px] dark:bg-slate-700 text-2xl"
+                                            uk-drop="offset:10;pos: top-left; animate-out: true; animation: uk-animation-scale-up uk-transform-origin-bottom-left"> 
+                                        
+                                        <div class="flex gap-2"  uk-scrollspy="target: > button; cls: uk-animation-scale-up; delay: 100 ;repeat: true">
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 👍 </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> ❤️ </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😂 </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😯 </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😢 </span></button>
+                                        </div>
+                                        
+                                        <div class="w-2.5 h-2.5 absolute -bottom-1 left-3 bg-white rotate-45 hidden"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" class="button-icon bg-slate-200/70 dark:bg-slate-700"> <ion-icon class="text-lg" name="chatbubble-ellipses"></ion-icon> </button>
+                                    <span>260</span>
+                                </div>
+                                <button type="button" class="button-icon ml-auto"> <ion-icon class="text-xl" name="paper-plane-outline"></ion-icon> </button>
+                                <button type="button" class="button-icon"> <ion-icon class="text-xl" name="share-outline"></ion-icon> </button>
+                            </div>
+
+                            <!-- comments -->
+                            <div class="sm:p-4 p-2.5 border-t border-gray-100 font-normal space-y-3 relative dark:border-slate-700/40"> 
+                        
+                                <div class="flex items-start gap-3 relative">
+                                    <a href="timeline.html"> <img src="{{asset('dashboard/images/avatars/avatar-2.jpg')}}" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
+                                    <div class="flex-1">
+                                        <a href="timeline.html" class="text-black font-medium inline-block dark:text-white"> Steeve </a>
+                                        <p class="mt-0.5">What a beautiful photo! I love it. 😍 </p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 relative">
+                                    <a href="timeline.html"> <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
+                                    <div class="flex-1">
+                                        <a href="timeline.html" class="text-black font-medium inline-block dark:text-white"> Monroe </a>
+                                        <p class="mt-0.5">   You captured the moment.😎 </p>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="flex items-center gap-1.5 text-gray-500 hover:text-blue-500 mt-2">
+                                    <ion-icon name="chevron-down-outline" class="ml-auto duration-200 group-aria-expanded:rotate-180"></ion-icon>
+                                    More Comment
+                                </button>
+
+                            </div>
+
+                            <!-- add comment -->
+                            <div class="sm:px-4 sm:py-3 p-2.5 border-t border-gray-100 flex items-center gap-1 dark:border-slate-700/40">
+                                
+                                <img src="{{asset('dashboard/images/avatars/avatar-7.jpg')}}" alt="" class="w-6 h-6 rounded-full">
+                                
+                                <div class="flex-1 relative overflow-hidden h-10">
+                                    <textarea placeholder="Add Comment...." rows="1" class="w-full resize-none !bg-transparent px-4 py-2 focus:!border-transparent focus:!ring-transparent"></textarea>
+
+                                    <div class="!top-2 pr-2" uk-drop="pos: bottom-right; mode: click">
+                                        <div class="flex items-center gap-2" uk-scrollspy="target: > svg; cls: uk-animation-slide-right-small; delay: 100 ;repeat: true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-sky-600">
+                                                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 fill-pink-600">
+                                                <path d="M3.25 4A2.25 2.25 0 001 6.25v7.5A2.25 2.25 0 003.25 16h7.5A2.25 2.25 0 0013 13.75v-7.5A2.25 2.25 0 0010.75 4h-7.5zM19 4.75a.75.75 0 00-1.28-.53l-3 3a.75.75 0 00-.22.53v4.5c0 .199.079.39.22.53l3 3a.75.75 0 001.28-.53V4.75z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+
+                                <button type="submit" class="text-sm rounded-full py-1.5 px-3.5 bg-secondery"> Replay</button>
+                            </div> 
+
+                        </div>
+
+                        <!-- post text-->
+                        <div class="bg-white rounded-xl shadow-sm text-sm font-medium border1 dark:bg-dark2">
+
+                            <!-- post heading -->
+                            <div class="flex gap-3 sm:p-4 p-2.5 text-sm font-medium">
+                                <a href="timeline.html"> <img src="{{asset('dashboard/images/avatars/avatar-5.jpg')}}" alt="" class="w-9 h-9 rounded-full"> </a> 
+                                <div class="flex-1">
+                                    <a href="timeline.html"> <h4 class="text-black dark:text-white"> John Michael </h4> </a> 
+                                    <div class="text-xs text-gray-500 dark:text-white/80"> 2 hours ago</div>
+                                </div>
+
+                                <div class="-mr-1">
+                                    <button type="button" class="button__ico w-8 h-8" aria-haspopup="true" aria-expanded="false"> <ion-icon class="text-xl md hydrated" name="ellipsis-horizontal" role="img" aria-label="ellipsis horizontal"></ion-icon> </button>
+                                    <div class="w-[245px] uk-dropdown" uk-dropdown="pos: bottom-right; animation: uk-animation-scale-up uk-transform-origin-top-right; animate-out: true; mode: click"> 
+                                        <nav> 
+                                            <a href="#"> <ion-icon class="text-xl shrink-0 md hydrated" name="bookmark-outline" role="img" aria-label="bookmark outline"></ion-icon>  Add to favorites </a>  
+                                            <a href="#"> <ion-icon class="text-xl shrink-0 md hydrated" name="notifications-off-outline" role="img" aria-label="notifications off outline"></ion-icon> Mute Notification </a>  
+                                            <a href="#"> <ion-icon class="text-xl shrink-0 md hydrated" name="flag-outline" role="img" aria-label="flag outline"></ion-icon>  Report this post </a>  
+                                            <a href="#"> <ion-icon class="text-xl shrink-0 md hydrated" name="share-outline" role="img" aria-label="share outline"></ion-icon>  Share your profile </a>  
+                                            <hr>
+                                            <a href="#" class="text-red-400 hover:!bg-red-50 dark:hover:!bg-red-500/50"> <ion-icon class="text-xl shrink-0 md hydrated" name="stop-circle-outline" role="img" aria-label="stop circle outline"></ion-icon>  Unfollow </a>  
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="sm:px-4 p-2.5 pt-0">
+                                <p class="font-normal"> Photography is the art of capturing light with a camera. It can be used to create images that tell stories, express emotions, or document reality. it can be fun, challenging, or rewarding. It can also be a hobby, a profession, or a passion. 📷 </p>
+                            </div> 
+
+                            <!-- post icons -->
+                            <div class="sm:p-4 p-2.5 flex items-center gap-4 text-xs font-semibold">
+                                <div>
+                                    <div class="flex items-center gap-2.5">
+                                        <button type="button" class="button-icon text-red-500 bg-red-100 dark:bg-slate-700"> <ion-icon class="text-lg" name="heart"></ion-icon> </button>
+                                        <a href="#">1,300</a>
+                                    </div>
+                                    <div    class="p-1 px-2 bg-white rounded-full drop-shadow-md w-[212px] dark:bg-slate-700 text-2xl"
+                                            uk-drop="offset:10;pos: top-left; animate-out: true; animation: uk-animation-scale-up uk-transform-origin-bottom-left"> 
+                                        
+                                        <div class="flex gap-2"  uk-scrollspy="target: > button; cls: uk-animation-scale-up; delay: 100 ;repeat: true">
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 👍 </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> ❤️ </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😂 </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😯 </span></button>
+                                            <button type="button" class="text-red-600 hover:scale-125 duration-300"> <span> 😢 </span></button>
+                                        </div>
+                                        
+                                        <div class="w-2.5 h-2.5 absolute -bottom-1 left-3 bg-white rotate-45 hidden"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" class="button-icon bg-slate-200/70 dark:bg-slate-700"> <ion-icon class="text-lg" name="chatbubble-ellipses"></ion-icon> </button>
+                                    <span>260</span>
+                                </div>
+                                <button type="button" class="button-icon ml-auto"> <ion-icon class="text-xl" name="paper-plane-outline"></ion-icon> </button>
+                                <button type="button" class="button-icon"> <ion-icon class="text-xl" name="share-outline"></ion-icon> </button>
+                            </div>
+
+                            <!-- comments -->
+                            <div class="sm:p-4 p-2.5 border-t border-gray-100 font-normal space-y-3 relative dark:border-slate-700/40"> 
+                        
+                                <div class="flex items-start gap-3 relative">
+                                    <a href="timeline.html"> <img src="{{asset('dashboard/images/avatars/avatar-2.jpg')}}" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
+                                    <div class="flex-1">
+                                        <a href="timeline.html" class="text-black font-medium inline-block dark:text-white"> Steeve </a>
+                                        <p class="mt-0.5"> I love taking photos of nature and animals. 🌳🐶</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3 relative">
+                                    <a href="timeline.html"> <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
+                                    <div class="flex-1">
+                                        <a href="timeline.html" class="text-black font-medium inline-block dark:text-white"> Monroe </a>
+                                        <p class="mt-0.5">  I enjoy people and emotions. 😊😢 </p>
+                                    </div>
+                                </div> 
+                                <div class="flex items-start gap-3 relative">
+                                    <a href="timeline.html"> <img src="{{asset('dashboard/images/avatars/avatar-5.jpg')}}" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
+                                    <div class="flex-1">
+                                        <a href="timeline.html" class="text-black font-medium inline-block dark:text-white"> Jesse </a>
+                                        <p class="mt-0.5">  Photography is my passion. 🎨📸   </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- add comment -->
+                            <div class="sm:px-4 sm:py-3 p-2.5 border-t border-gray-100 flex items-center gap-1 dark:border-slate-700/40">
+                                
+                                <img src="{{asset('dashboard/images/avatars/avatar-7.jpg')}}" alt="" class="w-6 h-6 rounded-full">
+                                
+                                <div class="flex-1 relative overflow-hidden h-10">
+                                    <textarea placeholder="Add Comment...." rows="1" class="w-full resize-none !bg-transparent px-4 py-2 focus:!border-transparent focus:!ring-transparent" aria-haspopup="true" aria-expanded="false"></textarea>
+
+                                    <div class="!top-2 pr-2 uk-drop" uk-drop="pos: bottom-right; mode: click">
+                                        <div class="flex items-center gap-2" uk-scrollspy="target: > svg; cls: uk-animation-slide-right-small; delay: 100 ;repeat: true">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 fill-sky-600" style="opacity: 0;">
+                                                <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 fill-pink-600" style="opacity: 0;">
+                                                <path d="M3.25 4A2.25 2.25 0 001 6.25v7.5A2.25 2.25 0 003.25 16h7.5A2.25 2.25 0 0013 13.75v-7.5A2.25 2.25 0 0010.75 4h-7.5zM19 4.75a.75.75 0 00-1.28-.53l-3 3a.75.75 0 00-.22.53v4.5c0 .199.079.39.22.53l3 3a.75.75 0 001.28-.53V4.75z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+
+                                <button type="submit" class="text-sm rounded-full py-1.5 px-3.5 bg-secondery"> Replay</button>
+                            </div> 
+
+                        </div>
+
+                        <!-- placeholder -->
+                        <div class="rounded-xl shadow-sm p-4 space-y-4 bg-slate-200/40 animate-pulse border1 dark:bg-dark2">
+
+                            <div class="flex gap-3">
+                                <div class="w-9 h-9 rounded-full bg-slate-300/20"></div>
+                                <div class="flex-1 space-y-3">
+                                    <div class="w-40 h-5 rounded-md bg-slate-300/20"></div>
+                                    <div class="w-24 h-4 rounded-md bg-slate-300/20"></div>
+                                </div>
+                                <div class="w-6 h-6 rounded-full bg-slate-300/20"></div>
+                            </div>
+
+                            <div class="w-full h-52 rounded-lg bg-slate-300/10 my-3"> </div>
+
+                            <div class="flex gap-3">
+
+                                <div class="w-16 h-5 rounded-md bg-slate-300/20"></div>
+
+                                <div class="w-14 h-5 rounded-md bg-slate-300/20"></div>
+
+                                <div class="w-6 h-6 rounded-full bg-slate-300/20 ml-auto"></div>
+                                <div class="w-6 h-6 rounded-full bg-slate-300/20  "></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- sidebar -->
+                <div class="flex-1"> 
+                    
+                    <div class="lg:space-y-4 lg:pb-8 max-lg:grid sm:grid-cols-2 max-lg:gap-6" 
+                    uk-sticky="media: 1024; end: #js-oversized; offset: 80">
+
+                    <div class="box p-5 px-6">
+        
+                        <div class="flex items-baseline justify-between text-black dark:text-white">
+                            <h3 class="font-bold text-base"> People you may know </h3>
+                            <a href="#" class="text-sm text-blue-500">See all</a>
+                        </div>
+
+                        <div class="side-list">
+
+                            <div class="side-list-item">
+                                <a href="timeline.html">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-2.jpg')}}" alt="" class="side-list-image rounded-full">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline.html"><h4 class="side-list-title">  John Michael </h4></a>
+                                    <div class="side-list-info"> 125k Following </div>
+                                </div>
+                                <button class="button bg-primary-soft text-primary dark:text-white">follow</button>
+                            </div>
+
+                            <div class="side-list-item">
+                                <a href="timeline.html">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="side-list-image rounded-full">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline.html"><h4 class="side-list-title"> Monroe Parker </h4></a>
+                                    <div class="side-list-info"> 320k Following </div>
+                                </div>
+                                <button class="button bg-primary-soft text-primary dark:text-white">follow</button>
+                            </div>  
+                            
+                            <div class="side-list-item">
+                                <a href="timeline.html">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-5.jpg')}}" alt="" class="side-list-image rounded-full">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline.html"><h4 class="side-list-title"> James Lewis</h4></a>
+                                    <div class="side-list-info"> 125k Following </div>
+                                </div>
+                                <button class="button bg-primary-soft text-primary dark:text-white">follow</button>
+                            </div>
+                            
+                            <div class="side-list-item">
+                                <a href="timeline.html">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-6.jpg')}}" alt="" class="side-list-image rounded-full">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline.html"><h4 class="side-list-title">  Alexa stella </h4></a>
+                                    <div class="side-list-info"> 192k Following </div>
+                                </div>
+                                <button class="button bg-primary-soft text-primary dark:text-white">follow</button>
+                            </div>
+
+                            <div class="side-list-item">
+                                <a href="timeline.html">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-2.jpg')}}" alt="" class="side-list-image rounded-full">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline.html"><h4 class="side-list-title"> John Michael </h4></a>
+                                    <div class="side-list-info"> 320k Following </div>
+                                </div>
+                                <button class="button bg-primary-soft text-primary dark:text-white">follow</button>
+                            </div>  
+                            
+                            <button class="bg-secondery button w-full mt-2 hidden">See all</button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- peaple you might know -->
+                    <div class="box p-5 px-6 border1 dark:bg-dark2 hidden">
+                                    
+                        <div class="flex justify-between text-black dark:text-white">
+                            <h3 class="font-bold text-base"> Peaple You might know </h3>
+                            <button type="button"> <ion-icon name="sync-outline" class="text-xl"></ion-icon> </button>
+                        </div>
+
+                        <div class="space-y-4 capitalize text-xs font-normal mt-5 mb-2 text-gray-500 dark:text-white/80">
+
+                            <div class="flex items-center gap-3">
+                                <a href="timeline.html">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-7.jpg')}}" alt="" class="bg-gray-200 rounded-full w-10 h-10">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline.html"><h4 class="font-semibold text-sm text-black dark:text-white">  Johnson smith</h4></a>
+                                    <div class="mt-0.5"> Suggested For You </div>
+                                </div>
+                                <button type="button" class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Follow </button>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <a href="timeline.html">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-5.jpg')}}" alt="" class="bg-gray-200 rounded-full w-10 h-10">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline.html"><h4 class="font-semibold text-sm text-black dark:text-white"> James Lewis</h4></a>
+                                    <div class="mt-0.5"> Followed by Johnson </div>
+                                </div>
+                                <button type="button" class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Follow </button>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <a href="timeline.html">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-2.jpg')}}" alt="" class="bg-gray-200 rounded-full w-10 h-10">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline.html"><h4 class="font-semibold text-sm text-black dark:text-white"> John Michael</h4></a>
+                                    <div class="mt-0.5"> Followed by Monroe  </div>
+                                </div>
+                                <button type="button" class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Follow </button>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <a href="timeline.html">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="bg-gray-200 rounded-full w-10 h-10">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline.html"><h4 class="font-semibold text-sm text-black dark:text-white">  Monroe Parker</h4></a>
+                                    <div class="mt-0.5"> Suggested For You </div>
+                                </div>
+                                <button type="button" class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Follow </button>
+                            </div> 
+                            <div class="flex items-center gap-3">
+                                <a href="timeline.html">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-4.jpg')}}" alt="" class="bg-gray-200 rounded-full w-10 h-10">
+                                </a>
+                                <div class="flex-1">
+                                    <a href="timeline.html"><h4 class="font-semibold text-sm text-black dark:text-white">  Martin Gray</h4></a>
+                                    <div class="mt-0.5"> Suggested For You </div>
+                                </div>
+                                <button type="button" class="text-sm rounded-full py-1.5 px-4 font-semibold bg-secondery"> Follow </button>
+                            </div>
+                        </div>
+
+                    </div>
 
 
-@include('users.includes.dashboard.side-panel')
+                    <!-- latest marketplace items -->
+                    <div class="box p-5 px-6 border1 dark:bg-dark2">
+                        
+                        <div class="flex justify-between text-black dark:text-white">
+                            <h3 class="font-bold text-base"> Premium Photos </h3>
+                            <button type="button"> <ion-icon name="sync-outline" class="text-xl"></ion-icon> </button>
+                        </div>
+
+                        <div class="relative capitalize font-medium text-sm text-center mt-4 mb-2" tabindex="-1" uk-slider="autoplay: true;finite: true">
+
+                            <div class="overflow-hidden uk-slider-container">
+                            
+                                <ul class="-ml-2 uk-slider-items w-[calc(100%+0.5rem)]">
+                                    
+                                    <li class="w-1/2 pr-2">
+
+                                         <a href="#">
+                                            <div class="relative overflow-hidden rounded-lg">
+                                                <div class="relative w-full h-40">
+                                                    <img src="{{asset('dashboard/images/product/product-1.jpg')}}" alt="" class="object-cover w-full h-full inset-0">
+                                                </div> 
+                                                <div class="absolute right-0 top-0 m-2 bg-white/60 rounded-full py-0.5 px-2 text-sm font-semibold dark:bg-slate-800/60"> $12 </div>
+                                            </div>
+                                            <div class="mt-3 w-full"> Chill Lotion </div>
+                                        </a>
+                                    </li>
+                                    <li class="w-1/2 pr-2">
+
+                                         <a href="#">
+                                            <div class="relative overflow-hidden rounded-lg">
+                                                <div class="relative w-full h-40">
+                                                    <img src="{{asset('dashboard/images/product/product-3.jpg')}}" alt="" class="object-cover w-full h-full inset-0">
+                                                </div> 
+                                                <div class="absolute right-0 top-0 m-2 bg-white/60 rounded-full py-0.5 px-2 text-sm font-semibold dark:bg-slate-800/60"> $18 </div>
+                                            </div>
+                                            <div class="mt-3 w-full">  Gaming mouse </div>
+                                        </a>
+
+                                    </li>
+                                    <li class="w-1/2 pr-2">
+
+                                        <a href="#">
+                                            <div class="relative overflow-hidden rounded-lg">
+                                                <div class="relative w-full h-40">
+                                                    <img src="{{asset('dashboard/images/product/product-5.jpg')}}" alt="" class="object-cover w-full h-full inset-0">
+                                                </div> 
+                                                <div class="absolute right-0 top-0 m-2 bg-white/60 rounded-full py-0.5 px-2 text-sm font-semibold dark:bg-slate-800/60"> $12 </div>
+                                            </div>
+                                            <div class="mt-3 w-full">  Herbal Shampoo </div>
+                                        </a>
+
+                                    </li>
+
+                                </ul>
+
+                                <button type="button" class="absolute bg-white rounded-full top-16 -left-4 grid w-9 h-9 place-items-center shadow dark:bg-dark3"  uk-slider-item="previous"> <ion-icon name="chevron-back" class="text-2xl"></ion-icon></button>
+                                <button type="button" class="absolute -right-4 bg-white rounded-full top-16 grid w-9 h-9 place-items-center shadow dark:bg-dark3" uk-slider-item="next"> <ion-icon name="chevron-forward" class="text-2xl"></ion-icon></button>
+
+                            </div>
+                        
+                        </div>
+
+
+                    </div>
+                    
+                    <!-- online friends -->
+                    <div class="box p-5 px-6 border1 dark:bg-dark2">
+                        
+                        <div class="flex justify-between text-black dark:text-white">
+                            <h3 class="font-bold text-base"> Online Friends </h3>
+                            <button type="button"> <ion-icon name="sync-outline" class="text-xl"></ion-icon> </button>
+                        </div>
+
+                        <div class="grid grid-cols-6 gap-3 mt-4">
+
+                            <a href="timeline.html"> 
+                                <div class="w-10 h-10 relative">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-2.jpg')}}" alt="" class="w-full h-full absolute inset-0 rounded-full">
+                                    <div class="absolute bottom-0 right-0 m-0.5 bg-green-500 rounded-full w-2 h-2"></div>
+                                </div> 
+                            </a>
+                            <a href="timeline.html"> 
+                                <div class="w-10 h-10 relative">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="w-full h-full absolute inset-0 rounded-full">
+                                    <div class="absolute bottom-0 right-0 m-0.5 bg-green-500 rounded-full w-2 h-2"></div>
+                                </div>
+                            </a>
+                            <a href="timeline.html">  
+                                <div class="w-10 h-10 relative">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-4.jpg')}}" alt="" class="w-full h-full absolute inset-0 rounded-full">
+                                    <div class="absolute bottom-0 right-0 m-0.5 bg-green-500 rounded-full w-2 h-2"></div>
+                                </div> 
+                            </a>
+                            <a href="timeline.html"> 
+                                <div class="w-10 h-10 relative">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-5.jpg')}}" alt="" class="w-full h-full absolute inset-0 rounded-full">
+                                    <div class="absolute bottom-0 right-0 m-0.5 bg-green-500 rounded-full w-2 h-2"></div>
+                                </div> 
+                            </a>
+                            <a href="timeline.html"> 
+                                <div class="w-10 h-10 relative">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-6.jpg')}}" alt="" class="w-full h-full absolute inset-0 rounded-full">
+                                    <div class="absolute bottom-0 right-0 m-0.5 bg-green-500 rounded-full w-2 h-2"></div>
+                                </div> 
+                            </a>
+                            <a href="timeline.html"> 
+                                <div class="w-10 h-10 relative">
+                                    <img src="{{asset('dashboard/images/avatars/avatar-7.jpg')}}" alt="" class="w-full h-full absolute inset-0 rounded-full">
+                                    <div class="absolute bottom-0 right-0 m-0.5 bg-green-500 rounded-full w-2 h-2"></div>
+                                </div> 
+                            </a>
+
+                        </div>
+
+                        
+                    </div>
+
+                    <!-- Pro Members -->
+                    <div class="box p-5 px-6 border1 dark:bg-dark2">
+                        
+                        <div class="flex justify-between text-black dark:text-white">
+                            <h3 class="font-bold text-base"> Pro Members </h3>
+                        </div>
+
+                        <div class="relative capitalize font-normal text-sm mt-4 mb-2" tabindex="-1" uk-slider="autoplay: true;finite: true">
+
+                            <div class="overflow-hidden uk-slider-container">
+                            
+                                <ul class="-ml-2 uk-slider-items w-[calc(100%+0.5rem)]">
+                                    
+                                    <li class="w-1/2 pr-2">
+                                    <a href="timeline.html"> 
+                                        <div class="flex flex-col items-center shadow-sm p-2 rounded-xl border1">
+                                            <a href="timeline.html"> 
+                                                <div class="relative w-16 h-16 mx-auto mt-2">
+                                                    <img src="{{asset('dashboard/images/avatars/avatar-5.jpg')}}" alt="" class="h-full object-cover rounded-full shadow w-full">
+                                                </div>
+                                            </a>
+                                            <div class="mt-5 text-center w-full">
+                                                <a href="timeline.html"> <h5 class="font-semibold"> Martin Gray</h5> </a>
+                                                <div class="text-xs text-gray-400 mt-0.5 font-medium"> 12K Followers</div>
+                                                <button type="button" class="bg-secondery block font-semibold mt-4 py-1.5 rounded-lg text-sm w-full border1"> Follow </button>
+                                            </div>
+                                        </div>
+                                    
+                                    </li>
+                                    <li class="w-1/2 pr-2">
+                                        <div class="flex flex-col items-center shadow-sm p-2 rounded-xl border1">
+                                            <a href="timeline.html"> 
+                                                <div class="relative w-16 h-16 mx-auto mt-2">
+                                                    <img src="{{asset('dashboard/images/avatars/avatar-4.jpg')}}" alt="" class="h-full object-cover rounded-full shadow w-full">
+                                                </div>
+                                            </a> 
+                                            <div class="mt-5 text-center w-full">
+                                                <a href="timeline.html"> <h5 class="font-semibold"> Alexa Park</h5> </a>
+                                                <div class="text-xs text-gray-400 mt-0.5 font-medium"> 12K Followers</div>
+                                                <button type="button" class="bg-secondery block font-semibold mt-4 py-1.5 rounded-lg text-sm w-full border1"> Follow </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="w-1/2 pr-2">
+                                        <div class="flex flex-col items-center shadow-sm p-2 rounded-xl border1">
+                                            <a href="timeline.html"> 
+                                                <div class="relative w-16 h-16 mx-auto mt-2">
+                                                    <img src="{{asset('dashboard/images/avatars/avatar-4.jpg')}}" alt="" class="h-full object-cover rounded-full shadow w-full">
+                                                </div>
+                                            </a> 
+                                            <div class="mt-5 text-center w-full">
+                                                <a href="timeline.html"> <h5 class="font-semibold"> James Lewis</h5> </a>
+                                                <div class="text-xs text-gray-400 mt-0.5 font-medium"> 15K Followers</div>
+                                                <button type="button" class="bg-secondery block font-semibold mt-4 py-1.5 rounded-lg text-sm w-full border1"> Follow </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                
+
+                                </ul>
+
+                                <button type="button" class="absolute -translate-y-1/2 bg-slate-100 rounded-full top-1/2 -left-4 grid w-9 h-9 place-items-center dark:bg-dark3"  uk-slider-item="previous"> <ion-icon name="chevron-back" class="text-2xl"></ion-icon></button>
+                                <button type="button" class="absolute -right-4 -translate-y-1/2 bg-slate-100 rounded-full top-1/2 grid w-9 h-9 place-items-center dark:bg-dark3" uk-slider-item="next"> <ion-icon name="chevron-forward" class="text-2xl"></ion-icon></button>
+
+                            </div>
+                        
+                        </div>
+
+
+                    </div>
+
+                    <!-- Trends -->
+                    <div class="box p-5 px-6 border1 dark:bg-dark2">
+                        
+                        <div class="flex justify-between text-black dark:text-white">
+                            <h3 class="font-bold text-base"> Trends for you </h3>
+                            <button type="button"> <ion-icon name="sync-outline" class="text-xl"></ion-icon> </button>
+                        </div>
+
+                        <div class="space-y-3.5 capitalize text-xs font-normal mt-5 mb-2 text-gray-600 dark:text-white/80">
+                            <a href="#">
+                                <div class="flex items-center gap-3 p"> 
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 -mt-2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5l-3.9 19.5m-2.1-19.5l-3.9 19.5" />
+                                    </svg>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-black dark:text-white text-sm">  artificial intelligence </h4>
+                                        <div class="mt-0.5"> 1,245,62 post </div>
+                                    </div> 
+                                </div>
+                            </a>
+                            <a href="#" class="block">
+                                <div class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 -mt-2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5l-3.9 19.5m-2.1-19.5l-3.9 19.5" />
+                                    </svg>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-black dark:text-white text-sm">  Web developers</h4>
+                                        <div class="mt-0.5"> 1,624 post </div>
+                                    </div> 
+                                </div>
+                            </a>
+                            <a href="#" class="block">
+                                <div class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 -mt-2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5l-3.9 19.5m-2.1-19.5l-3.9 19.5" />
+                                    </svg>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-black dark:text-white text-sm">  Ui Designers</h4>
+                                        <div class="mt-0.5"> 820 post </div>
+                                    </div> 
+                                </div>
+                            </a>
+                            <a href="#" class="block">
+                                <div class="flex items-center gap-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 -mt-2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5l-3.9 19.5m-2.1-19.5l-3.9 19.5" />
+                                    </svg>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-black dark:text-white text-sm"> affiliate marketing </h4>
+                                        <div class="mt-0.5"> 480 post </div>
+                                    </div> 
+                                </div>
+                            </a>
+                        </div>
+
+                        
+                    </div>
+
+                </div>
+                </div>
+                
+            </div>
+            
+        </main>
+
+    </div>
+
+    @include('users.includes.dashboard.bottom-chatbox')
+    @include('users.includes.dashboard.bottom-post-preview-modal')
+    @include('users.includes.dashboard.bottom-create-status-modal')
+    @include('users.includes.dashboard.bottom-create-story-modal')
+
+    
+
+
+   
+
 
 
 
 @endsection
 
 
-	@section('scripts')
-	<script>
-		jQuery(document).ready(function($) {
-			
-
-			
-		if ($.isFunction($.fn.toast)) {
-			$.toast({
-				heading: 'Welcome To Pitnik',
-				text: '',
-				showHideTransition: 'slide',
-				icon: 'success',
-				loaderBg: '#fa6342',
-				position: 'bottom-right',
-				hideAfter: 3000,
-			});
-
-			$.toast({
-				heading: 'Information',
-				text: 'Now you can full demo of pitnik and hope you like',
-				showHideTransition: 'slide',
-				icon: 'info',
-				hideAfter: 5000,
-				loaderBg: '#fa6342',
-				position: 'bottom-right',
-			});
-			$.toast({
-				heading: 'Support & Help',
-				text: 'Report any <a href="#">issues</a> by email',
-				showHideTransition: 'fade',
-				icon: 'error',
-				hideAfter: 7000,
-				loaderBg: '#fa6342',
-				position: 'bottom-right',
-			});
-		}
-
-		});	
-</script>
-
-
-
-
+@section('scripts')
+<script></script>
 @endsection
