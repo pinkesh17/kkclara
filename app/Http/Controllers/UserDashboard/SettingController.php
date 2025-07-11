@@ -37,7 +37,24 @@ class SettingController extends Controller{
        return view('users.dashboard.settings.setting');
     }
 
-    public function  profileInformation(Request $request){
+    public function  saveProfile(Request $request){
+
+
+            print_r($request->all());
+
+   
+      
+    }
+
+
+
+
+
+
+
+
+
+    public function  profileInfo(Request $request){
 
       $prefixes =  $this->getPrefixes();
      /* $years =  $this->getYears();
@@ -48,9 +65,12 @@ class SettingController extends Controller{
        return view('users.dashboard.settings.profile-information', ['prefixes'=>$prefixes]);
     }
 
-    public function  profileInformationPost(Request $request){
+    public function  profileInfoPost(Request $request){
 
-      $this->validator($request->all())->validate();
+
+            print_r($request->all());
+
+     /* $this->validator($request->all())->validate();
 
 
       $convertedDate = Carbon::createFromFormat('d-m-Y', $request->post('date_of_birth'))->format('Y-m-d');
@@ -65,7 +85,7 @@ class SettingController extends Controller{
          ]);
 
          return redirect()->route('profile-information');
-
+**/
       
     }
 

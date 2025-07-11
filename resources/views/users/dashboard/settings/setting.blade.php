@@ -1,7 +1,6 @@
 @extends('users.layouts.dashboard')
 
-@section('title', 'Dashboard - Kochaisa Kurmi Samaj Member Portal')
-@section('description', 'Your personalized Kochaisa Kurmi Samaj member dashboard - manage your profile, view upcoming events, connect with community members, and access exclusive resources.')
+@section('title', 'Profile Settings')
 
 
 @section('stylesheet')
@@ -11,746 +10,759 @@
 
 
 @section('content')
- 
-<div id="wrapper">
-    @include('users.includes.dashboard.header')
-    @include('users.includes.dashboard.sidebar-left')
-
-    <main id="site__main" class="2xl:ml-[--w-side]  xl:ml-[--w-side-sm] p-2.5 h-[calc(100vh-var(--m-top))] mt-[--m-top]">
-
-        <div class="max-w-3xl mx-auto">
-
-
-            <div class="box relative rounded-lg shadow-md">
-
-                <div class="flex md:gap-8 gap-4 items-center md:p-8 p-6 md:pb-4">
-
-
-                    <div class="relative md:w-20 md:h-20 w-12 h-12 shrink-0"> 
-
-                        <label for="file" class="cursor-pointer">
-                            <img id="img" src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" class="object-cover w-full h-full rounded-full" alt=""/>
-                            <input type="file" id="file" class="hidden" />
-                        </label>
-  
-                        <label for="file" class="md:p-1 p-0.5 rounded-full bg-slate-600 md:border-4 border-white absolute -bottom-2 -right-2 cursor-pointer dark:border-slate-700">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="md:w-4 md:h-4 w-3 h-3 fill-white">
-                                <path d="M12 9a3.75 3.75 0 100 7.5A3.75 3.75 0 0012 9z" />
-                                <path fill-rule="evenodd" d="M9.344 3.071a49.52 49.52 0 015.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 01-3 3h-15a3 3 0 01-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 001.11-.71l.822-1.315a2.942 2.942 0 012.332-1.39zM6.75 12.75a5.25 5.25 0 1110.5 0 5.25 5.25 0 01-10.5 0zm12-1.5a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
-                            </svg>
-
-                            <input id="file" type="file" class="hidden" />
-        
-                        </label>
-
-                    </div>
-
-                    <div class="flex-1">
-                        <h3 class="md:text-xl text-base font-semibold text-black dark:text-white"> Monroe Parker </h3>
-                        <p class="text-sm text-blue-600 mt-1 font-normal">@Monroe</p>
-                    </div>
-
-                    <button class="inline-flex items-center gap-1 py-1 pl-2.5 pr-3 rounded-full bg-slate-50 border-2 border-slate-100 dark:text-white dark:bg-slate-700" type="button" aria-haspopup="true" aria-expanded="false"> 
-                        <ion-icon name="flash-outline" class="text-base duration-500 group-aria-expanded:rotate-180 md hydrated" role="img" aria-label="chevron down outline"></ion-icon> 
-                       <span class="font-medium text-sm"> Upgrade  </span> 
-                    </button>
-                </div>
-
-                <!-- nav tabs -->
-                <div class="relative border-b" tabindex="-1" uk-slider="finite: true">
-
-                    <nav class="uk-slider-container overflow-hidden nav__underline px-6 p-0 border-transparent -mb-px">
-        
-                        <ul class="uk-slider-items w-[calc(100%+10px)] !overflow-hidden" 
-                            uk-switcher="connect: #setting_tab ; animation: uk-animation-slide-right-medium, uk-animation-slide-left-medium"> 
-
-                            {{-- uk-active --}}
-                            
-                            <li class="w-auto pr-2.5"> <a href="#"> Personal Info</a> </li>
-                            <li class="w-auto pr-2.5"> <a href="#"> Address</a> </li>
-                            <li class="w-auto pr-2.5"> <a href="#"> Social Links</a> </li>
-                            <li class="w-auto pr-2.5"> <a href="#"> Notification</a> </li>
-                            <li class="w-auto pr-2.5"> <a href="#"> Activity Settingo</a> </li>
-                            <li class="w-auto pr-2.5"> <a href="#"> Invites</a> </li>
-                            <li class="w-auto pr-2.5"> <a href="#"> Finish</a> </li>  
-                            <li class="w-auto pr-2.5"> <a href="#"> Description </a> </li>
-                            <li class="w-auto pr-2.5"> <a href="#"> Setting</a> </li>  
-                            <li class="w-auto pr-2.5"> <a href="#"> anothers</a> </li>  
-                            <li class="w-auto pr-2.5"> <a href="#"> anothers</a> </li>  
-                            <li class="w-auto pr-2.5"> <a href="#"> anothers44</a> </li>  
-                            
-                        </ul>
-                    
-                    </nav>
-                            
-                    <a class="absolute -translate-y-1/2 top-1/2 left-0 flex items-center w-20 h-full p-2 py-1 justify-start bg-gradient-to-r from-white via-white dark:from-slate-800 dark:via-slate-800" href="#" uk-slider-item="previous"> <ion-icon name="chevron-back" class="text-2xl ml-1"></ion-icon> </a>
-                    <a class="absolute right-0 -translate-y-1/2 top-1/2 flex items-center w-20 h-full p-2 py-1 justify-end bg-gradient-to-l from-white via-white dark:from-slate-800 dark:via-slate-800" href="#" uk-slider-item="next">  <ion-icon name="chevron-forward" class="text-2xl mr-1"></ion-icon> </a>
-            
-                </div> 
-
-
-                <div id="setting_tab" class="uk-switcher md:py-12 md:px-20 p-6 overflow-hidden text-black text-sm"> 
-                    
-
-                    <!-- tab user basic info -->
-                    <div>
-                        <form id="personalInfo" class="form-main formvalid" method="POST" autocomplete="off" novalidate>
-                            @csrf
-
-                        <div>
-                            
-                            <div class="space-y-6">
-
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> Username </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="text" placeholder="Monroe" class="lg:w-1/2 w-full" required>
-                                    </div>
-                                </div>
-
-                                <div class="md:flex items-center gap-10">
-                                    <label for="first_name" class="md:w-32 text-right"> First Name </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input class="lg:w-1/2 w-full invalid:border-pink-600" type="text" id="first_name" name="first_name" value="" required>
-                                    </div>
-                                </div>
-
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> Last Name </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input class="lg:w-1/2 w-full" type="text" id="last_name" name="last_name" value="" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> Email </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="text" placeholder="info@mydomain.com" class="w-full border border-red-100">
-                                    </div>
-                                </div> 
-        
-                                <div class="md:flex items-start gap-10">
-                                    <label class="md:w-32 text-right"> Bio </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <textarea class="w-full" rows="5" placeholder="Inter your Bio"></textarea>
-                                    </div>
-                                </div> 
-    
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> Gender </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <select class="!border-0 !rounded-md lg:w-1/2 w-full">
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> Relationship </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <select class="!border-0 !rounded-md lg:w-1/2 w-full">
-                                            <option value="0">None</option>
-                                            <option value="1"  >Single</option>
-                                            <option value="2"  >In a relationship</option>
-                                            <option value="3"  >Married</option>
-                                            <option value="4"  >Engaged</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="md:flex items-start gap-10 " hidden>
-                                    <label class="md:w-32 text-right"> Avatar </label>
-                                    <div class="flex-1 flex items-center gap-5 max-md:mt-4">
-                                        <img src="{{asset('dashboard/images/avatars/avatar-3.jpg')}}" alt="" class="w-10 h-10 rounded-full">
-                                        <button type="submit" class="px-4 py-1 rounded-full bg-slate-100/60 border dark:bg-slate-700 dark:border-slate-600 dark:text-white"> Change</button>
-                                    </div>
-                                </div>
-
-                            </div>
-  
-                            <div class="flex items-center gap-4 mt-16 lg:pl-[10.5rem]">
-                                <button type="submit" class="button lg:px-6 bg-secondery max-md:flex-1"> Cancle</button>
-                                <button type="submit" class="button lg:px-10 bg-primary text-white max-md:flex-1"> Save <span class="ripple-overlay"></span></button>
-                            </div>
-                            
-                        </div> 
-
-                    </form>
-
-                    </div>
-
-
-                    <!-- Address -->
-                    <div>
-
-                        <div>
-                            
-                            <div class="space-y-6">
-
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> Country </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="text" placeholder="Monroe" class="lg:w-1/2 w-full">
-                                    </div>
-                                </div>
-
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> State </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="text" placeholder="Monroe" class="lg:w-1/2 w-full">
-                                    </div>
-                                </div>
-
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> District </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="text" placeholder="Monroe" class="lg:w-1/2 w-full">
-                                    </div>
-                                </div>
-                                
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> Block </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="text" placeholder="info@mydomain.com" class="w-full">
-                                    </div>
-                                </div> 
-
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> City/Village </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="text" placeholder="info@mydomain.com" class="w-full">
-                                    </div>
-                                </div> 
-
-                                 <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> Landmark </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="text" placeholder="info@mydomain.com" class="w-full">
-                                    </div>
-                                </div> 
-
-                                <div class="md:flex items-center gap-10">
-                                    <label class="md:w-32 text-right"> Pincode </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="text" placeholder="info@mydomain.com" class="w-full">
-                                    </div>
-                                </div> 
-
-
-                            </div>
-  
-                            <div class="flex items-center gap-4 mt-16 lg:pl-[10.5rem]">
-                                <button type="submit" class="button lg:px-6 bg-secondery max-md:flex-1"> Cancle</button>
-                                <button type="submit" class="button lg:px-10 bg-primary text-white max-md:flex-1"> Save <span class="ripple-overlay"></span></button>
-                            </div>
-                            
-                        </div> 
-
-                    </div>
-
-
-
-
-                    <!-- tab socialinks -->   
-                    <div>
-
-                        <div class="max-w-md mx-auto">
-
-                            <div class="font-normal text-gray-400">
-                            
-                                <div>
-                                    <h4 class="text-xl font-medium text-black dark:text-white"> Social Links </h4>
-                                    <p class="mt-3 font-normal text-gray-600 dark:text-white">We may still send you important notifications about your account and content outside of you preferred notivications settings</p>
-                                </div>
-
-                                <div class="space-y-6 mt-8">
-
-                                    <div class="flex items-center gap-3">
-                                        <div class="bg-blue-50 rounded-full p-2 flex ">
-                                            <ion-icon name="logo-facebook" class="text-2xl text-blue-600"></ion-icon> 
-                                        </div>
-                                        <div class="flex-1">
-                                            <input type="text" class="w-full" placeholder="http://www.facebook.com/myname">
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="bg-pink-50 rounded-full p-2 flex ">
-                                            <ion-icon name="logo-instagram" class="text-2xl text-pink-600"></ion-icon> 
-                                        </div>
-                                        <div class="flex-1">
-                                            <input type="text" class="w-full" placeholder="http://www.instagram.com/myname">
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="bg-sky-50 rounded-full p-2 flex ">
-                                            <ion-icon name="logo-twitter" class="text-2xl text-sky-600"></ion-icon> 
-                                        </div>
-                                        <div class="flex-1">
-                                            <input type="text" class="w-full" placeholder="http://www.twitter.com/myname">
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="bg-red-50 rounded-full p-2 flex ">
-                                            <ion-icon name="logo-youtube" class="text-2xl text-red-600"></ion-icon> 
-                                        </div>
-                                        <div class="flex-1">
-                                            <input type="text" class="w-full" placeholder="http://www.youtube.com/myname">
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center gap-3">
-                                        <div class="bg-slate-50 rounded-full p-2 flex ">
-                                            <ion-icon name="logo-github" class="text-2xl text-black"></ion-icon> 
-                                        </div>
-                                        <div class="flex-1">
-                                            <input type="text" class="w-full" placeholder="http://www.github.com/myname">
-                                        </div>
-                                    </div>
-
-                                </div> 
-                               
-                            </div> 
-                            
-                            <div class="flex items-center justify-center gap-4 mt-16">
-                                <button type="submit" class="button lg:px-6 bg-secondery max-md:flex-1"> Cancle</button>
-                                <button type="submit" class="button lg:px-10 bg-primary text-white max-md:flex-1"> Save</button>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- tab checkbox -->
-                    <div>
-
-                        <div>
-                            
-                            <div class="md:flex items-start gap-16">
-                                <label class="md:w-32 text-right font-semibold">  Notify me when </label>
-                                
-                                <div class="flex-1 space-y-4 interactive-effect max-md:mt-5">
-                                    
-                                    <div>
-                                        <label class="inline-flex items-center">
-                                          <input class="rounded" type="checkbox" checked name="checkbox1" value="3" />
-                                          <span class="ml-3"> Someone send me message </span>
-                                        </label>
-                                    </div>
-                                    
-                                    <div>
-                                        <label class="inline-flex items-center">
-                                          <input class="rounded" type="checkbox" checked name="checkbox1" value="3" />
-                                          <span class="ml-3"> Someone liked my photo </span>
-                                        </label>
-                                    </div>
-                                    
-                                    <div>
-                                        <label class="inline-flex items-center">
-                                          <input class="rounded" type="checkbox" checked name="checkbox2" value="3" />
-                                          <span class="ml-3"> Someone shared on my photo </span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <label class="inline-flex items-center">
-                                          <input class="rounded" type="checkbox" checked name="checkbox2" value="3" />
-                                          <span class="ml-3">   Someone followed me </span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <label class="inline-flex items-center">
-                                          <input class="rounded" type="checkbox" checked name="checkbox2" value="3" />
-                                          <span class="ml-3"> Someone liked my posts</span>
-                                        </label>
-                                    </div>
-                                    
-                                    <div>
-                                        <label class="inline-flex items-center">
-                                          <input class="rounded" type="checkbox" checked name="checkbox2" value="3" />
-                                          <span class="ml-3"> Someone mentioned me</span>
-                                        </label>
-                                    </div>
-
-                                    <div>
-                                        <label class="inline-flex items-center">
-                                          <input class="rounded" type="checkbox" checked name="checkbox2" value="3" />
-                                          <span class="ml-3">   Someone sent me follow requset</span>
-                                        </label>
-                                    </div>
-                                </div>
-
-                            </div> 
-
-                            <div class="flex items-center justify-center gap-4 mt-16">
-                                <button type="submit" class="button lg:px-6 bg-secondery max-md:flex-1"> Cancle</button>
-                                <button type="submit" class="button lg:px-10 bg-primary text-white max-md:flex-1"> Save</button>
-                            </div>
-
-                        </div>
-
-                    </div> 
-
-                    <!-- tab toggle options-->
-                    <div>
-
-                        <div>
-
-                            <div class="space-y-6">
-
-                                <div class="md:flex items-start gap-10">
-
-                                    <label class="w-40 text-right font-semibold"> Who can follow me ? </label>
-                                    
-                                    <div class="flex-1 space-y-2 interactive-effect max-md:mt-3">
-                                        
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                              <input type="radio" name="radio-s1" checked value="1" />
-                                              <span class="ml-3"> Everyone</span>
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                              <input type="radio" name="radio-s1" value="2" />
-                                              <span class="ml-3"> The People I Follow</span>
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                              <input type="radio" name="radio-s1" value="3" />
-                                              <span class="ml-3"> No body</span>
-                                            </label>
-                                        </div>
-        
-                                    </div>
-    
-                                </div> 
-
-                                <div class="md:flex items-start gap-10">
-
-                                    <label class="md:w-40 text-right font-semibold"> Who can message me ? </label>
-                                    
-                                    <div class="flex-1 space-y-2 interactive-effect max-md:mt-3">
-                                         
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                              <input type="radio" name="radio-s2" checked value="1" />
-                                              <span class="ml-3"> Everyone</span>
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                              <input type="radio" name="radio-s2" value="2" />
-                                              <span class="ml-3"> The People I Follow</span>
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                              <input type="radio" name="radio-s2" value="3" />
-                                              <span class="ml-3"> No body</span>
-                                            </label>
-                                        </div>
-        
-                                    </div>
-    
-                                </div> 
-
-                                <div class="md:flex items-start gap-10">
-                                    
-                                    <label class="md:w-40 text-right font-semibold">Status</label>
-                                    
-                                    <div class="flex-1 space-y-2 interactive-effect max-md:mt-3">
-                                         
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                              <input type="radio" name="radio-s3" checked value="3" />
-                                              <span class="ml-3"> Yes</span>
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                              <input type="radio" name="radio-s3" value="3" />
-                                              <span class="ml-3"> No</span>
-                                            </label>
-                                        </div>
-
-                                    </div>
-    
-                                </div> 
-                                <div class="md:flex items-start gap-10">
-                                    
-                                    <label class="md:w-40 text-right font-semibold">Show my activities ?</label>
-                                    
-                                    <div class="flex-1 space-y-2 interactive-effect max-md:mt-3">
-                                         
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                              <input type="radio" name="radio-s4" checked value="3" />
-                                              <span class="ml-3"> Public</span>
-                                            </label>
-                                        </div>
-                                        <div>
-                                            <label class="inline-flex items-center">
-                                              <input type="radio" name="radio-s4" value="3" />
-                                              <span class="ml-3"> Hide</span>
-                                            </label>
-                                        </div>
-
-                                    </div>
-    
-                                </div> 
- 
-                            </div>
-
-                            <div class="flex items-center justify-center gap-4 mt-16">
-                                <button type="submit" class="button lg:px-6 bg-secondery max-md:flex-1"> Cancle</button>
-                                <button type="submit" class="button lg:px-10 bg-primary text-white max-md:flex-1"> Save</button>
-                            </div>
-
-                        </div>
-
-                    </div> 
-
-                    <!-- tab select dropdown-->
-                    <div>
-
-                        <div>
-                            
-                            <div class="space-y-6 max-w-lg mx-auto font-medium">
-
-                                <div class="md:flex items-center gap-16 justify-between">
-                                    <label class="md:w-40 text-right"> Who can follow me ? </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <select class="w-full !border-0 !rounded-md">
-                                            <option value="1">Everyone</option>
-                                            <option value="2">People I Follow</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="md:flex items-center gap-16 justify-between">
-                                    <label class="md:w-40 text-right"> Who can message me ? </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <select class="w-full !border-0 !rounded-md">
-                                            <option value="1">Everyone</option>
-                                            <option value="2">People I Follow</option>
-                                            <option value="2">No body</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="md:flex items-center gap-16 justify-between">
-                                    <label class="md:w-40 text-right"> Show my activities ?</label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <select class="w-full !border-0 !rounded-md">
-                                            <option value="1">Yes</option>
-                                            <option value="2">Now</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="md:flex items-center gap-16 justify-between">
-                                    <label class="md:w-40 text-right"> Status </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <select class="w-full !border-0 !rounded-md">
-                                            <option value="1">Online</option>
-                                            <option value="2">Offline</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="md:flex items-center gap-16 justify-between">
-                                    <label class="md:w-40 text-right"> Who can see my tags? </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <select class="w-full !border-0 !rounded-md">
-                                            <option value="1">Everyone</option>
-                                            <option value="2">People I Follow</option>
-                                            <option value="2">No body</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="md:flex items-center gap-16 justify-between">
-                                    <label class="md:w-40 text-right"> Allow search engines </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <select class="w-full !border-0 !rounded-md">
-                                            <option value="1">Yes</option>
-                                            <option value="2">Now</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div class="flex items-center justify-center gap-4 mt-16">
-                                <button type="submit" class="button lg:px-6 bg-secondery max-md:flex-1"> Cancle</button>
-                                <button type="submit" class="button lg:px-10 bg-primary text-white max-md:flex-1"> Save</button>
-                            </div>
-
-                        </div>
-                        
-                    </div>
-                    
-                    <!-- tab Premision -->   
-                    <div>
-
-                        <div>
-
-                            <div class="max-w-lg mx-auto font-normal text-gray-400 text-sm">
-                                
-                                <div>
-                                    <h4 class="text-lg font-semibold text-black dark:text-white"> Alerts preferences </h4>
-                                    <p class=" mt-3">We may still send you important notifications about your account and content outside of you preferred notivications settings</p>
-                                </div>
-
-                                <div class="mt-8 md:space-y-8 space-y-4" uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-medium; delay: 100 ;repeat: true">
-
-                                    <div class="w-full">
-                                        <label class="switch flex justify-between items-center cursor-pointer gap-4">
-                                            <div class="bg-sky-100 text-sky-500 rounded-full p-2 md:flex hidden shrink-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                                                </svg> 
-                                            </div>
-                                            <div class="flex-1 md:pr-8">
-                                                <h4 class="text-base font-medium mb-1.5 text-black dark:text-white"> Email notifications</h4>
-                                                <p class=""> You can receive notifications about important updates and content directly to your email inbox. </p>
-                                            </div>
-                                            <input type="checkbox" checked><span class="switch-button !relative"></span> 
-                                        </label>
-                                    </div>
-
-                                    <div class="w-full">
-                                        <label class="switch flex justify-between items-center cursor-pointer gap-4">
-                                            <div class="bg-purple-100 text-purple-500 rounded-full p-2 md:flex hidden shrink-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3" />
-                                                </svg>
-                                            </div>
-                                            <div class="flex-1 md:pr-8">
-                                                <h4 class="text-base font-medium mb-1.5 text-black dark:text-white"> web notifications</h4>
-                                                <p class="">  You can receive notifications through your notifications center </p>
-                                            </div>
-                                            <input type="checkbox"><span class="switch-button !relative"></span> 
-                                        </label>
-                                    </div>
-
-                                    <div class="w-full">
-                                        <label class="switch flex justify-between items-center cursor-pointer gap-4">
-                                            <div class="bg-teal-100 text-teal-500 rounded-full p-2 md:flex hidden shrink-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-                                                </svg>
-                                            </div>
-                                            <div class="flex-1 md:pr-8">
-                                                <h4 class="text-base font-medium mb-1.5 text-black dark:text-white"> Phone notifications</h4>
-                                                <p class="">  You can receive notifications on your phone, so you can stay up-to-date even when you’re on the go</p>
-                                            </div>
-                                            <input type="checkbox" checked><span class="switch-button !relative"></span> 
-                                        </label>
-                                    </div>
-                                     
-                                
-                                </div>
-
-                            </div> 
-
-                            <div class="flex items-center justify-center gap-4 mt-16">
-                                <button type="submit" class="button lg:px-6 bg-secondery max-md:flex-1"> Cancle</button>
-                                <button type="submit" class="button lg:px-10 bg-primary text-white max-md:flex-1"> Save</button>
-                            </div>
-
-                        </div> 
-                        
-                    </div>
-                    
-                    <!-- tab password-->
-                    <div>
-
-                        <div>
-                            
-                            <div class="space-y-6 max-w-lg mx-auto">
-
-                                <div class="md:flex items-center gap-16 justify-between max-md:space-y-3">
-                                    <label class="md:w-40 text-right"> Current Password </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="password" placeholder="******" class="w-full">
-                                    </div>
-                                </div>
-                              
-                                <div class="md:flex items-center gap-16 justify-between max-md:space-y-3">
-                                    <label class="md:w-40 text-right"> New password </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="password" placeholder="******" class="w-full">
-                                    </div>
-                                </div>
-
-                                <div class="md:flex items-center gap-16 justify-between max-md:space-y-3">
-                                    <label class="md:w-40 text-right"> Repeat password </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <input type="password" placeholder="******" class="w-full">
-                                    </div>
-                                </div>
-
-                                <hr class="border-gray-100 dark:border-gray-700">
-
-                                <div class="md:flex items-center gap-16 justify-between">
-                                    <label class="md:w-40 text-right"> Two-factor authentication </label>
-                                    <div class="flex-1 max-md:mt-4">
-                                        <select class="w-full !border-0 !rounded-md">
-                                            <option value="1">Enable</option>
-                                            <option value="2">Disable</option> 
-                                        </select>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            
-                            <div class="flex items-center justify-center gap-4 mt-16">
-                                <button type="submit" class="button lg:px-6 bg-secondery max-md:flex-1"> Cancle</button>
-                                <button type="submit" class="button lg:px-10 bg-primary text-white max-md:flex-1"> Save</button>
-                            </div>
-
-                        </div>
-                        
-                    </div>
-
-
-                </div>
-                
-            
-            </div>
-
-            
-        </div>
-        
-    </main>
+
+
+<div class="theme-layout">
+
+	<div class="postoverlay"></div>
+
+	 @include('users.includes.dashboard.responsive-header')
+	 @include('users.includes.dashboard.topbar')
+
+	 @include('users.includes.dashboard.fixed-sidebar-right')
+	 @include('users.includes.dashboard.fixed-sidebar-left')
+
+		
+	<section>
+		<div class="gap2 gray-bg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row merged20" id="page-contents">
+
+						{{-- 	
+						<div class="user-profile">
+								<figure>
+									<div class="edit-pp">
+										<label class="fileContainer">
+											<i class="fa fa-camera"></i>
+											<input type="file">
+										</label>
+									</div>
+									<img src="{{asset('dashboard/images/resources/profile-image.jpg')}}" alt="">
+									<ul class="profile-controls">
+										<li><a href="#" title="Add friend" data-toggle="tooltip"><i class="fa fa-user-plus"></i></a></li>
+										<li><a href="#" title="Follow" data-toggle="tooltip"><i class="fa fa-star"></i></a></li>
+										<li><a class="send-mesg" href="#" title="Send Message" data-toggle="tooltip"><i class="fa fa-comment"></i></a></li>
+										<li>
+											<div class="edit-seting" title="Edit Profile image"><i class="fa fa-sliders"></i>
+												<ul class="more-dropdown">
+													<li><a href="setting.html" title="">Update Profile Photo</a></li>
+													<li><a href="setting.html" title="">Update Header Photo</a></li>
+													<li><a href="setting.html" title="">Account Settings</a></li>
+													<li><a href="support-and-help.html" title="">Find Support</a></li>
+													<li><a class="bad-report" href="#" title="">Report Profile</a></li>
+													<li><a href="#" title="">Block Profile</a></li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+									<ol class="pit-rate">
+										<li class="rated"><i class="fa fa-star"></i></li>
+										<li class="rated"><i class="fa fa-star"></i></li>
+										<li class="rated"><i class="fa fa-star"></i></li>
+										<li class="rated"><i class="fa fa-star"></i></li>
+										<li class=""><i class="fa fa-star"></i></li>
+										<li><span>4.7/5</span></li>
+									</ol>
+								</figure>
+								
+								<div class="profile-section">
+									<div class="row">
+										<div class="col-lg-2 col-md-3">
+											<div class="profile-author">
+												<div class="profile-author-thumb">
+													<img alt="author" src="{{asset('dashboard/images/resources/author.jpg')}}">
+													<div class="edit-dp">
+														<label class="fileContainer">
+															<i class="fa fa-camera"></i>
+															<input type="file">
+														</label>
+													</div>
+												</div>
+													
+												<div class="author-content">
+													<a class="h4 author-name" href="about.html">Jack Carter</a>
+													<div class="country">Ontario, CA</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-10 col-md-9">
+											<ul class="profile-menu">
+												<li>
+													<a class="active" href="timeline.html">Timeline</a>
+												</li>
+												<li>
+													<a class="" href="about.html">About</a>
+												</li>
+												<li>
+													<a class="" href="timeline-friends.html">Friends</a>
+												</li>
+												<li>
+													<a class="" href="timeline-photos.html">Photos</a>
+												</li>
+												<li>
+													<a class="" href="timeline-videos.html">Videos</a>
+												</li>
+												<li>
+													<div class="more">
+														<i class="fa fa-ellipsis-h"></i>
+														<ul class="more-dropdown">
+															<li>
+																<a href="timeline-groups.html">Profile Groups</a>
+															</li>
+															<li>
+																<a href="statistics.html">Profile Analytics</a>
+															</li>
+														</ul>
+													</div>
+												</li>
+											</ul>
+											<ol class="folw-detail">
+												<li><span>Posts</span><ins>101</ins></li>
+												<li><span>Followers</span><ins>1.3K</ins></li>
+												<li><span>Following</span><ins>22</ins></li>
+											</ol>
+										</div>
+									</div>
+								</div>	
+							</div><!-- user profile banner  -->
+							--}}
+
+
+							<div class="col-lg-9">
+								<div class="central-meta">
+									<div class="about">
+										<div class="d-flex flex-row mt-2">
+											<ul class="nav nav-tabs nav-tabs--vertical nav-tabs--left" >
+
+												<li class="nav-item">
+													<a href="#edit-profile" class="nav-link active" data-toggle="tab" ><i class="fa-regular fa-pen-to-square"></i> Edit Profile</a>
+												</li>
+
+												<li class="nav-item">
+													<a href="#gen-setting" class="nav-link" data-toggle="tab" ><i class="fa-regular fa-gear"></i> General Setting</a>
+												</li>
+
+												<li class="nav-item">
+													<a href="#notifi" class="nav-link" data-toggle="tab" ><i class="fa-regular fa-bell"></i> Notification</a>
+												</li>
+												<li class="nav-item">
+													<a href="#messages" class="nav-link" data-toggle="tab" ><i class="fa-sharp fa-regular fa-comments"></i> Messages</a>
+												</li>
+												<li class="nav-item">
+													<a href="#weather" class="nav-link" data-toggle="tab" ><i class="fa-regular fa-cloud-bolt-sun"></i> Weather Setting</a>
+												</li>
+												<li class="nav-item">
+													<a href="#page-manage" class="nav-link" data-toggle="tab" ><i class="fa-regular fa-sliders"></i> Widgets Setting</a>
+												</li>
+												<li class="nav-item">
+													<a href="#privacy" class="nav-link" data-toggle="tab"  ><i class="fa-regular fa-shield-check"></i> Privacy & Data</a>
+												</li>
+												<li class="nav-item">
+													<a href="#security" class="nav-link" data-toggle="tab" ><i class="fa-regular fa-lock"></i> Security</a>
+												</li>
+												<li class="nav-item">
+													<a href="#apps" class="nav-link" data-toggle="tab" ><i class="fa-brands fa-app-store"></i> Apps</a>
+												</li>
+											</ul>
+											<div class="tab-content">
+
+												<div class="tab-pane fade show active" id="edit-profile" >
+													<div class="set-title">
+														<h5>Edit Profile</h5>
+														<span>People on Pitnik will get to know you with the info below</span>
+													</div>
+													<div class="setting-meta">
+														<div class="change-photo">
+															<figure><img src="{{asset('dashboard/images/resources/admin2.jpg')}}" alt=""></figure>
+															<div class="edit-img">
+																<form class="edit-phto">
+																	
+																	<label class="fileContainer">
+																		<i class="fa-brands fa-instagram"></i>
+																		Chage DP
+																	<input type="file">
+																	</label>
+																</form>
+															</div>
+														</div>
+													</div>
+
+													<div class="stg-form-area">
+														<form id="personalInfo" class="c-form formvalid " method="POST" autocomplete="off" novalidate>
+														@csrf
+
+
+															<div>
+																<label for="prefix">Prefix</label>
+																<select id="prefix" name="prefix">
+																 <option value="">Select</option>
+																  <option value="country">Country</option>
+																</select>  
+															</div>	
+
+
+															<div class="row">
+																<div class="col-lg-6">
+																	<div>
+																		<label for="first_name">First Name*</label>
+																		<input type="text" id="first_name" name="first_name"  value="" required>
+																	</div>
+																</div>
+																<div class="col-lg-6">
+																	<div>
+																		<label for="last_name">Last Name*</label>
+																		<input type="text" id="last_name" name="last_name"  value="" required>
+																	</div>
+																</div>
+															</div>
+
+															<div class="uzer-nam">
+																<label for="phone">Mobile*</label>
+																<input type="number" id="phone" name="phone" value="" required>
+															</div>
+															<div>
+																<label for="email">Email Address</label>
+																<input type="email" id="email" name="email" value=""  placeholder="abc@pitnikmail.com">
+															</div>
+
+															<div>
+																<label>Gender</label>
+																<div class="form-radio">
+																  <div class="radio">
+																	<label for="male">
+																	  <input id="male" type="radio" checked="checked" name="gender" value="1" name="radio"><i class="check-box"></i>Male
+																	</label>
+																  </div>
+																  <div class="radio">
+																	<label for="male">
+																		<input id="female" type="radio" name="gender" value="2" name="radio"><i class="check-box"></i>Female
+																	</label>
+																  </div>
+																</div>
+															</div>
+
+															<div>
+																<label for="bio">Bio</label>
+																<textarea rows="3" id="bio" name="bio" placeholder="write someting about yourself"></textarea>
+															</div>	
+																	
+
+															<div class="d-flex justify-content-end">
+																<div class="form-spinner spinner-border text-secondary" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<button class="form-button" type="submit" data-ripple="">Update Profile</button>
+															</div>
+
+															{{-- 
+
+															<div>
+																
+																<div class="spinner-border text-primary" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-border text-secondary" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-border text-success" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-border text-danger" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-border text-warning" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-border text-info" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-border text-light" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-border text-dark" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+
+															</div>
+
+															<div>
+
+																<div class="spinner-grow text-primary" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-grow text-secondary" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-grow text-success" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-grow text-danger" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-grow text-warning" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-grow text-info" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-grow text-light" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+																<div class="spinner-grow text-dark" role="status">
+																  <span class="visually-hidden">Loading...</span>
+																</div>
+
+															</div>	--}}
+
+
+
+
+														</form>
+
+
+													</div>
+												</div>
+
+												<div class="tab-pane fade" id="gen-setting" >
+													<div class="set-title">
+														<h5>General Setting</h5>
+														<span>Set your login preference, help us personalize your experience and make big account change here.</span>
+													</div>
+													<div class="onoff-options ">
+														<form method="post">
+															<div class="setting-row">
+																<span>Sub users</span>
+																<p>Enable this if you want people to follow you</p>
+																<input type="checkbox" id="switch00" /> 
+																<label for="switch00" data-on-label="ON" data-off-label="OFF"></label>
+															</div>
+															<div class="setting-row">
+																<span>Enable follow me</span>
+																<p>Enable this if you want people to follow you</p>
+																<input type="checkbox" id="switch01" /> 
+																<label for="switch01" data-on-label="ON" data-off-label="OFF"></label>
+															</div>
+															<div class="setting-row">
+																<span>Send me notifications</span>
+																<p>Send me notification emails my friends like, share or message me</p>
+																<input type="checkbox" id="switch02" /> 
+																<label for="switch02" data-on-label="ON" data-off-label="OFF"></label>
+															</div>
+															<div class="setting-row">
+																<span>Text messages</span>
+																<p>Send me messages to my cell phone</p>
+																<input type="checkbox" id="switch03" /> 
+																<label for="switch03" data-on-label="ON" data-off-label="OFF"></label>
+															</div>
+															<div class="setting-row">
+																<span>Enable tagging</span>
+																<p>Enable my friends to tag me on their posts</p>
+																<input type="checkbox" id="switch04" /> 
+																<label for="switch04" data-on-label="ON" data-off-label="OFF"></label>
+															</div>
+															<div class="setting-row">
+																<span>Enable sound Notification</span>
+																<p>You'll hear notification sound when someone sends you a private message</p>
+																<input type="checkbox" id="switch05" checked=""/> 
+																<label for="switch05" data-on-label="ON" data-off-label="OFF"></label>
+															</div>
+															
+															<div class="submit-btns">
+																<button type="button" class="main-btn" data-ripple=""><span>Save</span></button>
+																<button type="button" class="main-btn3" data-ripple=""><span>Cancel</span></button>
+															</div>
+														</form>
+													</div>
+													<div class="account-delete">
+														<h5>Account Changes</h5>
+														<div>
+															<span>Hide Your Posts and profile </span>
+															<button type="button" class=""><span>Deactivate account</span></button>
+														</div>	
+														<div>
+															<span>Delete your account and data </span>
+															<button type="button" class=""><span>close account</span></button>
+														</div>
+													</div>
+												</div><!-- general setting -->
+
+
+												<div class="tab-pane fade" id="notifi" role="tabpanel">
+													<div class="set-title">
+														<h5>Notification Setting</h5>
+														<span>Select push and email notifications you'd like to receive.</span>
+													</div>
+													<div class="notifi-seting">
+														<div class="form-radio">
+														  <div class="radio">
+															<label>
+															  <input type="radio" checked="checked" name="radio"><i class="check-box"></i>
+																Send Me emails about my activity except emails i have unsubscribe from
+															</label>
+														  </div>
+														  <div class="radio">
+															<label>
+															  <input type="radio" name="radio"><i class="check-box"></i>
+																Only send me required services announcements.
+															</label>
+														  </div>
+														</div>
+														<div class="set-title">
+															<h6>i'd like to receive emails and updates from Pitnik about</h6>
+														</div>	
+														<div class="checkbox">
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Always General announcement, updates, posts, and videos. 
+														  </label>
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Personalise tips for my page. 
+														  </label>
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Announcements and recommendations. 
+														  </label>
+															<p><a href="#" title="">learn more</a> about emails from pitnik</p>
+														</div>
+														<div class="set-title">
+															<h6>Other Notifications</h6>
+														</div>	
+														<div class="checkbox">
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Recommended videos. 
+														  </label>
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  activity on my page or channel. 
+														  </label>
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Activity on my comments. 
+														  </label>
+															<label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Reply to comments. 
+														  </label>
+															<label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Mentions. 
+														  </label>
+															
+														</div>
+														<div class="set-title">
+															<h6>Language Preference</h6>
+															<span>Select your email language</span>
+														</div>
+														<select class="select">
+															<option value="">Eglish US</option>
+															<option value="">Eglish UK</option>
+															<option value="">Russia</option>
+														</select>
+														<p>
+															you will always get notifications you have turned on for individual <a href="#" title="">Manage All Subscriptions</a>
+														</p>
+													</div>
+												</div><!-- notification -->
+												<div class="tab-pane fade" id="messages" role="tabpanel">
+													<div class="set-title">
+														<h5>Messages Setting</h5>
+														<span>Set your login preference, help us personalize your experience and make big account change here.</span>
+														<div class="mesg-seting">
+														
+														<div class="set-title">
+															<h6>i'd like to receive emails and updates from Pitnik about</h6>
+														</div>	
+														<div class="checkbox">
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Always General announcement, updates, posts, and videos. 
+														  </label>
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Personalise tips for my page. 
+														  </label>
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Announcements and recommendations. 
+														  </label>
+															<p><a href="#" title="">learn more</a> about emails from pitnik</p>
+														</div>
+														<div class="set-title">
+															<h6>Other Messages</h6>
+														</div>	
+														<div class="checkbox">
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  From Recommended videos. 
+														  </label>
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Messages from activity on my page or channel. 
+														  </label>
+														  <label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Message me the replyer Activity on my comments. 
+														  </label>
+															<label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Reply to comments. 
+														  </label>
+															<label>
+															<input type="checkbox" checked="checked"><i class="check-box"></i>
+															  Mentions. 
+														  </label>
+															
+														</div>
+														<div class="set-title">
+															<h6>Language Preference</h6>
+															<span>Select your Messages language</span>
+														</div>
+														<select class="select">
+															<option value="">Eglish US</option>
+															<option value="">Eglish UK</option>
+															<option value="">Russia</option>
+														</select>
+														<p>
+															you will always get notifications you have turned on for individual <a href="#" title="">Manage All Subscriptions</a>
+														</p>
+													</div>
+													</div>
+												</div><!-- messages -->
+												<div class="tab-pane fade" id="weather" role="tabpanel">
+													<div class="set-title">
+														<h5>Weather Widget Setting</h5>
+														<span>Set your weather widget or page setting.</span>
+														<div class="mesg-seting">
+															<div class="set-title">
+																<h6>Country & Timezone</h6>
+																<span>Select your Country Time Zone</span>
+															</div>
+															<select class="select">
+																<option value="">US (UTC-8)</option>
+																<option value="">Ontario(UTC-7)</option>
+																<option value="">Nova Scotia(UTC-5)</option>
+															</select>
+															<div class="set-title">
+																<h6>Temperature Unit</h6>
+															</div>
+															<select class="select">
+																<option value="">F° (Farenheit)</option>
+																<option value="">C° (Celsius)</option>
+															</select>
+															<div class="set-title">
+																<h6>Show Extended forecast</h6>
+															</div>
+															<div class="checkbox">
+															  <label>
+																<input type="checkbox" checked="checked"><i class="check-box"></i>
+																  Show Extended Forecast on Widget. 
+															  </label>
+																<p><a href="#" title="">learn more</a></p>
+															</div>
+															<div class="set-title">
+																<h6>Forecast Days</h6>
+															</div>
+															<select class="select">
+																<option value="">Next Day</option>
+																<option value="">Next week</option>
+																<option value="">Next Month</option>
+																<option value="">Next Year</option>
+															</select>
+															<p>
+																you will always get Daily notifications you have turned on for individual.
+															</p>
+															<div>
+															<form>
+																<button class="main-btn" data-ripple="" type="submit">Save</button>
+																<button class="main-btn3" data-ripple="" type="submit">Cancel</button>
+																
+															</form>	
+															</div>
+														</div>
+													</div>
+												</div><!-- weather widget setting -->
+												<div class="tab-pane fade" id="page-manage" role="tabpanel">
+													<div class="set-title">
+														<h5>Page & sidebar</h5>
+														<span>Deceide whether your profile will be hidden from search engine and what kind of data you want to use to imporve the recommendation and ads you see <a href="#" title="">Learn more</a></span>
+													</div>
+													<p class="p-info"><a href="manage-page.html">Click here</a> to go widget and page setting area</p>
+												</div><!-- privacy -->
+												<div class="tab-pane fade" id="privacy" role="tabpanel">
+													<div class="set-title">
+														<h5>Privacy & data</h5>
+														<span>Deceide whether your profile will be hidden from search engine and what kind of data you want to use to imporve the recommendation and ads you see <a href="#" title="">Learn more</a></span>
+													</div>
+													<div class="onoff-options ">
+														<form method="post">
+															<div class="setting-row">
+																<span>Search Privacy</span>
+																<p>Hide your profile from search engine (Ex.google) <a href="#" title="">Learn more</a>
+																</p>
+																<input type="checkbox" id="switch0001" /> 
+																<label for="switch0001" data-on-label="ON" data-off-label="OFF"></label>
+															</div>
+															<div class="set-title">
+																<h5>Personalization</h5>
+															</div>	
+															<div class="setting-row">
+																<span>Search Privacy</span>
+																<p>use sites you visit to improve which recommendation and ads you see. <a href="#" title="">Learn more</a>
+																</p>
+																<input type="checkbox" id="switch0002" /> 
+																<label for="switch0002" data-on-label="ON" data-off-label="OFF"></label>
+															</div>
+															<div class="setting-row">
+																<span>Search Privacy</span>
+																<p>use information from our partners to improve which ads you see<a href="#" title="">Learn more</a>
+																</p>
+																<input type="checkbox" id="switch0003" /> 
+																<label for="switch0003" data-on-label="ON" data-off-label="OFF"></label>
+															</div>
+														</form>
+													</div>
+												</div><!-- privacy -->
+												<div class="tab-pane fade" id="security" role="tabpanel">
+													<div class="set-title">
+														<h5>Security Setting</h5>
+														<span>trun on two factor authentication and check your list of connected device to keep your account posts safe <a href="#" title="">Learn More</a>.</span>
+													</div>
+													<div class="seting-box">
+														<p>to turn on two-factor authentication, you must <a href="#" title=""> confirm Your Email </a> and <a href="#" title="">Set Password</a></p>
+														<div class="set-title">
+															<h5>Connected Devicese</h5>
+														</div>
+														<p>This is a list of devices that have logged into your account, Revok any session that you do not recognize. <a href="#" title="">Hide Sessions</a></p>
+														<span>Last Accessed</span>
+														<p>August 30, 2020 12:25AM</p>
+														<span>Location</span>
+														<p>Berlin, Germany (based on IP = 103.233.24.5)</p>
+														<span>Device Type</span>
+														<p>Chrome on windows 10</p>
+													</div>
+												</div><!-- security -->
+												<div class="tab-pane fade" id="apps" role="tabpanel">
+													<div class="set-title">
+														<h5>Apps</h5>
+														<span>Keep track of everywhere you have login with your pintik profile and remove access from apps you are no longer using with pitnik <a href="#" title="">Learn more</a></span>
+													</div>
+													<p class="p-info">You have not approved any app</p>
+												</div><!-- apps -->
+											</div>
+										</div>
+									</div>
+								</div>	
+							</div><!-- centerl meta -->
+							<div class="col-lg-3">
+								<aside class="sidebar static">
+									<div class="widget">
+											<h4 class="widget-title">Your page</h4>	
+											<div class="your-page">
+												<figure>
+													<a title="" href="#"><img alt="" src="{{asset('dashboard/images/resources/friend-avatar9.jpg')}}"></a>
+												</figure>
+												<div class="page-meta">
+													<a class="underline" title="" href="#">My page</a>
+													<span><i class="ti-comment"></i>Messages <em class="bg-blue">9</em></span>
+													<span><i class="ti-bell"></i>Notifications <em class="bg-purple">2</em></span>
+												</div>
+												<div class="page-likes">
+													<ul class="nav nav-tabs likes-btn">
+														<li class="nav-item"><a data-toggle="tab" href="#link1" class="active">likes</a></li>
+														 <li class="nav-item"><a data-toggle="tab" href="#link2" class="">views</a></li>
+													</ul>
+													<!-- Tab panes -->
+													<div class="tab-content">
+													  <div id="link1" class="tab-pane active fade show">
+														<span><i class="ti-heart"></i>884</span>
+														  <a title="weekly-likes" href="#">35 new likes this week</a>
+														  <div class="users-thumb-list">
+														  	<a data-toggle="tooltip" title="" href="#" data-original-title="Anderw">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-1.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="frank">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-2.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="Sara">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-3.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="Amy">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-4.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="Ema">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-5.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="Sophie">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-6.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="Maria">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-7.jpg')}}">  
+															</a>  
+														  </div>
+													  </div>
+													  <div id="link2" class="tab-pane fade">
+														  <span><i class="ti-eye"></i>445</span>
+														  <a title="weekly-likes" href="#">440 new views this week</a>
+														  <div class="users-thumb-list">
+														  	<a data-toggle="tooltip" title="" href="#" data-original-title="Anderw">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-1.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="frank">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-2.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="Sara">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-3.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="Amy">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-4.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="Ema">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-5.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="Sophie">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-6.jpg')}}">  
+															</a>
+															<a data-toggle="tooltip" title="" href="#" data-original-title="Maria">
+																<img alt="" src="{{asset('dashboard/images/resources/userlist-7.jpg')}}">  
+															</a>  
+														  </div>
+													  </div>
+													</div>
+												</div>
+											</div>
+										</div>
+								</aside>
+							</div><!-- sidebar -->
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>	
+	</section>
+
+	@include('users.includes.dashboard.bottombar')
 
 </div>
 
 
-
-    @include('users.includes.dashboard.bottom-chatbox')
-    @include('users.includes.dashboard.bottom-post-preview-modal')
-    @include('users.includes.dashboard.bottom-create-status-modal')
-    @include('users.includes.dashboard.bottom-create-story-modal')
-
-    
-
+@include('users.includes.dashboard.side-panel')
 
 
 @endsection
+
 
 
 @section('scripts')
 
 <script>
 
+
 $(document).ready(function () {
-  // Global CSRF setup (Laravel)
+
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -771,25 +783,24 @@ $(document).ready(function () {
       }
     },
     submitHandler: function (form, event) {
-
-        console.log("******");
-
-
       event.preventDefault();
 
       $.ajax({
-        url: '/your-form-endpoint',
+        url: '{{url("dashboard/save-profile")}}',
         method: 'POST',
         data: $(form).serialize(),
+        beforeSend: function( xhr ) {
+        	$(form).addClass("form-submitting");
+        },
         success: function (res) {
           alert("Saved!");
+          $(form).removeClass("form-submitting");
+
         },
         error: function (xhr) {
           alert("Error: " + xhr.responseText);
         }
       });
-
-      return false;
     }
   });
 });

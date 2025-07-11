@@ -40,9 +40,14 @@ Route::middleware(['htmlMinifier'])->namespace('UserDashboard')->prefix('dashboa
 
 
 
-    Route::get('setting',[SettingController::class, 'index'])->name('user-setting');; 
-    Route::get('profile-information',[SettingController::class, 'profileInformation'])->name('profile-information');
-    Route::post('profile-information',[SettingController::class, 'profileInformationPost'])->name('profile-information');
+    Route::get('setting',[SettingController::class, 'index'])->name('user-setting');
+    Route::post('save-profile',[SettingController::class, 'saveProfile'])->name('save-profile');
+
+    /*Route::get('setting',[SettingController::class, 'index'])->name('user-setting');
+
+
+    Route::get('profile-information',[SettingController::class, 'profileInfo'])->name('profile-information');*/
+    Route::post('profile-information',[SettingController::class, 'profileInfoPost'])->name('profile-information');
 
 
     
