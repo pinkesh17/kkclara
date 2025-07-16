@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Helpers\OtpHelperController;
 
+use Illuminate\Support\Str;
+
 
 class RegisterController extends Controller
 {
@@ -59,7 +61,7 @@ class RegisterController extends Controller
 
 
     public function showRegistrationForm(){
-        return view('users.auth.register');
+        return view('auth.users.register');
     }
 
     public function register(Request $request){
@@ -110,7 +112,7 @@ class RegisterController extends Controller
         //$user_otp = $request->session()->only(['user_otp','_token']);
 
         if ($request->session()->has('phone')) {
-            return view('users.auth.otp', ['session_data'=>$session_data]);
+            return view('auth.users.otp', ['session_data'=>$session_data]);
         }else{
             return redirect()->route('register');
         }
@@ -122,7 +124,21 @@ class RegisterController extends Controller
 
         $this->otpValidator($request->all())->validate();
 
-        $input_otp = $request->post('otp');
+        $code_1 = $request->post('code_1');
+        $code_2 = $request->post('code_2');
+        $code_3 = $request->post('code_3');
+        $code_4 = $request->post('code_4');
+        $code_5 = $request->post('code_5');
+        $code_6 = $request->post('code_6');
+
+        $input_otp = $code_1.$code_2.$code_3.$code_4.$code_5.$code_6;
+
+   
+
+        
+
+
+
         $session_otp = $request->session()->get('user_otp');
 
         
@@ -183,6 +199,12 @@ class RegisterController extends Controller
 
 
         }else{
+            return redirect()->back()
+            ->withErrors([
+            'otp_error' => ['Incorrect OTP. Please try again'],
+        ]);
+
+
             echo "<p>OTP NOT MATCH ==== </p>";
         }
 
@@ -317,10 +339,10 @@ class RegisterController extends Controller
 
     protected function phoneValidator(array $data){
         return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:50'],
-            'last_name' => ['required', 'string', 'max:50'],
+            'first_name' => ['required', 'string', 'min:2', 'max:30'],
+            'last_name' => ['required', 'string', 'min:2', 'max:30'],
             'phone' => ['required', 'digits:10', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password' => ['required', 'string', 'min:6'],
         ],
         [
             // Custom messages for each rule
@@ -346,8 +368,12 @@ class RegisterController extends Controller
 
     protected function otpValidator(array $data){
         return Validator::make($data, [
-            'otp' => ['required', 'digits:6'],
-
+            'code_1' => ['required', 'digits:1'],
+            'code_2' => ['required', 'digits:1'],
+            'code_3' => ['required', 'digits:1'],
+            'code_4' => ['required', 'digits:1'],
+            'code_5' => ['required', 'digits:1'],
+            'code_6' => ['required', 'digits:1']
         ]);
     }
 

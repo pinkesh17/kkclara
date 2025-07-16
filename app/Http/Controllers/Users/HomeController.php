@@ -30,6 +30,11 @@ class HomeController extends Controller{
         return view('users.home');
     }
 
+    public function two(Request $request){
+
+        return view('auth.users.two');
+    }
+
 
 
     

@@ -46,7 +46,7 @@ class LoginController extends Controller
     }
 
     public function showLoginForm(){
-        return view('auth.login');
+        return view('auth.users.login');
     }
 
     public function login(Request $request){
@@ -147,5 +147,17 @@ class LoginController extends Controller
                     ? new JsonResponse([], 204)
                     : redirect()->intended($this->redirectPath());
     }
+
+
+    protected function sendFailedLoginResponse(Request $request){
+    return redirect()->back()
+        ->withInput($request->only($this->username(), 'remember'))
+        ->withErrors([
+            'login_failed' => ['The username or password is incorrect.'],
+            'additional_field' => 'additional_field',
+        ]);
+    }
+
+
 
 }

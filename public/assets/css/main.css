@@ -1,0 +1,84 @@
+.bg-gray-200{background-color: var(--bs-gray-200) !important;}
+.section-sm {padding: 60px 0;}
+.error-forms .invalid-feedback{display:block;}
+
+.bg-gray-200{background-color: var(--bs-gray-200) !important;}
+.section-sm {padding: 60px 0;}
+.error-forms .invalid-feedback{display:block;line-height:120%;}
+.error-forms .fm-spinner{margin:0px auto;display:none;}
+.error-forms.form-loader .fm-spinner{display:block;}
+.error-forms.form-loader .fm-button{display:none;}
+
+
+.flex-stack {
+    justify-content: space-between;
+    align-items: center;
+}
+input.otp_num{height: 54px !important;
+    width: 50px !important;
+    font-weight: 600;
+    text-align: center;
+    font-size: 24px !important;}
+.otp_num.not-invalid{border-color:#dc3545;background:none}
+
+
+
+.two-factor{max-width:450px;margin:0px auto;}
+
+
+header.nav-homepage-style.stricky{
+  background-color: #ffffff;
+  border-bottom: 1px solid #E9E9E9;
+  -webkit-box-shadow: 0px 5px 20px rgba(91, 187, 123, 0.15);
+  -moz-box-shadow: 0px 5px 20px rgba(91, 187, 123, 0.15);
+  -o-box-shadow: 0px 5px 20px rgba(91, 187, 123, 0.15);
+  box-shadow: 0px 5px 20px rgba(91, 187, 123, 0.15);
+  z-index: 9;
+  top: 0;
+}
+
+header.nav-homepage-style.stricky .ace-responsive-menu a {
+  color: var(--headings-color);
+  font-family: var(--title-font-family);
+  font-weight: 500;
+}
+header.nav-homepage-style.stricky .sidemenu-btn,
+header.nav-homepage-style.stricky .login-info,
+header.nav-homepage-style.stricky .btn-mega {
+  color: var(--headings-color);
+}
+header.nav-homepage-style.stricky .header-logo.logo1 {
+  display: none;
+}
+header.nav-homepage-style.stricky .header-logo.logo2 {
+  display: block;
+}
+header.nav-homepage-style.stricky .menu-btn,
+header.nav-homepage-style.stricky .btn-transparent2 {
+  border: 1px solid var(--headings-color);
+  color: var(--headings-color);
+}
+header.nav-homepage-style.stricky .menu-btn:hover {
+  background-color: #5BBB7B;
+  border: 1px solid #5BBB7B;
+}
+
+
+
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+
+

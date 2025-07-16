@@ -1,6 +1,7 @@
 (function($) {
     
     "use strict";
+    let _csrf = $('meta[name="csrf-token"]').attr('content');
     function preloaderLoad() {
         if($('.preloader').length){
             $('.preloader').delay(200).fadeOut(300);

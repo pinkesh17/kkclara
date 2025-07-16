@@ -40,6 +40,7 @@
 <link rel="stylesheet" href="{{asset('assets/css/ud-custom-spacing.css')}}">
 <!-- Responsive stylesheet -->
 <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+<link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
 
 @yield('stylesheet')
 
@@ -52,12 +53,25 @@
 <![endif]-->
 
 
-
 </head>
 
 <body>
 
-  @yield('layoutContent')
+  <div class="wrapper ovh">
+  <div class="preloader"></div>
+  
+    @include('includes/users/header-main')
+
+    <div class="body_content @yield('bodyClass')">
+      @yield('layoutContent')
+
+
+
+
+      @include('includes/users/footer-main')
+      <a class="scrollToHome" href="#"><i class="fas fa-angle-up"></i></a>
+    </div>
+  </div>
 
   
 
