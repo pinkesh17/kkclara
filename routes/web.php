@@ -21,6 +21,7 @@ Auth::routes();
 
 
 require __DIR__.'/authuser.php';
+require __DIR__.'/admin.php';
 
 
 /*

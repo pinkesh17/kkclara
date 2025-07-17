@@ -27,7 +27,7 @@ Route::middleware(['htmlMinifier'])->namespace('UserDashboard')->prefix('dashboa
 
 
     Route::middleware(['userSteps'])->group(function () {
-         Route::get('/',[DashboardController::class, 'index']);
+         Route::get('/',[DashboardController::class, 'index'])->name('dashboard');
     });
 
 

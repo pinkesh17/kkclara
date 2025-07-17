@@ -14,25 +14,25 @@
 <section class="our-login">
   <div class="container">
 
-
 {{-- 
+
   @if ($errors->any())
       <div class="alert alert-danger">
 
         <?php print_r($errors); ?>
-
 
           <ul>
               @foreach ($errors->all() as $error)
                   <li>{{ $error }}</li>
               @endforeach
           </ul>
-      <div class="alert alert-danger">
+      </div>
   @endif
-  --}}
+--}}
+ 
 
 
-    <form class="error-forms" method="POST" action="{{route('register')}}" autocomplete="off" novalidate>
+    <form class="error-forms" method="POST" action="{{route('login')}}" autocomplete="off" novalidate>
     @csrf
     <div class="row wow fadeInRight" data-wow-delay="300ms">
       <div class="col-xl-6 mx-auto">

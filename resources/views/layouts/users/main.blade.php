@@ -60,7 +60,7 @@
   <div class="wrapper ovh">
   <div class="preloader"></div>
   
-    @include('includes/users/header-main')
+    @include('includes.users.header-main')
 
     <div class="body_content @yield('bodyClass')">
       @yield('layoutContent')
@@ -68,7 +68,7 @@
 
 
 
-      @include('includes/users/footer-main')
+      @include('includes.users.footer-main')
       <a class="scrollToHome" href="#"><i class="fas fa-angle-up"></i></a>
     </div>
   </div>

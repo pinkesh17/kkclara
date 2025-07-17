@@ -151,7 +151,7 @@ class LoginController extends Controller
 
     protected function sendFailedLoginResponse(Request $request){
     return redirect()->back()
-        ->withInput($request->only($this->username(), 'remember'))
+        ->withInput()
         ->withErrors([
             'login_failed' => ['The username or password is incorrect.'],
             'additional_field' => 'additional_field',

@@ -15,22 +15,6 @@
   <div class="container">
 
 
-{{-- 
-  @if ($errors->any())
-      <div class="alert alert-danger">
-
-        <?php print_r($errors); ?>
-
-
-          <ul>
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-          </ul>
-      <div class="alert alert-danger">
-  @endif
-  --}}
-
   <div class="two-factor">
 
     <form id="two_factor_form" class="error-forms" method="POST" action="{{route('otp')}}" autocomplete="off" novalidate>
@@ -50,26 +34,13 @@
               </div> 
           </div>
 
-          
-
-          <p>
-            <?php
-
-           // print_r($session_data);
-            ?>
-           
-          </p>
-
           @error('otp_error')
           <div class="alert alert-danger">{{ $message }}</div>
           @enderror
 
 
 
-          
-
           <div class="fw-bold text-start text-gray-900 fs-6 mb-1 ms-1">Type your 6 digit security code</div>
-
 
           <div class="d-flex flex-wrap flex-stack">                      
             <input type="text" name="code_1" maxlength="1" class="form-control otp_num" value="">
@@ -82,15 +53,13 @@
 
 
 
-
-
           <div class="d-grid mt20 mb20">
-            <button id="two_factor_submit" class="ud-btn btn-thm" type="submit">Log In <i class="fal fa-arrow-right-long"></i></button>
+            <button id="two_factor_submit" class="ud-btn btn-thm" type="submit">Send <i class="fal fa-arrow-right-long"></i></button>
           </div>
 
 
           <div class="d-md-flex justify-content-between">
-            <p class="text">Change phone number? <a href="{{route('register')}}" class="text-thm">Update</a></p>
+            <p class="text">Change Mobile Number? <a href="{{route('register')}}" class="text-thm">Update</a></p>
           </div>
 
         </div>

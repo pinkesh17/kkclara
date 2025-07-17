@@ -1,13 +1,28 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 
 
 
+use App\Http\Controllers\Admin\DashboardController;
+
+
+Route::namespace('Admin')->prefix('webadmin')->group(function () {
+
+
+    /*Route::middleware(['userSteps'])->group(function () {
+         Route::get('/',[DashboardController::class, 'index']);
+    });*/
 
 
 
+    Route::get('/',[DashboardController::class, 'index'])->name('webadmin');
 
 
+       
+
+
+});
 
 
 

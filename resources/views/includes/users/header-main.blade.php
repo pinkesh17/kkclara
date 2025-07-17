@@ -615,10 +615,64 @@
               </li>
               <li> <a class="list-item" href="page-contact.html">Contact</a></li>
             </ul>
+
+          {{-- 
+
             <a class="login-info bdrl1 pl15-lg pl30" data-bs-toggle="modal" href="#exampleModalToggle" role="button"><span class="flaticon-loupe"></span></a>
             <a class="login-info mx15-lg mx30" href="page-become-seller.html"><span class="d-none d-xl-inline-block">Become a</span> Seller</a>
             <a class="login-info mr15-lg mr30" href="page-login.html">Sign in</a>
-            <a class="ud-btn btn-white add-joining" href="page-register.html">Join</a>
+
+          --}}
+
+
+
+            @guest
+              
+                  <a class="ud-btn btn-home3 add-joining" href="{{route('register')}}">Join</a>
+             
+            @else
+
+            <li class="user_setting">
+              <div class="dropdown">
+                <a class="btn" href="#" data-bs-toggle="dropdown">
+                  <img src="{{asset('assets/images/resource/user.png')}}" alt=""> 
+                </a>
+                <div class="dropdown-menu">
+                  <div class="user_setting_content">
+                    <a class="dropdown-item" href="{{route('dashboard')}}"><i class="flaticon-home mr10"></i>Dashboard</a>
+
+                    @if(auth()->user()->role > 30)
+                        <a class="dropdown-item" href="{{route('webadmin')}}"><i class="flaticon-developer mr10"></i>Admin</a>
+                    @endif
+
+
+
+                    {{-- 
+                     <a class="dropdown-item" href="page-dashboard-proposal.html"><i class="flaticon-document mr10"></i>My Proposals</a>
+                    <a class="dropdown-item" href="page-dashboard-save.html"><i class="flaticon-like mr10"></i>Saved</a>
+                    <a class="dropdown-item" href="page-dashboard-message.html"><i class="flaticon-chat mr10"></i>Message</a>
+                    <a class="dropdown-item" href="page-dashboard-reviews.html"><i class="flaticon-review-1 mr10"></i>Reviews</a>
+                    <a class="dropdown-item" href="page-dashboard-invoice.html"><i class="flaticon-receipt mr10"></i>Invoice</a>
+                    <a class="dropdown-item" href="page-dashboard-payouts.html"><i class="flaticon-dollar mr10"></i>Payouts</a>
+                    <a class="dropdown-item" href="page-dashboard-statement.html"><i class="flaticon-web mr10"></i>Statements</a>
+                    <p class="fz15 fw400 ff-heading mt30 pl30">Organize and Manage</p>
+                    <a class="dropdown-item" href="page-dashboard-manage-service.html"><i class="flaticon-presentation mr10"></i>Manage Services</a>
+                    <a class="dropdown-item" href="page-dashboard-manage-jobs.html"><i class="flaticon-briefcase mr10"></i>Manage Jobs</a>
+                    <a class="dropdown-item" href="page-dashboard-favorites.html"><i class="flaticon-content mr10"></i>Manage Project</a>
+                    <p class="fz15 fw400 ff-heading mt30 pl30">Account</p>
+                    --}}
+                    <a class="dropdown-item" href="page-dashboard-profile.html"><i class="flaticon-photo mr10"></i>My Profile</a>
+
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="flaticon-logout mr10"></i>Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+                  </div>
+                </div>
+              </div>
+            </li>
+            @endguest
+
+
+
           </div>
         </div>
       </div>
