@@ -1,75 +1,83 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
-
+@section('variable_section')
+      @php
+         $activeMenu = 0;
+         $activeMenuSub = 0;
+      @endphp
+  @show
 <title>@yield('title')</title>
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link rel="canonical" href="" />
 
-<link rel="icon" type="image/png" href="{{asset('assets/admin/images/favicon.png')}}/">
+<link rel="icon" type="image/png" href="{{asset('admin/assets/images/favicon.png')}}/">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <meta name="robots" content="noindex, nofollow" />
 
-<link rel="stylesheet" href="{{asset('assets/admin/css/sidebar-menu.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/simplebar.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/apexcharts.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/prism.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/rangeslider.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/quill.snow.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/google-icon.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/remixicon.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/swiper-bundle.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/fullcalendar.main.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/jsvectormap.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/lightpick.css')}}">
-<link rel="stylesheet" href="{{asset('assets/admin/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/sidebar-menu.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/simplebar.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/apexcharts.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/prism.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/rangeslider.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/quill.snow.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/google-icon.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/remixicon.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/swiper-bundle.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/fullcalendar.main.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/jsvectormap.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/lightpick.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
 
 @yield('stylesheet')
 
 </head>
 
-<body>
-<div class="wrapper">
-  <div class="preloader"></div>
+ <body class="boxed-size">
 
-  @include('includes.dashboard.header-main')
+  @include('includes.admin.sidebar-left')
 
-  <div class="dashboard_content_wrapper">
-    <div class="dashboard dashboard_wrapper pr30 pr0-xl">
+  <div class="container-fluid">
+    <div class="main-content d-flex flex-column">
 
-      @include('includes.dashboard.sidebar-left')
-
+      @include('includes.admin.header-main')
 
       @yield('layoutContent')
+
+      @include('includes.admin.footer-main')
+
     </div>
   </div>
 
-  <a class="scrollToHome" href="#"><i class="fas fa-angle-up"></i></a>
-</div>
+  @include('includes.admin.theme-setting')
 
 
 
 
-
-
-    <script src="{{asset('assets/js/jquery-3.6.4.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery-migrate-3.0.0.min.js')}}"></script>
-    <script src="{{asset('assets/js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.mmenu.all.js')}}"></script>
-    <script src="{{asset('assets/js/ace-responsive-menu.js')}}"></script>
-    <script src="{{asset('assets/js/jquery-scrolltofixed-min.js')}}"></script>
-    <script src="{{asset('assets/js/wow.min.js')}}"></script>
-    <script src="{{asset('assets/js/owl.js')}}"></script>
-    <script src="{{asset('assets/js/parallax.js')}}"></script>
-    <!-- Custom script for all pages -->
-    <script src="{{asset('assets/js/script.js')}}"></script>
-
-
+<script src="{{asset('admin/assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/sidebar-menu.js')}}"></script>
+<script src="{{asset('admin/assets/js/dragdrop.js')}}"></script>
+<script src="{{asset('admin/assets/js/rangeslider.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/quill.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/data-table.js')}}"></script>
+<script src="{{asset('admin/assets/js/prism.js')}}"></script>
+<script src="{{asset('admin/assets/js/clipboard.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/feather.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/simplebar.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/apexcharts.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/echarts.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/swiper-bundle.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/fullcalendar.main.js')}}"></script>
+<script src="{{asset('admin/assets/js/jsvectormap.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/world-merc.js')}}"></script>
+<script src="{{asset('admin/assets/js/moment.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/lightpick.js')}}"></script>
+<script src="{{asset('admin/assets/js/custom/apexcharts.js')}}"></script>
+<script src="{{asset('admin/assets/js/custom/echarts.js')}}"></script>
+<script src="{{asset('admin/assets/js/custom/custom.js')}}"></script>
     @yield('scripts')
 
 

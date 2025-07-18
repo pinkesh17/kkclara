@@ -15,8 +15,8 @@
 <!-- Start Sidebar Area -->
 <div class="sidebar-area" id="sidebar-area">
     <div class="logo position-relative">
-        <a href="index.html" class="d-block text-decoration-none position-relative">
-            <img src="assets/images/logo-icon.png" alt="logo-icon">
+        <a href="{{route('webadmin')}}" class="d-block text-decoration-none position-relative">
+            <img src="{{asset('admin/assets/images/logo-icon.png')}}" alt="logo-icon">
             <span class="logo-text fw-bold text-dark">Trezo</span>
         </a>
         <button class="sidebar-burger-menu bg-transparent p-0 border-0 opacity-0 z-n1 position-absolute top-50 end-0 translate-middle-y" id="sidebar-burger-menu">
@@ -29,6 +29,15 @@
             <li class="menu-title small text-uppercase">
                 <span class="menu-title-text">MAIN</span>
             </li>
+
+
+            <li class="menu-item @if($activeMenu===1) open @endif">
+                <a href="{{route('webadmin')}}" class="menu-link @if($activeMenu===1) active @endif">
+                    <span class="material-symbols-outlined menu-icon">dashboard</span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
             <li class="menu-item open">
                 <a href="javascript:void(0);" class="menu-link menu-toggle active">
                     <span class="material-symbols-outlined menu-icon">dashboard</span>

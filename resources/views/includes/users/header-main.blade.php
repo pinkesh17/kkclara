@@ -641,7 +641,7 @@
                   <div class="user_setting_content">
                     <a class="dropdown-item" href="{{route('dashboard')}}"><i class="flaticon-home mr10"></i>Dashboard</a>
 
-                    @if(auth()->user()->role > 30)
+                    @if(auth()->user()->role > 20)
                         <a class="dropdown-item" href="{{route('webadmin')}}"><i class="flaticon-developer mr10"></i>Admin</a>
                     @endif
 
