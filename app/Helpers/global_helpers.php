@@ -36,3 +36,12 @@ if (!function_exists('fullDateFormate2')) {
         return $d = Carbon::parse($d)->format('d-m-Y H:i:s');
     }
 }
+
+if (!function_exists('randomOTP')) {
+    function randomOTP() {
+        $six_digit_random_number = random_int(101010, 999999);
+        return $six_digit_random_number;
+    }
+}
+
+

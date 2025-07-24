@@ -29,3 +29,58 @@
 .avatar-n { background-color: #95a5a6; }
 .avatar-o { background-color: #f39c12; }
 .avatar-p { background-color: #d35400; }
+
+
+.error-forms .input-error{
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: var(--bs-form-invalid-color);
+}
+.error-forms input[type='text'].input-error{
+    border-color: var(--bs-form-invalid-border-color);
+}
+.select2-t1 .select2-container--default .select2-selection--single {
+  height: 50px;
+  border: 1px solid #D5D9E2;
+  padding: 0px 10px;
+  display: flex;
+  align-items: center;
+  transition: all ease 0.5s;
+}
+.select2-search--dropdown .select2-search__field{padding: 10px 4px;}
+.select2-t1 .select2-container--default .select2-selection--single .select2-selection__arrow{height:46px;}
+
+
+.datepicker table tr td, .datepicker table tr th{width:36px;height:36px;}
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover{color:#b9b9b9;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+

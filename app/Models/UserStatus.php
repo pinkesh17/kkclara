@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models\Admin;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserPrefix extends Model
+class UserStatus extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class UserPrefix extends Model
      *
      * @var string
      */
-    protected $table = 'user_prefix';
+    protected $table = 'user_status';
 
     /**
      * The primary key for the model.
@@ -37,6 +37,6 @@ class UserPrefix extends Model
      */
     protected $fillable = [
         'id',
-        'prefix',
+        'status',
     ];
 }

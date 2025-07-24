@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 07, 2025 at 02:26 PM
--- Server version: 8.0.42-0ubuntu0.24.04.1
--- PHP Version: 8.2.12
+-- Host: localhost
+-- Generation Time: Jul 24, 2025 at 10:40 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,19 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `addresses` (
-  `address_id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED NOT NULL,
-  `country` tinyint UNSIGNED NOT NULL,
-  `state` tinyint UNSIGNED NOT NULL,
-  `district` mediumint UNSIGNED NOT NULL,
-  `block` int UNSIGNED NOT NULL,
-  `panchayat` int UNSIGNED NOT NULL,
-  `city` int UNSIGNED NOT NULL,
-  `postal_code` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address_line1` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address_line2` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `landmark` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` tinyint NOT NULL,
+  `address_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `country` tinyint(4) UNSIGNED NOT NULL,
+  `state` tinyint(4) UNSIGNED NOT NULL,
+  `district` mediumint(9) UNSIGNED NOT NULL,
+  `block` int(11) UNSIGNED NOT NULL,
+  `panchayat` int(11) UNSIGNED NOT NULL,
+  `city` int(11) UNSIGNED NOT NULL,
+  `postal_code` varchar(10) NOT NULL,
+  `address_line1` varchar(300) NOT NULL,
+  `address_line2` varchar(300) NOT NULL,
+  `landmark` varchar(300) NOT NULL,
+  `type` tinyint(4) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -52,9 +52,9 @@ CREATE TABLE `addresses` (
 --
 
 CREATE TABLE `cache` (
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `expiration` int NOT NULL
+  `key` varchar(255) NOT NULL,
+  `value` mediumtext NOT NULL,
+  `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -64,9 +64,9 @@ CREATE TABLE `cache` (
 --
 
 CREATE TABLE `cache_locks` (
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `owner` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `expiration` int NOT NULL
+  `key` varchar(255) NOT NULL,
+  `owner` varchar(255) NOT NULL,
+  `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -76,13 +76,13 @@ CREATE TABLE `cache_locks` (
 --
 
 CREATE TABLE `failed_jobs` (
-  `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -92,7 +92,7 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `flights` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -104,8 +104,8 @@ CREATE TABLE `flights` (
 --
 
 CREATE TABLE `info_gender` (
-  `gender_id` tinyint NOT NULL,
-  `gender` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
+  `gender_id` tinyint(4) NOT NULL,
+  `gender` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -123,9 +123,9 @@ INSERT INTO `info_gender` (`gender_id`, `gender`) VALUES
 --
 
 CREATE TABLE `info_goal` (
-  `goal_id` tinyint NOT NULL,
-  `goal` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `goal_sub` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+  `goal_id` tinyint(4) NOT NULL,
+  `goal` varchar(20) NOT NULL,
+  `goal_sub` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -146,13 +146,13 @@ INSERT INTO `info_goal` (`goal_id`, `goal`, `goal_sub`) VALUES
 --
 
 CREATE TABLE `jobs` (
-  `id` bigint UNSIGNED NOT NULL,
-  `queue` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `attempts` tinyint UNSIGNED NOT NULL,
-  `reserved_at` int UNSIGNED DEFAULT NULL,
-  `available_at` int UNSIGNED NOT NULL,
-  `created_at` int UNSIGNED NOT NULL
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -162,16 +162,16 @@ CREATE TABLE `jobs` (
 --
 
 CREATE TABLE `job_batches` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_jobs` int NOT NULL,
-  `pending_jobs` int NOT NULL,
-  `failed_jobs` int NOT NULL,
-  `failed_job_ids` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `options` mediumtext COLLATE utf8mb4_unicode_ci,
-  `cancelled_at` int DEFAULT NULL,
-  `created_at` int NOT NULL,
-  `finished_at` int DEFAULT NULL
+  `id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `total_jobs` int(11) NOT NULL,
+  `pending_jobs` int(11) NOT NULL,
+  `failed_jobs` int(11) NOT NULL,
+  `failed_job_ids` longtext NOT NULL,
+  `options` mediumtext DEFAULT NULL,
+  `cancelled_at` int(11) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `finished_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -181,14 +181,14 @@ CREATE TABLE `job_batches` (
 --
 
 CREATE TABLE `location_address` (
-  `address_id` int NOT NULL,
-  `city_id` mediumint NOT NULL,
-  `manager_id` smallint NOT NULL,
-  `address1` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address2` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `landmark` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `latitude` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `longitude` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `address_id` int(11) NOT NULL,
+  `city_id` mediumint(9) NOT NULL,
+  `manager_id` smallint(6) NOT NULL,
+  `address1` varchar(255) NOT NULL,
+  `address2` varchar(255) NOT NULL,
+  `landmark` varchar(255) NOT NULL,
+  `latitude` varchar(20) NOT NULL,
+  `longitude` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -198,10 +198,10 @@ CREATE TABLE `location_address` (
 --
 
 CREATE TABLE `location_block` (
-  `block_id` int UNSIGNED NOT NULL,
-  `district_id` mediumint UNSIGNED NOT NULL,
-  `block_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city_url` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `block_id` int(11) UNSIGNED NOT NULL,
+  `district_id` mediumint(8) UNSIGNED NOT NULL,
+  `block_name` varchar(100) NOT NULL,
+  `city_url` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -226,10 +226,10 @@ INSERT INTO `location_block` (`block_id`, `district_id`, `block_name`, `city_url
 --
 
 CREATE TABLE `location_districts` (
-  `district_id` mediumint UNSIGNED NOT NULL,
-  `state_id` mediumint UNSIGNED NOT NULL,
-  `district_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `district_url` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `district_id` mediumint(8) UNSIGNED NOT NULL,
+  `state_id` mediumint(8) UNSIGNED NOT NULL,
+  `district_name` varchar(100) NOT NULL,
+  `district_url` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -964,13 +964,13 @@ INSERT INTO `location_districts` (`district_id`, `state_id`, `district_name`, `d
 --
 
 CREATE TABLE `location_localites` (
-  `locality_id` int NOT NULL,
-  `city_id` smallint NOT NULL,
-  `district_id` smallint NOT NULL,
-  `locality_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `locality_url` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `locality_lat` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `locality_long` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `locality_id` int(11) NOT NULL,
+  `city_id` smallint(6) NOT NULL,
+  `district_id` smallint(6) NOT NULL,
+  `locality_name` varchar(100) NOT NULL,
+  `locality_url` varchar(100) NOT NULL,
+  `locality_lat` varchar(20) NOT NULL,
+  `locality_long` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -980,10 +980,10 @@ CREATE TABLE `location_localites` (
 --
 
 CREATE TABLE `location_states` (
-  `state_id` mediumint UNSIGNED NOT NULL,
-  `state_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `state_url` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `org_code` int NOT NULL
+  `state_id` mediumint(9) UNSIGNED NOT NULL,
+  `state_name` varchar(100) NOT NULL,
+  `state_url` varchar(100) NOT NULL,
+  `org_code` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1035,9 +1035,9 @@ INSERT INTO `location_states` (`state_id`, `state_name`, `state_url`, `org_code`
 --
 
 CREATE TABLE `migrations` (
-  `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int NOT NULL
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1059,8 +1059,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1071,12 +1071,12 @@ CREATE TABLE `password_reset_tokens` (
 --
 
 CREATE TABLE `personal_access_tokens` (
-  `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1090,14 +1090,14 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 CREATE TABLE `posts` (
-  `post_id` bigint NOT NULL,
-  `user_id` bigint NOT NULL,
-  `group_id` bigint NOT NULL,
-  `post_type` smallint NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `privacy` tinyint NOT NULL,
+  `post_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `group_id` bigint(20) NOT NULL,
+  `post_type` smallint(6) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `privacy` tinyint(4) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1109,8 +1109,8 @@ CREATE TABLE `posts` (
 --
 
 CREATE TABLE `post_privacy` (
-  `privacy_id` tinyint NOT NULL,
-  `privacy_type` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
+  `privacy_id` tinyint(4) NOT NULL,
+  `privacy_type` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1130,8 +1130,8 @@ INSERT INTO `post_privacy` (`privacy_id`, `privacy_type`) VALUES
 --
 
 CREATE TABLE `post_type` (
-  `post_type_id` tinyint NOT NULL,
-  `post_type_name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL
+  `post_type_id` tinyint(4) NOT NULL,
+  `post_type_name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1153,12 +1153,12 @@ INSERT INTO `post_type` (`post_type_id`, `post_type_name`) VALUES
 --
 
 CREATE TABLE `sessions` (
-  `id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` bigint UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_agent` text COLLATE utf8mb4_unicode_ci,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `last_activity` int NOT NULL
+  `id` varchar(255) NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` longtext NOT NULL,
+  `last_activity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1166,9 +1166,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('cSAqXNYl9XRYKT98BhaET4SrBb2mTrKVAKDid20i', NULL, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibmJObzFvMnJlaG5iQjd4NTA3TFdEYTRyakJTQm9RQUNJZVhvb3FmMiI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czo1NDoiaHR0cDovL2xvY2FsaG9zdC9ra2NsYXJhL2Rhc2hib2FyZC9wcm9maWxlLWluZm9ybWF0aW9uIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly9sb2NhbGhvc3Qva2tjbGFyYS9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1751828466),
-('qvwCYnNYBRc9ZaDqczT6s7lqZSESWr8yREoCXfwe', 1234567916, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiYzFIZk5jUUpFMFlSVkFoNUt2NDh1bExXcUhRdTFMeG15TDZSR0pxMCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTQ6Imh0dHA6Ly9sb2NhbGhvc3Qva2tjbGFyYS9kYXNoYm9hcmQvcHJvZmlsZS1pbmZvcm1hdGlvbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjEyMzQ1Njc5MTY7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzUxODIxMDQ5O319', 1751830167),
-('RzKbR6Ux3KzNYvoMd36OJs8B5kL1bt3joB4tW83d', 1234567916, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTzQyaWlQMWtjRGdlRHNyaEhlR096U3M5ZXJlQzBpTDFLbnljd2tWRCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDU6Imh0dHA6Ly9sb2NhbGhvc3Qva2tjbGFyYS9kYXNoYm9hcmQvbXktcHJvZmlsZSI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjEyMzQ1Njc5MTY7czo0OiJhdXRoIjthOjE6e3M6MjE6InBhc3N3b3JkX2NvbmZpcm1lZF9hdCI7aToxNzUxODc5NjkzO319', 1751885606);
+('v6chprDtYe5BL7zPHKtCLQzTBAQVTAUNZo13iv3h', 1234567916, '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiRjJCbm52WEJJbDBCdXJFSHNucml5eEtBaHFZNnZTY0wya0U2UWkyOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly9sb2NhbGhvc3Qva2tjbGFyYS93ZWJhZG1pbi91c2VycyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxMjM0NTY3OTE2O3M6NDoiYXV0aCI7YToxOntzOjIxOiJwYXNzd29yZF9jb25maXJtZWRfYXQiO2k6MTc1MzM4MTYwMjt9fQ==', 1753389620);
 
 -- --------------------------------------------------------
 
@@ -1177,25 +1175,25 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 --
 
 CREATE TABLE `users` (
-  `id` bigint UNSIGNED NOT NULL,
-  `is_primary` tinyint NOT NULL DEFAULT '0',
-  `prefix` tinyint DEFAULT NULL,
-  `username` bigint DEFAULT NULL,
-  `first_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_name` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(16) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `is_primary` tinyint(4) NOT NULL DEFAULT 0,
+  `prefix` tinyint(4) DEFAULT NULL,
+  `username` bigint(20) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `phone` varchar(16) DEFAULT NULL,
   `phone_verified_at` timestamp NULL DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
-  `gender` tinyint DEFAULT NULL,
-  `profile_picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `bio` text COLLATE utf8mb4_unicode_ci,
-  `steps` tinyint NOT NULL DEFAULT '0',
-  `role` tinyint NOT NULL DEFAULT '0',
-  `status` tinyint NOT NULL DEFAULT '0',
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gender` tinyint(4) DEFAULT NULL,
+  `profile_picture` varchar(255) DEFAULT NULL,
+  `bio` text DEFAULT NULL,
+  `steps` tinyint(4) NOT NULL DEFAULT 0,
+  `role` tinyint(4) NOT NULL DEFAULT 0,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1205,14 +1203,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `is_primary`, `prefix`, `username`, `first_name`, `last_name`, `phone`, `phone_verified_at`, `email`, `email_verified_at`, `password`, `date_of_birth`, `gender`, `profile_picture`, `bio`, `steps`, `role`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 0, 0, NULL, 'Pinkesh Kumar', '', NULL, NULL, 'pinkeshku@gmail.com', NULL, '$2y$12$2to9ezuQsYDVXTE0Gy1.pue2K1Q4iGqYJihSVR9g26aNF/UHYogb2', '2024-11-02', 0, '', '0', 0, 0, 0, NULL, '2025-07-01 03:44:22', '2025-07-01 03:44:22'),
+(1, 0, 0, NULL, 'Pinkesh Kumar', '', NULL, NULL, 'pinkeshku@gmail.com', NULL, '$2y$12$2to9ezuQsYDVXTE0Gy1.pue2K1Q4iGqYJihSVR9g26aNF/UHYogb2', '2024-11-02', 0, '', '0', 0, 31, 0, NULL, '2025-07-01 03:44:22', '2025-07-01 03:44:22'),
 (7, 0, 0, NULL, 'Pinkesh Kumarert', '', '0987678765', NULL, 'pinkeshku1p@gmail.com', NULL, '$2y$12$dl8UCwXOltdB8Dk/KRVZ6uIDMavc7klPF/v3CHjKbuHKeg0IyngFi', '0000-00-00', 0, '', '0', 0, 1, 1, NULL, '2025-07-02 12:49:12', '2025-07-02 12:49:12'),
 (1234567900, 0, 0, NULL, NULL, '', '8851394265', '2025-07-03 09:01:37', NULL, NULL, '$2y$12$6lZU5rCEv1J36X3OxjHasu.rr3hIARw.ZKuEZeWEHP2SaEXZsMwFy', '0000-00-00', 0, '', '0', 0, 1, 1, NULL, '2025-07-03 09:01:37', '2025-07-03 09:01:37'),
 (1234567901, 0, 0, NULL, NULL, '', '8851394265', '2025-07-03 09:03:21', NULL, NULL, '$2y$12$S0oSxEEctBQRQ7Tyfx2cL.U541R8lv7/4bXQmloVxE9ATtNFjvfL2', '0000-00-00', 0, '', '0', 0, 1, 1, NULL, '2025-07-03 09:03:21', '2025-07-03 09:03:21'),
 (1234567911, 0, 0, 1234567911, '402698', '', '1122334455', '2025-07-05 14:21:40', NULL, NULL, '$2y$12$SiF.n9oJtoMtmFcSmIcPturCtunK.260notqAnspjzf3GiVPvMwJ6', '0000-00-00', 0, '', '0', 0, 1, 1, NULL, '2025-07-05 14:21:41', '2025-07-05 14:21:41'),
 (1234567914, 1, 0, 1234567914, 'Pert', '', '9953138204', '2025-07-05 19:43:42', NULL, NULL, '$2y$12$cnDRKkkffoqYHKmD4l.cR.p16Fsy1oaJtJvu2ofikWkhm/hi8zuCi', NULL, NULL, NULL, NULL, 0, 1, 1, NULL, '2025-07-05 19:43:43', '2025-07-05 19:43:43'),
 (1234567915, 1, 0, 1234567915, 'Aman', '', '9953138210', '2025-07-06 08:14:41', NULL, NULL, '$2y$12$6QQ6D/njn3jL.Xh.08yLdeIfD9f/u/rdbTQxjXpabTTGbfSOHsijC', NULL, NULL, NULL, NULL, 0, 1, 1, NULL, '2025-07-06 08:14:41', '2025-07-06 08:14:41'),
-(1234567916, 1, 11, 1234567916, 'Pinko', 'Ji', '9953122222', '2025-07-06 11:01:29', NULL, NULL, '$2y$12$S4G7m7KCPVAygmfEzaRcg.AeLGQ1wNgbEeH0DEnQN3p0VE6XnYToa', '2009-01-01', 1, NULL, NULL, 0, 1, 1, NULL, '2025-07-06 11:01:29', '2025-07-06 19:29:27');
+(1234567916, 1, 11, 1234567916, 'Pinko', 'Ji', '9953122222', '2025-07-06 11:01:29', NULL, NULL, '$2y$12$S4G7m7KCPVAygmfEzaRcg.AeLGQ1wNgbEeH0DEnQN3p0VE6XnYToa', '2009-01-01', 1, NULL, NULL, 0, 31, 1, NULL, '2025-07-06 11:01:29', '2025-07-06 19:29:27'),
+(1234567917, 1, NULL, 1234567917, 'Pinkesh', 'Kumar', '9898234567', '2025-07-16 21:25:50', NULL, NULL, '$2y$12$DZV3SmAOe99yptBWbo6EJOIXJFGr7zEtGIHDPGDoTK8oELQaZYyXi', NULL, NULL, NULL, NULL, 0, 31, 1, NULL, '2025-07-16 21:25:50', '2025-07-16 21:25:50'),
+(1234567918, 1, NULL, NULL, 'Abhay', 'Fr', NULL, NULL, NULL, NULL, '$2y$12$C7ynpbNkxSusPcfQDW086esrLGlwNMjRQoI/.YpOraGmodoL1goJC', NULL, NULL, NULL, NULL, 0, 1, 1, NULL, '2025-07-24 20:32:14', '2025-07-24 20:32:14'),
+(1234567919, 1, NULL, 1234567919, 'Final Gt', 'Rty', '580098', NULL, NULL, NULL, '$2y$12$5mcUKcISTYJE6MKxAbEww.kyrmsDUYzE9AJYg6WG/Mts1HIAtSo.S', NULL, NULL, NULL, NULL, 0, 1, 2, NULL, '2025-07-24 20:34:15', '2025-07-24 20:34:15'),
+(1234567920, 1, NULL, 1234567920, 'Yur', 'hj', '772662', NULL, NULL, NULL, '$2y$12$wgwL/5V0hlrlEz1JCMGIgutL9I.1qKmlpfXA1cwsjU2gcRAQ7aQ4G', NULL, NULL, NULL, NULL, 0, 1, 1, NULL, '2025-07-24 20:37:39', '2025-07-24 20:37:39'),
+(1234567921, 1, NULL, 1234567921, 'Der', 'We', '650154', NULL, NULL, NULL, '$2y$12$nZFsyQ.L3hVo4wOct6AlJuxyBVmvqG6RUbH5ca4lCWi.QPgOEa3DG', NULL, NULL, NULL, NULL, 0, 1, 1, NULL, '2025-07-24 20:38:27', '2025-07-24 20:38:27'),
+(1234567922, 1, 10, 1234567922, 'Ser', 'Final', '618408', NULL, NULL, NULL, '$2y$12$1wYYP9.RmKQxvJRNurpYbe1xoU2PnT0a44Uv8B/vVlhU52aawXGwS', NULL, NULL, NULL, NULL, 0, 1, 0, NULL, '2025-07-24 20:40:04', '2025-07-24 20:40:04');
 
 -- --------------------------------------------------------
 
@@ -1221,9 +1225,9 @@ INSERT INTO `users` (`id`, `is_primary`, `prefix`, `username`, `first_name`, `la
 --
 
 CREATE TABLE `user_following` (
-  `id` bigint UNSIGNED NOT NULL,
-  `follower_id` bigint UNSIGNED NOT NULL,
-  `following_id` bigint UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `follower_id` bigint(20) UNSIGNED NOT NULL,
+  `following_id` bigint(20) UNSIGNED NOT NULL,
   `followed_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1234,10 +1238,10 @@ CREATE TABLE `user_following` (
 --
 
 CREATE TABLE `user_friends` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED DEFAULT NULL,
-  `friend_id` bigint UNSIGNED DEFAULT NULL,
-  `status` enum('pending','accepted','rejected') COLLATE utf8mb4_unicode_ci DEFAULT 'pending',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `friend_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `status` enum('pending','accepted','rejected') DEFAULT 'pending',
   `requested_at` datetime NOT NULL,
   `accepted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1249,8 +1253,8 @@ CREATE TABLE `user_friends` (
 --
 
 CREATE TABLE `user_gender` (
-  `gender_id` tinyint NOT NULL,
-  `gender` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
+  `gender_id` tinyint(4) NOT NULL,
+  `gender` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1268,11 +1272,11 @@ INSERT INTO `user_gender` (`gender_id`, `gender`) VALUES
 --
 
 CREATE TABLE `user_groups` (
-  `id` bigint UNSIGNED NOT NULL,
-  `created_by` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_by` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1282,10 +1286,10 @@ CREATE TABLE `user_groups` (
 --
 
 CREATE TABLE `user_group_members` (
-  `id` bigint UNSIGNED NOT NULL,
-  `group_id` bigint UNSIGNED DEFAULT NULL,
-  `user_id` bigint UNSIGNED DEFAULT NULL,
-  `role` enum('member','admin','moderator') COLLATE utf8mb4_unicode_ci DEFAULT 'member',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `group_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `role` enum('member','admin','moderator') DEFAULT 'member',
   `joined_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1296,14 +1300,14 @@ CREATE TABLE `user_group_members` (
 --
 
 CREATE TABLE `user_jobs` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED DEFAULT NULL,
-  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `job_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `company_name` varchar(255) DEFAULT NULL,
+  `job_title` varchar(255) DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
-  `is_current` tinyint(1) DEFAULT '0',
-  `description` text COLLATE utf8mb4_unicode_ci,
+  `is_current` tinyint(1) DEFAULT 0,
+  `description` text DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1314,18 +1318,18 @@ CREATE TABLE `user_jobs` (
 --
 
 CREATE TABLE `user_matrimony_profiles` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED DEFAULT NULL,
-  `marital_status` enum('single','divorced','widowed') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `religion` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `caste` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `height_cm` int DEFAULT NULL,
-  `education` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `occupation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `income` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `about_yourself` text COLLATE utf8mb4_unicode_ci,
-  `preferences` text COLLATE utf8mb4_unicode_ci,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `marital_status` enum('single','divorced','widowed') DEFAULT NULL,
+  `religion` varchar(100) DEFAULT NULL,
+  `caste` varchar(100) DEFAULT NULL,
+  `height_cm` int(11) DEFAULT NULL,
+  `education` varchar(255) DEFAULT NULL,
+  `occupation` varchar(255) DEFAULT NULL,
+  `income` varchar(100) DEFAULT NULL,
+  `about_yourself` text DEFAULT NULL,
+  `preferences` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1335,12 +1339,12 @@ CREATE TABLE `user_matrimony_profiles` (
 --
 
 CREATE TABLE `user_notifications` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `message` text COLLATE utf8mb4_unicode_ci,
-  `type` enum('info','warning','success','alert') COLLATE utf8mb4_unicode_ci DEFAULT 'info',
-  `is_read` tinyint(1) DEFAULT '0',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `type` enum('info','warning','success','alert') DEFAULT 'info',
+  `is_read` tinyint(1) DEFAULT 0,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1351,8 +1355,8 @@ CREATE TABLE `user_notifications` (
 --
 
 CREATE TABLE `user_prefix` (
-  `id` tinyint NOT NULL,
-  `prefix` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` tinyint(4) NOT NULL,
+  `prefix` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1380,11 +1384,11 @@ INSERT INTO `user_prefix` (`id`, `prefix`) VALUES
 --
 
 CREATE TABLE `user_relatives` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED DEFAULT NULL,
-  `relative_id` bigint UNSIGNED DEFAULT NULL,
-  `relationship` enum('father','mother','brother','sister','spouse','child','other') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `relative_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `relationship` enum('father','mother','brother','sister','spouse','child','other') DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -1394,19 +1398,20 @@ CREATE TABLE `user_relatives` (
 --
 
 CREATE TABLE `user_role` (
-  `role_id` tinyint NOT NULL,
-  `role_name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
+  `role_id` tinyint(4) NOT NULL,
+  `role_name` varchar(10) NOT NULL,
+  `role` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user_role`
 --
 
-INSERT INTO `user_role` (`role_id`, `role_name`) VALUES
-(1, 'member'),
-(11, 'moderator'),
-(21, ''),
-(31, 'admin');
+INSERT INTO `user_role` (`role_id`, `role_name`, `role`) VALUES
+(1, 'member', 'Member'),
+(11, 'moderator', 'Moderator'),
+(21, 'admin', 'Admin'),
+(31, 'sadmin', 'S. Admin');
 
 -- --------------------------------------------------------
 
@@ -1415,13 +1420,13 @@ INSERT INTO `user_role` (`role_id`, `role_name`) VALUES
 --
 
 CREATE TABLE `user_settings` (
-  `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED DEFAULT NULL,
-  `is_profile_public` tinyint(1) DEFAULT '1',
-  `email_notifications` tinyint(1) DEFAULT '1',
-  `push_notifications` tinyint(1) DEFAULT '1',
-  `dark_mode` tinyint(1) DEFAULT '0',
-  `language` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT 'en',
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `is_profile_public` tinyint(1) DEFAULT 1,
+  `email_notifications` tinyint(1) DEFAULT 1,
+  `push_notifications` tinyint(1) DEFAULT 1,
+  `dark_mode` tinyint(1) DEFAULT 0,
+  `language` varchar(10) DEFAULT 'en',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1429,552 +1434,23 @@ CREATE TABLE `user_settings` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `zzz_blocks`
+-- Table structure for table `user_status`
 --
 
-CREATE TABLE `zzz_blocks` (
-  `id` int NOT NULL,
-  `district` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `blocks` varchar(600) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+CREATE TABLE `user_status` (
+  `id` tinyint(4) NOT NULL,
+  `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `zzz_blocks`
+-- Dumping data for table `user_status`
 --
 
-INSERT INTO `zzz_blocks` (`id`, `district`, `blocks`) VALUES
-(70, 'Araria', 'Araria, Jokihat, Kursakanta, Palasi, Raniganj, Sikti, Forbesganj, Bhargama'),
-(71, 'Arwal', 'Arwal, Karpi, Kaler, Kurtha, Sonbhadra Banshi Suryapur'),
-(72, 'Aurangabad', 'Aurangabad, Daudnagar, Barun, Obra, Madanpur, Kutumba, Deo, Nabinagar, Haspura, Rafiganj'),
-(73, 'Banka', 'Banka, Amarpur, Katoria, Belhar, Bounsi, Chandan, Dhuraiya, Fullidumar, Rajaun, Shambhuganj'),
-(74, 'Begusarai', 'Begusarai, Bakhri, Balia, Barauni, Bachhwara, Teghra, Cheria Bariarpur, Chhorahi, Dandari, Garhpura, Khudabandpur, Mansurchak, Matihani, Naokothi, Sahebpur Kamal, Shamho Akha Kurha'),
-(75, 'Bhagalpur', 'Bhagalpur, Goradih, Ismailpur, Colgong, Narayanpur, Bihpur, Kharik, Naugachhia, Pirpainti, Rangra Chowk, Sabour, Sonhaula, Kahalgaon'),
-(76, 'Bhojpur', 'Arrah, Barhara, Bihiya, Charpokhari, Garhani, Jagdishpur, Koilwar, Piro, Sandesh, Shahpur, Tarari, Udwantnagar'),
-(77, 'Buxar', 'Buxar, Chausa, Chaugain, Dumraon, Itarhi, Kesath, Nawanagar, Rajpur, Simri'),
-(78, 'Darbhanga', 'Darbhanga, Bahadurpur, Baheri, Benipur, Biraul, Ghanshyampur, Hanuman Nagar, Hayaghat, Jale, Keoti, Kiratpur, Kusheshwar Asthan, Kusheshwar Asthan East, Manigachhi, Singhwara, Tardih'),
-(79, 'East Champaran', 'Motihari, Areraj, Banjaria, Chakia, Dhaka, Ghorasahan, Harsidhi, Kalyanpur, Kesaria, Kotwa, Madhuban, Mehsi, Pakri Dayal, Paharpur, Raxaul, Sangrampur, Sugauli, Tetaria, Turkaulia'),
-(80, 'Gaya', 'Gaya, Amas, Banke Bazar, Belaganj, Bodh Gaya, Dobhi, Fatehpur, Guraru, Gurua, Imamganj, Khizirsarai, Konch, Manpur, Mohanpur, Muhra, Neem Chak Bathani, Paraiya, Sherghati, Tankuppa, Tekari, Wazirganj, Atri'),
-(81, 'Gopalganj', 'Gopalganj, Barauli, Bhore, Hathua, Katiya, Manjha, Phulwaria, Sidhwalia, Thawe, Uchkagaon'),
-(82, 'Jamui', 'Jamui, Barhat, Chakai, Gidhaur, Jhajha, Khaira, Laxmipur, Sikandra, Sono'),
-(83, 'Jehanabad', 'Jehanabad, Ghoshi, Kako, Makhdumpur, Modanganj, Ratni Faridpur'),
-(84, 'Kaimur', 'Bhabua, Adhaura, Bhagwanpur, Chand, Chainpur, Durgawati, Kudra, Mohania, Ramgarh, Rampur'),
-(85, 'Katihar', 'Katihar, Barari, Balrampur, Barsoi, Dandkhora, Falka, Hasanganj, Kadwa, Korha, Kursela, Manihari, Pranpur, Sameli, Azamnagar'),
-(86, 'Khagaria', 'Khagaria, Alauli, Beldaur, Chautham, Gogri, Mansi, Parbatta'),
-(87, 'Kishanganj', 'Kishanganj, Bahadurganj, Dighalbank, Kochadhamin, Pothia, Terhagachh, Thakurganj'),
-(88, 'Lakhisarai', 'Lakhisarai, Barahiya, Halsi, Pipariya, Ramgarh Chowk, Surajgarha'),
-(89, 'Madhepura', 'Madhepura, Alamnagar, Bihariganj, Chausa, Gamharia, Gwalpara, Kumarkhand, Murliganj, Puraini, Shankarpur, Singheshwar, Udakishanganj'),
-(90, 'Madhubani', 'Madhubani, Andhratharhi, Babubarhi, Basopatti, Benipatti, Bisfi, Harlakhi, Jhanjharpur, Khajauli, Ladania, Lakhnaur, Laukahi, Laukaha, Phulparas, Rajnagar, Pandaul'),
-(91, 'Munger', 'Munger, Asarganj, Bariarpur, Dharhara, Kharagpur, Sangrampur, Tarapur, Tetiha Bambor'),
-(92, 'Muzaffarpur', 'Muzaffarpur, Aurai, Bandra, Bochaha, Gaighat, Kanti, Katra, Kurhani, Marwan, Minapur, Motipur, Mushahari, Paroo, Sahebganj, Sakra'),
-(93, 'Nalanda', 'Bihar Sharif, Asthawan, Ben, Bind, Chandi, Ekangarsarai, Giriyak, Harnaut, Hilsa, Islampur, Karai Parsurai, Katrisarai, Nagarnausa, Noorsarai, Parwalpur, Rahui, Rajgir, Sarmera, Silao, Tharthari'),
-(94, 'Nawada', 'Nawada, Akbarpur, Govindpur, Hisua, Kashichak, Kawakol, Meskaur, Narhat, Nardiganj, Pakribarawan, Rajauli, Roh, Sirdala, Warisaliganj'),
-(95, 'Patna', 'Patna, Athmalgola, Bakhtiarpur, Barh, Bihta, Bikram, Danapur, Dhanarua, Dulhin Bazar, Fatuha, Ghoswari, Khusrupur, Maner, Masaurhi, Mokama, Naubatpur, Paliganj, Pandarak, Phulwari, Punpun, Sampatchak'),
-(96, 'Purnia', 'Purnia, Amour, Banmankhi, Barhara, Baisa, Baisi, Dagarua, Jalalgarh, Kasba, Krityanand Nagar, Rupauli, Srinagar, Dhamdaha'),
-(97, 'Rohtas', 'Sasaram, Akorhi Gola, Bikramganj, Chenari, Dawath, Dehri, Dinara, Karakat, Kochas, Nasriganj, Nokha, Rajpur, Sanjhauli, Sheosagar, Suryapura, Tilouthu'),
-(98, 'Saharsa', 'Saharsa, Banma Itahri, Kahara, Mahishi, Nauhatta, Patarghat, Salkhua, Simri Bakhtiarpur, Sonbarsa, Sattar Kataiya'),
-(99, 'Samastipur', 'Samastipur, Bibhutpur, Bithan, Dalsinghsarai, Hasanpur, Kalyanpur, Khanpur, Mohanpur, Mohiuddinagar, Morwa, Patori, Pusa, Rosera, Sarairanjan, Shivaji Nagar, Singhia, Tajpur, Ujiarpur, Vidyapatinagar, Warisnagar'),
-(100, 'Saran', 'Chhapra, Amnour, Baniapur, Dariapur, Dighwara, Ekma, Garkha, Ishupur, Jalalpur, Lahladpur, Maker, Manjhi, Marhaura, Mashrakh, Nagra, Panapur, Parsa, Revelganj, Sonepur, Taraiya'),
-(101, 'Sheikhpura', 'Sheikhpura, Ariari, Barbigha, Chewara, Ghat Kusumbha, Shekhopur Sarai'),
-(102, 'Sheohar', 'Sheohar, Dumri Katsari, Piprarhi, Tariani Chowk'),
-(103, 'Sitamarhi', 'Sitamarhi, Bajpatti, Bathnaha, Bairgania, Belsand, Bokhara, Chorahi, Dumra, Majorganj, Nanpur, Parihar, Pupri, Riga, Runnisaidpur, Sonbarsa, Sursand'),
-(104, 'Siwan', 'Siwan, Andar, Barharia, Basantpur, Bhagwanpur Hat, Darauli, Goriakothi, Guthani, Hasanpura, Hussainganj, Lakri Nabiganj, Maharajganj, Mairwa, Nautan, Pachrukhi, Raghunathpur, Ziradei'),
-(105, 'Supaul', 'Supaul, Basantpur, Chhatapur, Kishanpur, Marauna, Nirmali, Pipra, Pratapganj, Raghopur, Saraigarh Bhaptiyahi, Tribeniganj'),
-(106, 'Vaishali', 'Hajipur, Bidupur, Chehrakala, Desri, Goraul, Jandaha, Lalganj, Mahnar, Mahua, Patepur, Raghopur, Rajapakar, Sahdei Buzurg, Vaishali'),
-(107, 'West Champaran', 'Bettiah, Bagaha, Bhitaha, Chanpatia, Gaunaha, Mainatanr, Majhaulia, Narkatiaganj, Nautan, Piprasi, Ramnagar, Sikta, Thakaraha');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `zzz_block_list`
---
-
-CREATE TABLE `zzz_block_list` (
-  `id` int NOT NULL,
-  `district_id` int NOT NULL,
-  `district` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `blocks` varchar(600) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `zzz_block_list`
---
-
-INSERT INTO `zzz_block_list` (`id`, `district_id`, `district`, `blocks`) VALUES
-(1, 70, 'Araria', 'Araria'),
-(2, 70, 'Araria', 'Jokihat'),
-(3, 70, 'Araria', 'Kursakanta'),
-(4, 70, 'Araria', 'Palasi'),
-(5, 70, 'Araria', 'Raniganj'),
-(6, 70, 'Araria', 'Sikti'),
-(7, 70, 'Araria', 'Forbesganj'),
-(8, 70, 'Araria', 'Bhargama'),
-(9, 71, 'Arwal', 'Arwal'),
-(10, 71, 'Arwal', 'Karpi'),
-(11, 71, 'Arwal', 'Kaler'),
-(12, 71, 'Arwal', 'Kurtha'),
-(13, 71, 'Arwal', 'Sonbhadra Banshi Suryapur'),
-(14, 72, 'Aurangabad', 'Aurangabad'),
-(15, 72, 'Aurangabad', 'Daudnagar'),
-(16, 72, 'Aurangabad', 'Barun'),
-(17, 72, 'Aurangabad', 'Obra'),
-(18, 72, 'Aurangabad', 'Madanpur'),
-(19, 72, 'Aurangabad', 'Kutumba'),
-(20, 72, 'Aurangabad', 'Deo'),
-(21, 72, 'Aurangabad', 'Nabinagar'),
-(22, 72, 'Aurangabad', 'Haspura'),
-(23, 72, 'Aurangabad', 'Rafiganj'),
-(24, 73, 'Banka', 'Banka'),
-(25, 73, 'Banka', 'Amarpur'),
-(26, 73, 'Banka', 'Katoria'),
-(27, 73, 'Banka', 'Belhar'),
-(28, 73, 'Banka', 'Bounsi'),
-(29, 73, 'Banka', 'Chandan'),
-(30, 73, 'Banka', 'Dhuraiya'),
-(31, 73, 'Banka', 'Fullidumar'),
-(32, 73, 'Banka', 'Rajaun'),
-(33, 73, 'Banka', 'Shambhuganj'),
-(34, 74, 'Begusarai', 'Begusarai'),
-(35, 74, 'Begusarai', 'Bakhri'),
-(36, 74, 'Begusarai', 'Balia'),
-(37, 74, 'Begusarai', 'Barauni'),
-(38, 74, 'Begusarai', 'Bachhwara'),
-(39, 74, 'Begusarai', 'Teghra'),
-(40, 74, 'Begusarai', 'Cheria Bariarpur'),
-(41, 74, 'Begusarai', 'Chhorahi'),
-(42, 74, 'Begusarai', 'Dandari'),
-(43, 74, 'Begusarai', 'Garhpura'),
-(44, 74, 'Begusarai', 'Khudabandpur'),
-(45, 74, 'Begusarai', 'Mansurchak'),
-(46, 74, 'Begusarai', 'Matihani'),
-(47, 74, 'Begusarai', 'Naokothi'),
-(48, 74, 'Begusarai', 'Sahebpur Kamal'),
-(49, 74, 'Begusarai', 'Shamho Akha Kurha'),
-(50, 75, 'Bhagalpur', 'Bhagalpur'),
-(51, 75, 'Bhagalpur', 'Goradih'),
-(52, 75, 'Bhagalpur', 'Ismailpur'),
-(53, 75, 'Bhagalpur', 'Colgong'),
-(54, 75, 'Bhagalpur', 'Narayanpur'),
-(55, 75, 'Bhagalpur', 'Bihpur'),
-(56, 75, 'Bhagalpur', 'Kharik'),
-(57, 75, 'Bhagalpur', 'Naugachhia'),
-(58, 75, 'Bhagalpur', 'Pirpainti'),
-(59, 75, 'Bhagalpur', 'Rangra Chowk'),
-(60, 75, 'Bhagalpur', 'Sabour'),
-(61, 75, 'Bhagalpur', 'Sonhaula'),
-(62, 75, 'Bhagalpur', 'Kahalgaon'),
-(63, 76, 'Bhojpur', 'Arrah'),
-(64, 76, 'Bhojpur', 'Barhara'),
-(65, 76, 'Bhojpur', 'Bihiya'),
-(66, 76, 'Bhojpur', 'Charpokhari'),
-(67, 76, 'Bhojpur', 'Garhani'),
-(68, 76, 'Bhojpur', 'Jagdishpur'),
-(69, 76, 'Bhojpur', 'Koilwar'),
-(70, 76, 'Bhojpur', 'Piro'),
-(71, 76, 'Bhojpur', 'Sandesh'),
-(72, 76, 'Bhojpur', 'Shahpur'),
-(73, 76, 'Bhojpur', 'Tarari'),
-(74, 76, 'Bhojpur', 'Udwantnagar'),
-(75, 77, 'Buxar', 'Buxar'),
-(76, 77, 'Buxar', 'Chausa'),
-(77, 77, 'Buxar', 'Chaugain'),
-(78, 77, 'Buxar', 'Dumraon'),
-(79, 77, 'Buxar', 'Itarhi'),
-(80, 77, 'Buxar', 'Kesath'),
-(81, 77, 'Buxar', 'Nawanagar'),
-(82, 77, 'Buxar', 'Rajpur'),
-(83, 77, 'Buxar', 'Simri'),
-(84, 78, 'Darbhanga', 'Darbhanga'),
-(85, 78, 'Darbhanga', 'Bahadurpur'),
-(86, 78, 'Darbhanga', 'Baheri'),
-(87, 78, 'Darbhanga', 'Benipur'),
-(88, 78, 'Darbhanga', 'Biraul'),
-(89, 78, 'Darbhanga', 'Ghanshyampur'),
-(90, 78, 'Darbhanga', 'Hanuman Nagar'),
-(91, 78, 'Darbhanga', 'Hayaghat'),
-(92, 78, 'Darbhanga', 'Jale'),
-(93, 78, 'Darbhanga', 'Keoti'),
-(94, 78, 'Darbhanga', 'Kiratpur'),
-(95, 78, 'Darbhanga', 'Kusheshwar Asthan'),
-(96, 78, 'Darbhanga', 'Kusheshwar Asthan East'),
-(97, 78, 'Darbhanga', 'Manigachhi'),
-(98, 78, 'Darbhanga', 'Singhwara'),
-(99, 78, 'Darbhanga', 'Tardih'),
-(100, 79, 'East Champaran', 'Motihari'),
-(101, 79, 'East Champaran', 'Areraj'),
-(102, 79, 'East Champaran', 'Banjaria'),
-(103, 79, 'East Champaran', 'Chakia'),
-(104, 79, 'East Champaran', 'Dhaka'),
-(105, 79, 'East Champaran', 'Ghorasahan'),
-(106, 79, 'East Champaran', 'Harsidhi'),
-(107, 79, 'East Champaran', 'Kalyanpur'),
-(108, 79, 'East Champaran', 'Kesaria'),
-(109, 79, 'East Champaran', 'Kotwa'),
-(110, 79, 'East Champaran', 'Madhuban'),
-(111, 79, 'East Champaran', 'Mehsi'),
-(112, 79, 'East Champaran', 'Pakri Dayal'),
-(113, 79, 'East Champaran', 'Paharpur'),
-(114, 79, 'East Champaran', 'Raxaul'),
-(115, 79, 'East Champaran', 'Sangrampur'),
-(116, 79, 'East Champaran', 'Sugauli'),
-(117, 79, 'East Champaran', 'Tetaria'),
-(118, 79, 'East Champaran', 'Turkaulia'),
-(119, 80, 'Gaya', 'Gaya'),
-(120, 80, 'Gaya', 'Amas'),
-(121, 80, 'Gaya', 'Banke Bazar'),
-(122, 80, 'Gaya', 'Belaganj'),
-(123, 80, 'Gaya', 'Bodh Gaya'),
-(124, 80, 'Gaya', 'Dobhi'),
-(125, 80, 'Gaya', 'Fatehpur'),
-(126, 80, 'Gaya', 'Guraru'),
-(127, 80, 'Gaya', 'Gurua'),
-(128, 80, 'Gaya', 'Imamganj'),
-(129, 80, 'Gaya', 'Khizirsarai'),
-(130, 80, 'Gaya', 'Konch'),
-(131, 80, 'Gaya', 'Manpur'),
-(132, 80, 'Gaya', 'Mohanpur'),
-(133, 80, 'Gaya', 'Muhra'),
-(134, 80, 'Gaya', 'Neem Chak Bathani'),
-(135, 80, 'Gaya', 'Paraiya'),
-(136, 80, 'Gaya', 'Sherghati'),
-(137, 80, 'Gaya', 'Tankuppa'),
-(138, 80, 'Gaya', 'Tekari'),
-(139, 80, 'Gaya', 'Wazirganj'),
-(140, 80, 'Gaya', 'Atri'),
-(141, 81, 'Gopalganj', 'Gopalganj'),
-(142, 81, 'Gopalganj', 'Barauli'),
-(143, 81, 'Gopalganj', 'Bhore'),
-(144, 81, 'Gopalganj', 'Hathua'),
-(145, 81, 'Gopalganj', 'Katiya'),
-(146, 81, 'Gopalganj', 'Manjha'),
-(147, 81, 'Gopalganj', 'Phulwaria'),
-(148, 81, 'Gopalganj', 'Sidhwalia'),
-(149, 81, 'Gopalganj', 'Thawe'),
-(150, 81, 'Gopalganj', 'Uchkagaon'),
-(151, 82, 'Jamui', 'Jamui'),
-(152, 82, 'Jamui', 'Barhat'),
-(153, 82, 'Jamui', 'Chakai'),
-(154, 82, 'Jamui', 'Gidhaur'),
-(155, 82, 'Jamui', 'Jhajha'),
-(156, 82, 'Jamui', 'Khaira'),
-(157, 82, 'Jamui', 'Laxmipur'),
-(158, 82, 'Jamui', 'Sikandra'),
-(159, 82, 'Jamui', 'Sono'),
-(160, 83, 'Jehanabad', 'Jehanabad'),
-(161, 83, 'Jehanabad', 'Ghoshi'),
-(162, 83, 'Jehanabad', 'Kako'),
-(163, 83, 'Jehanabad', 'Makhdumpur'),
-(164, 83, 'Jehanabad', 'Modanganj'),
-(165, 83, 'Jehanabad', 'Ratni Faridpur'),
-(166, 84, 'Kaimur', 'Bhabua'),
-(167, 84, 'Kaimur', 'Adhaura'),
-(168, 84, 'Kaimur', 'Bhagwanpur'),
-(169, 84, 'Kaimur', 'Chand'),
-(170, 84, 'Kaimur', 'Chainpur'),
-(171, 84, 'Kaimur', 'Durgawati'),
-(172, 84, 'Kaimur', 'Kudra'),
-(173, 84, 'Kaimur', 'Mohania'),
-(174, 84, 'Kaimur', 'Ramgarh'),
-(175, 84, 'Kaimur', 'Rampur'),
-(176, 85, 'Katihar', 'Katihar'),
-(177, 85, 'Katihar', 'Barari'),
-(178, 85, 'Katihar', 'Balrampur'),
-(179, 85, 'Katihar', 'Barsoi'),
-(180, 85, 'Katihar', 'Dandkhora'),
-(181, 85, 'Katihar', 'Falka'),
-(182, 85, 'Katihar', 'Hasanganj'),
-(183, 85, 'Katihar', 'Kadwa'),
-(184, 85, 'Katihar', 'Korha'),
-(185, 85, 'Katihar', 'Kursela'),
-(186, 85, 'Katihar', 'Manihari'),
-(187, 85, 'Katihar', 'Pranpur'),
-(188, 85, 'Katihar', 'Sameli'),
-(189, 85, 'Katihar', 'Azamnagar'),
-(190, 86, 'Khagaria', 'Khagaria'),
-(191, 86, 'Khagaria', 'Alauli'),
-(192, 86, 'Khagaria', 'Beldaur'),
-(193, 86, 'Khagaria', 'Chautham'),
-(194, 86, 'Khagaria', 'Gogri'),
-(195, 86, 'Khagaria', 'Mansi'),
-(196, 86, 'Khagaria', 'Parbatta'),
-(197, 87, 'Kishanganj', 'Kishanganj'),
-(198, 87, 'Kishanganj', 'Bahadurganj'),
-(199, 87, 'Kishanganj', 'Dighalbank'),
-(200, 87, 'Kishanganj', 'Kochadhamin'),
-(201, 87, 'Kishanganj', 'Pothia'),
-(202, 87, 'Kishanganj', 'Terhagachh'),
-(203, 87, 'Kishanganj', 'Thakurganj'),
-(204, 88, 'Lakhisarai', 'Lakhisarai'),
-(205, 88, 'Lakhisarai', 'Barahiya'),
-(206, 88, 'Lakhisarai', 'Halsi'),
-(207, 88, 'Lakhisarai', 'Pipariya'),
-(208, 88, 'Lakhisarai', 'Ramgarh Chowk'),
-(209, 88, 'Lakhisarai', 'Surajgarha'),
-(210, 89, 'Madhepura', 'Madhepura'),
-(211, 89, 'Madhepura', 'Alamnagar'),
-(212, 89, 'Madhepura', 'Bihariganj'),
-(213, 89, 'Madhepura', 'Chausa'),
-(214, 89, 'Madhepura', 'Gamharia'),
-(215, 89, 'Madhepura', 'Gwalpara'),
-(216, 89, 'Madhepura', 'Kumarkhand'),
-(217, 89, 'Madhepura', 'Murliganj'),
-(218, 89, 'Madhepura', 'Puraini'),
-(219, 89, 'Madhepura', 'Shankarpur'),
-(220, 89, 'Madhepura', 'Singheshwar'),
-(221, 89, 'Madhepura', 'Udakishanganj'),
-(222, 90, 'Madhubani', 'Madhubani'),
-(223, 90, 'Madhubani', 'Andhratharhi'),
-(224, 90, 'Madhubani', 'Babubarhi'),
-(225, 90, 'Madhubani', 'Basopatti'),
-(226, 90, 'Madhubani', 'Benipatti'),
-(227, 90, 'Madhubani', 'Bisfi'),
-(228, 90, 'Madhubani', 'Harlakhi'),
-(229, 90, 'Madhubani', 'Jhanjharpur'),
-(230, 90, 'Madhubani', 'Khajauli'),
-(231, 90, 'Madhubani', 'Ladania'),
-(232, 90, 'Madhubani', 'Lakhnaur'),
-(233, 90, 'Madhubani', 'Laukahi'),
-(234, 90, 'Madhubani', 'Laukaha'),
-(235, 90, 'Madhubani', 'Phulparas'),
-(236, 90, 'Madhubani', 'Rajnagar'),
-(237, 90, 'Madhubani', 'Pandaul'),
-(238, 91, 'Munger', 'Munger'),
-(239, 91, 'Munger', 'Asarganj'),
-(240, 91, 'Munger', 'Bariarpur'),
-(241, 91, 'Munger', 'Dharhara'),
-(242, 91, 'Munger', 'Kharagpur'),
-(243, 91, 'Munger', 'Sangrampur'),
-(244, 91, 'Munger', 'Tarapur'),
-(245, 91, 'Munger', 'Tetiha Bambor'),
-(246, 92, 'Muzaffarpur', 'Muzaffarpur'),
-(247, 92, 'Muzaffarpur', 'Aurai'),
-(248, 92, 'Muzaffarpur', 'Bandra'),
-(249, 92, 'Muzaffarpur', 'Bochaha'),
-(250, 92, 'Muzaffarpur', 'Gaighat'),
-(251, 92, 'Muzaffarpur', 'Kanti'),
-(252, 92, 'Muzaffarpur', 'Katra'),
-(253, 92, 'Muzaffarpur', 'Kurhani'),
-(254, 92, 'Muzaffarpur', 'Marwan'),
-(255, 92, 'Muzaffarpur', 'Minapur'),
-(256, 92, 'Muzaffarpur', 'Motipur'),
-(257, 92, 'Muzaffarpur', 'Mushahari'),
-(258, 92, 'Muzaffarpur', 'Paroo'),
-(259, 92, 'Muzaffarpur', 'Sahebganj'),
-(260, 92, 'Muzaffarpur', 'Sakra'),
-(261, 93, 'Nalanda', 'Bihar Sharif'),
-(262, 93, 'Nalanda', 'Asthawan'),
-(263, 93, 'Nalanda', 'Ben'),
-(264, 93, 'Nalanda', 'Bind'),
-(265, 93, 'Nalanda', 'Chandi'),
-(266, 93, 'Nalanda', 'Ekangarsarai'),
-(267, 93, 'Nalanda', 'Giriyak'),
-(268, 93, 'Nalanda', 'Harnaut'),
-(269, 93, 'Nalanda', 'Hilsa'),
-(270, 93, 'Nalanda', 'Islampur'),
-(271, 93, 'Nalanda', 'Karai Parsurai'),
-(272, 93, 'Nalanda', 'Katrisarai'),
-(273, 93, 'Nalanda', 'Nagarnausa'),
-(274, 93, 'Nalanda', 'Noorsarai'),
-(275, 93, 'Nalanda', 'Parwalpur'),
-(276, 93, 'Nalanda', 'Rahui'),
-(277, 93, 'Nalanda', 'Rajgir'),
-(278, 93, 'Nalanda', 'Sarmera'),
-(279, 93, 'Nalanda', 'Silao'),
-(280, 93, 'Nalanda', 'Tharthari'),
-(281, 94, 'Nawada', 'Nawada'),
-(282, 94, 'Nawada', 'Akbarpur'),
-(283, 94, 'Nawada', 'Govindpur'),
-(284, 94, 'Nawada', 'Hisua'),
-(285, 94, 'Nawada', 'Kashichak'),
-(286, 94, 'Nawada', 'Kawakol'),
-(287, 94, 'Nawada', 'Meskaur'),
-(288, 94, 'Nawada', 'Narhat'),
-(289, 94, 'Nawada', 'Nardiganj'),
-(290, 94, 'Nawada', 'Pakribarawan'),
-(291, 94, 'Nawada', 'Rajauli'),
-(292, 94, 'Nawada', 'Roh'),
-(293, 94, 'Nawada', 'Sirdala'),
-(294, 94, 'Nawada', 'Warisaliganj'),
-(295, 95, 'Patna', 'Patna'),
-(296, 95, 'Patna', 'Athmalgola'),
-(297, 95, 'Patna', 'Bakhtiarpur'),
-(298, 95, 'Patna', 'Barh'),
-(299, 95, 'Patna', 'Bihta'),
-(300, 95, 'Patna', 'Bikram'),
-(301, 95, 'Patna', 'Danapur'),
-(302, 95, 'Patna', 'Dhanarua'),
-(303, 95, 'Patna', 'Dulhin Bazar'),
-(304, 95, 'Patna', 'Fatuha'),
-(305, 95, 'Patna', 'Ghoswari'),
-(306, 95, 'Patna', 'Khusrupur'),
-(307, 95, 'Patna', 'Maner'),
-(308, 95, 'Patna', 'Masaurhi'),
-(309, 95, 'Patna', 'Mokama'),
-(310, 95, 'Patna', 'Naubatpur'),
-(311, 95, 'Patna', 'Paliganj'),
-(312, 95, 'Patna', 'Pandarak'),
-(313, 95, 'Patna', 'Phulwari'),
-(314, 95, 'Patna', 'Punpun'),
-(315, 95, 'Patna', 'Sampatchak'),
-(316, 96, 'Purnia', 'Purnia'),
-(317, 96, 'Purnia', 'Amour'),
-(318, 96, 'Purnia', 'Banmankhi'),
-(319, 96, 'Purnia', 'Barhara'),
-(320, 96, 'Purnia', 'Baisa'),
-(321, 96, 'Purnia', 'Baisi'),
-(322, 96, 'Purnia', 'Dagarua'),
-(323, 96, 'Purnia', 'Jalalgarh'),
-(324, 96, 'Purnia', 'Kasba'),
-(325, 96, 'Purnia', 'Krityanand Nagar'),
-(326, 96, 'Purnia', 'Rupauli'),
-(327, 96, 'Purnia', 'Srinagar'),
-(328, 96, 'Purnia', 'Dhamdaha'),
-(329, 97, 'Rohtas', 'Sasaram'),
-(330, 97, 'Rohtas', 'Akorhi Gola'),
-(331, 97, 'Rohtas', 'Bikramganj'),
-(332, 97, 'Rohtas', 'Chenari'),
-(333, 97, 'Rohtas', 'Dawath'),
-(334, 97, 'Rohtas', 'Dehri'),
-(335, 97, 'Rohtas', 'Dinara'),
-(336, 97, 'Rohtas', 'Karakat'),
-(337, 97, 'Rohtas', 'Kochas'),
-(338, 97, 'Rohtas', 'Nasriganj'),
-(339, 97, 'Rohtas', 'Nokha'),
-(340, 97, 'Rohtas', 'Rajpur'),
-(341, 97, 'Rohtas', 'Sanjhauli'),
-(342, 97, 'Rohtas', 'Sheosagar'),
-(343, 97, 'Rohtas', 'Suryapura'),
-(344, 97, 'Rohtas', 'Tilouthu'),
-(345, 98, 'Saharsa', 'Saharsa'),
-(346, 98, 'Saharsa', 'Banma Itahri'),
-(347, 98, 'Saharsa', 'Kahara'),
-(348, 98, 'Saharsa', 'Mahishi'),
-(349, 98, 'Saharsa', 'Nauhatta'),
-(350, 98, 'Saharsa', 'Patarghat'),
-(351, 98, 'Saharsa', 'Salkhua'),
-(352, 98, 'Saharsa', 'Simri Bakhtiarpur'),
-(353, 98, 'Saharsa', 'Sonbarsa'),
-(354, 98, 'Saharsa', 'Sattar Kataiya'),
-(355, 99, 'Samastipur', 'Samastipur'),
-(356, 99, 'Samastipur', 'Bibhutpur'),
-(357, 99, 'Samastipur', 'Bithan'),
-(358, 99, 'Samastipur', 'Dalsinghsarai'),
-(359, 99, 'Samastipur', 'Hasanpur'),
-(360, 99, 'Samastipur', 'Kalyanpur'),
-(361, 99, 'Samastipur', 'Khanpur'),
-(362, 99, 'Samastipur', 'Mohanpur'),
-(363, 99, 'Samastipur', 'Mohiuddinagar'),
-(364, 99, 'Samastipur', 'Morwa'),
-(365, 99, 'Samastipur', 'Patori'),
-(366, 99, 'Samastipur', 'Pusa'),
-(367, 99, 'Samastipur', 'Rosera'),
-(368, 99, 'Samastipur', 'Sarairanjan'),
-(369, 99, 'Samastipur', 'Shivaji Nagar'),
-(370, 99, 'Samastipur', 'Singhia'),
-(371, 99, 'Samastipur', 'Tajpur'),
-(372, 99, 'Samastipur', 'Ujiarpur'),
-(373, 99, 'Samastipur', 'Vidyapatinagar'),
-(374, 99, 'Samastipur', 'Warisnagar'),
-(375, 100, 'Saran', 'Chhapra'),
-(376, 100, 'Saran', 'Amnour'),
-(377, 100, 'Saran', 'Baniapur'),
-(378, 100, 'Saran', 'Dariapur'),
-(379, 100, 'Saran', 'Dighwara'),
-(380, 100, 'Saran', 'Ekma'),
-(381, 100, 'Saran', 'Garkha'),
-(382, 100, 'Saran', 'Ishupur'),
-(383, 100, 'Saran', 'Jalalpur'),
-(384, 100, 'Saran', 'Lahladpur'),
-(385, 100, 'Saran', 'Maker'),
-(386, 100, 'Saran', 'Manjhi'),
-(387, 100, 'Saran', 'Marhaura'),
-(388, 100, 'Saran', 'Mashrakh'),
-(389, 100, 'Saran', 'Nagra'),
-(390, 100, 'Saran', 'Panapur'),
-(391, 100, 'Saran', 'Parsa'),
-(392, 100, 'Saran', 'Revelganj'),
-(393, 100, 'Saran', 'Sonepur'),
-(394, 100, 'Saran', 'Taraiya'),
-(395, 101, 'Sheikhpura', 'Sheikhpura'),
-(396, 101, 'Sheikhpura', 'Ariari'),
-(397, 101, 'Sheikhpura', 'Barbigha'),
-(398, 101, 'Sheikhpura', 'Chewara'),
-(399, 101, 'Sheikhpura', 'Ghat Kusumbha'),
-(400, 101, 'Sheikhpura', 'Shekhopur Sarai'),
-(401, 102, 'Sheohar', 'Sheohar'),
-(402, 102, 'Sheohar', 'Dumri Katsari'),
-(403, 102, 'Sheohar', 'Piprarhi'),
-(404, 102, 'Sheohar', 'Tariani Chowk'),
-(405, 103, 'Sitamarhi', 'Sitamarhi'),
-(406, 103, 'Sitamarhi', 'Bajpatti'),
-(407, 103, 'Sitamarhi', 'Bathnaha'),
-(408, 103, 'Sitamarhi', 'Bairgania'),
-(409, 103, 'Sitamarhi', 'Belsand'),
-(410, 103, 'Sitamarhi', 'Bokhara'),
-(411, 103, 'Sitamarhi', 'Chorahi'),
-(412, 103, 'Sitamarhi', 'Dumra'),
-(413, 103, 'Sitamarhi', 'Majorganj'),
-(414, 103, 'Sitamarhi', 'Nanpur'),
-(415, 103, 'Sitamarhi', 'Parihar'),
-(416, 103, 'Sitamarhi', 'Pupri'),
-(417, 103, 'Sitamarhi', 'Riga'),
-(418, 103, 'Sitamarhi', 'Runnisaidpur'),
-(419, 103, 'Sitamarhi', 'Sonbarsa'),
-(420, 103, 'Sitamarhi', 'Sursand'),
-(421, 104, 'Siwan', 'Siwan'),
-(422, 104, 'Siwan', 'Andar'),
-(423, 104, 'Siwan', 'Barharia'),
-(424, 104, 'Siwan', 'Basantpur'),
-(425, 104, 'Siwan', 'Bhagwanpur Hat'),
-(426, 104, 'Siwan', 'Darauli'),
-(427, 104, 'Siwan', 'Goriakothi'),
-(428, 104, 'Siwan', 'Guthani'),
-(429, 104, 'Siwan', 'Hasanpura'),
-(430, 104, 'Siwan', 'Hussainganj'),
-(431, 104, 'Siwan', 'Lakri Nabiganj'),
-(432, 104, 'Siwan', 'Maharajganj'),
-(433, 104, 'Siwan', 'Mairwa'),
-(434, 104, 'Siwan', 'Nautan'),
-(435, 104, 'Siwan', 'Pachrukhi'),
-(436, 104, 'Siwan', 'Raghunathpur'),
-(437, 104, 'Siwan', 'Ziradei'),
-(438, 105, 'Supaul', 'Supaul'),
-(439, 105, 'Supaul', 'Basantpur'),
-(440, 105, 'Supaul', 'Chhatapur'),
-(441, 105, 'Supaul', 'Kishanpur'),
-(442, 105, 'Supaul', 'Marauna'),
-(443, 105, 'Supaul', 'Nirmali'),
-(444, 105, 'Supaul', 'Pipra'),
-(445, 105, 'Supaul', 'Pratapganj'),
-(446, 105, 'Supaul', 'Raghopur'),
-(447, 105, 'Supaul', 'Saraigarh Bhaptiyahi'),
-(448, 105, 'Supaul', 'Tribeniganj'),
-(449, 106, 'Vaishali', 'Hajipur'),
-(450, 106, 'Vaishali', 'Bidupur'),
-(451, 106, 'Vaishali', 'Chehrakala'),
-(452, 106, 'Vaishali', 'Desri'),
-(453, 106, 'Vaishali', 'Goraul'),
-(454, 106, 'Vaishali', 'Jandaha'),
-(455, 106, 'Vaishali', 'Lalganj'),
-(456, 106, 'Vaishali', 'Mahnar'),
-(457, 106, 'Vaishali', 'Mahua'),
-(458, 106, 'Vaishali', 'Patepur'),
-(459, 106, 'Vaishali', 'Raghopur'),
-(460, 106, 'Vaishali', 'Rajapakar'),
-(461, 106, 'Vaishali', 'Sahdei Buzurg'),
-(462, 106, 'Vaishali', 'Vaishali'),
-(463, 107, 'West Champaran', 'Bettiah'),
-(464, 107, 'West Champaran', 'Bagaha'),
-(465, 107, 'West Champaran', 'Bhitaha'),
-(466, 107, 'West Champaran', 'Chanpatia'),
-(467, 107, 'West Champaran', 'Gaunaha'),
-(468, 107, 'West Champaran', 'Mainatanr'),
-(469, 107, 'West Champaran', 'Majhaulia'),
-(470, 107, 'West Champaran', 'Narkatiaganj'),
-(471, 107, 'West Champaran', 'Nautan'),
-(472, 107, 'West Champaran', 'Piprasi'),
-(473, 107, 'West Champaran', 'Ramnagar'),
-(474, 107, 'West Champaran', 'Sikta'),
-(475, 107, 'West Champaran', 'Thakaraha');
+INSERT INTO `user_status` (`id`, `status`) VALUES
+(0, 'Inactive'),
+(1, 'Active'),
+(2, 'Blocked'),
+(11, 'Deleted');
 
 --
 -- Indexes for dumped tables
@@ -2207,15 +1683,9 @@ ALTER TABLE `user_settings`
   ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `zzz_blocks`
+-- Indexes for table `user_status`
 --
-ALTER TABLE `zzz_blocks`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `zzz_block_list`
---
-ALTER TABLE `zzz_block_list`
+ALTER TABLE `user_status`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2226,181 +1696,169 @@ ALTER TABLE `zzz_block_list`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `address_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `address_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `flights`
 --
 ALTER TABLE `flights`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `info_gender`
 --
 ALTER TABLE `info_gender`
-  MODIFY `gender_id` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `gender_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `info_goal`
 --
 ALTER TABLE `info_goal`
-  MODIFY `goal_id` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `goal_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `location_address`
 --
 ALTER TABLE `location_address`
-  MODIFY `address_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `location_block`
 --
 ALTER TABLE `location_block`
-  MODIFY `block_id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `block_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `location_districts`
 --
 ALTER TABLE `location_districts`
-  MODIFY `district_id` mediumint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=720;
+  MODIFY `district_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=720;
 
 --
 -- AUTO_INCREMENT for table `location_localites`
 --
 ALTER TABLE `location_localites`
-  MODIFY `locality_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `locality_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `location_states`
 --
 ALTER TABLE `location_states`
-  MODIFY `state_id` mediumint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `state_id` mediumint(9) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` bigint NOT NULL AUTO_INCREMENT;
+  MODIFY `post_id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `post_privacy`
 --
 ALTER TABLE `post_privacy`
-  MODIFY `privacy_id` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `privacy_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `post_type`
 --
 ALTER TABLE `post_type`
-  MODIFY `post_type_id` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `post_type_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1234567917;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1234567923;
 
 --
 -- AUTO_INCREMENT for table `user_following`
 --
 ALTER TABLE `user_following`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_friends`
 --
 ALTER TABLE `user_friends`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_gender`
 --
 ALTER TABLE `user_gender`
-  MODIFY `gender_id` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `gender_id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_groups`
 --
 ALTER TABLE `user_groups`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_group_members`
 --
 ALTER TABLE `user_group_members`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_jobs`
 --
 ALTER TABLE `user_jobs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_matrimony_profiles`
 --
 ALTER TABLE `user_matrimony_profiles`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_notifications`
 --
 ALTER TABLE `user_notifications`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_prefix`
 --
 ALTER TABLE `user_prefix`
-  MODIFY `id` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_relatives`
 --
 ALTER TABLE `user_relatives`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_settings`
 --
 ALTER TABLE `user_settings`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `zzz_blocks`
---
-ALTER TABLE `zzz_blocks`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
-
---
--- AUTO_INCREMENT for table `zzz_block_list`
---
-ALTER TABLE `zzz_block_list`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=476;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

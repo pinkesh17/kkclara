@@ -24,7 +24,14 @@
 <link rel="stylesheet" href="{{asset('admin/assets/css/fullcalendar.main.css')}}">
 <link rel="stylesheet" href="{{asset('admin/assets/css/jsvectormap.min.css')}}">
 <link rel="stylesheet" href="{{asset('admin/assets/css/lightpick.css')}}">
+
+
+
+<link rel="stylesheet" href="{{asset('vendors/select2/css/select2.min.css')}}">
+
 <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
+
+<link rel="stylesheet" href="{{asset('vendors/bootstrap-datepicker/bootstrap-datepicker3.min.css')}}">
 <link rel="stylesheet" href="{{asset('admin/assets/css/custom.css')}}">
 
 @yield('stylesheet')
@@ -55,6 +62,7 @@
 
 
 
+<script src="{{asset('admin/assets/js/jquery-3.7.1.min.js')}}"></script>
 <script src="{{asset('admin/assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('admin/assets/js/sidebar-menu.js')}}"></script>
 <script src="{{asset('admin/assets/js/dragdrop.js')}}"></script>
@@ -73,10 +81,17 @@
 <script src="{{asset('admin/assets/js/world-merc.js')}}"></script>
 <script src="{{asset('admin/assets/js/moment.min.js')}}"></script>
 <script src="{{asset('admin/assets/js/lightpick.js')}}"></script>
+
+<script src="{{asset('vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('vendors/select2/js/select2.full.min.js')}}"></script>
+<script src="{{asset('vendors/jquery-validation/jquery.validate.min.js')}}"></script>
+<script src="{{asset('vendors/jquery-validation/additional-methods.min.js')}}"></script>
+
 <script src="{{asset('admin/assets/js/custom/apexcharts.js')}}"></script>
 <script src="{{asset('admin/assets/js/custom/echarts.js')}}"></script>
 <script src="{{asset('admin/assets/js/custom/custom.js')}}"></script>
-    @yield('scripts')
+
+@yield('scripts')
 
 
 

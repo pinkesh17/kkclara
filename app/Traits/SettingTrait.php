@@ -8,55 +8,32 @@ use Illuminate\Support\Str;
 
 use Illuminate\Support\Carbon;
 
-use App\Models\Admin\UserPrefix;
+use App\Models\UserPrefix;
+use App\Models\UserGender;
+use App\Models\UserStatus;
+
+
+
+
   
 trait SettingTrait{
 
 
 
     public function getPrefixes(){
-
-        /*
-        // Get all prefixes
-        $prefixes = UserPrefix::all();
-
-        // Get a single prefix by ID
-        $prefix = UserPrefix::find(1); // Finds prefix with id = 1
-
-        // Get first record
-        $firstPrefix = UserPrefix::first();
-
-        // Get prefixes ordered alphabetically
-        $orderedPrefixes = UserPrefix::orderBy('prefix')->get();
-
-
-        2. Conditional Queries
-        // Get prefixes where id is greater than 3
-        $filteredPrefixes = UserPrefix::where('id', '>', 3)->get();
-
-        // Get a specific prefix by value
-        $mrPrefix = UserPrefix::where('prefix', 'Mr.')->first();
-
-        // Get multiple prefixes
-        $commonPrefixes = UserPrefix::whereIn('prefix', ['Mr.', 'Mrs.', 'Ms.'])->get();
-
-        */
-
-      /* $prefix = UserPrefix::with(
-                            'blogCategory:category_id,category_name'
-                    )->select('article_id','title','url','image','meta_title','meta_keyword','meta_description', 'category','content' , 'read_time','author_id', 'status','created_at', 'updated_at')
-                    /*->whereHas('collegeCity', function ($query) use ($location) {$query->where('city_state_url','=',$location);})*
-                    ->where('article_id','>',0)
-                    ->where('status','=',1)
-                    ->orderBy('article_id', 'DESC')
-                    ->limit(3)
-                    ->get(); */
-
         $prefixes = UserPrefix::orderBy('prefix')->get();
-  
         return $prefixes;
-
     }
+    public function getGender(){
+        $genders = UserGender::orderBy('gender_id')->get();
+        return $genders;
+    }
+    public function getStatus(){
+        $status = UserStatus::orderBy('id')->get();
+        return $status;
+    }
+
+    
 
 
     public function getYears(){

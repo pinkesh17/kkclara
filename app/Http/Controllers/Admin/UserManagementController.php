@@ -8,11 +8,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\View\View;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 use App\Models\User;
 
+use App\Traits\SettingTrait;
 
-class UserManagementController extends Controller
-{
+
+
+
+class UserManagementController extends Controller{
+
+  use SettingTrait; // Import the trait
+
+
   /**
    * Redirect to user-management view.
    *
@@ -164,15 +174,69 @@ class UserManagementController extends Controller
 
 
   public function addUser(){
+    $prefixes =  $this->getPrefixes();
+    $genders =  $this->getGender();
+    $status =  $this->getStatus();
 
-     return view('admin.users.add-user');
+    
+
+     return view('admin.users.add-user', 
+      [
+        'prefixes'=>$prefixes,
+        'genders'=>$genders,
+        'status'=>$status
+      ]);
 
 
   }
 
-  public function addUserPost(){
+  public function addUserPost(Request $request){
 
-     return view('admin.users.add-user');
+    $this->validator($request->all())->validate();
+
+    $otp =  randomOTP();
+
+    
+
+    $userData = [
+        'prefix' => $request->post('prefix'),
+        'first_name' => $request->post('first_name'),
+        'last_name' => $request->post('last_name'),
+        'phone' => $request->post('phone'),
+        'email' => $request->post('email'),
+        'gender' => $request->post('gender'),
+        'date_of_birth' => $request->post('date_of_birth'),
+        'status' => $request->post('status'),
+        'password' => $otp,
+        
+    ];
+
+
+    $user = $this->createUser($userData);
+    $this->updateUserId($user->id);
+
+     return redirect()->back()
+            ->withErrors([
+            'otp_error' => ['Incorrect OTP. Please try again' .$otp ],
+          ]);
+
+
+    
+
+
+    /*
+    return redirect()->route('add-user');
+     "_token" => "F2BnnvXBIl0BurEHsnriyxKAhqY6vScL2kE6Qi28"
+      "first_name" => "dfds"
+      "last_name" => "fdfd"
+      "phone" => null
+      "email" => null
+      "gender" => "2"
+      "date_of_birth" => null
+      "status" => "2"
+
+      */
+
 
 
   }
@@ -181,16 +245,38 @@ class UserManagementController extends Controller
 
 
 
+  protected function validator(array $data){
+        return Validator::make($data, [
+            'first_name' => ['required', 'string', 'min:2', 'max:30'],
+            'last_name' => ['required', 'string', 'min:2', 'max:30'],
+            'gender' => ['required'],
+            'status' => ['required'],
+            'phone' => ['nullable','digits:10'],
+            'email' => ['nullable','string', 'email']
+        ]
+    );
+  }
 
+  protected function createUser(array $data){
 
+        return User::create([
+            'is_primary' => 1,
+            'prefix' => $data['prefix'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'phone' => $data['phone'],
+            /*'phone_verified_at' => now(), */
+            'password' => Hash::make($data['password']),
+            'steps' => 0,
+            'role' => 1,
+            'status' => $data['status']
+        ]);
+  }
 
-
-
-
-
-
-
-
+  protected function updateUserId($id){
+        $saveData = ["username" => $id];
+        User::updateOrCreate(['id' => $id], $saveData);
+  }
 
 
 
