@@ -49,7 +49,7 @@ $customizerHidden = 'customizer-hide';
 
             <div class="mb-6 form-control-validation">
               <label for="username" class="form-label">Email or Username</label>
-              <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" required autofocus />
+              <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" value="1234567916" required autofocus />
               @error('username')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>

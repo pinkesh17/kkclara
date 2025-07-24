@@ -17,7 +17,7 @@
     @csrf
     <div class="row wow fadeInRight" data-wow-delay="300ms">
       <div class="col-xl-6 mx-auto">
-        <div class="log-reg-form search-modal form-style1 bgc-white p50 p30-sm default-box-shadow1 bdrs12">
+        <div class="log-reg-form search-modal form-style1 bgc-white p40 p30-sm default-box-shadow1 bdrs12">
           <div class="mb30">
             <h1 class="h3 text-center">Let's create your account!</h1>   
           </div>

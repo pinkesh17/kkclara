@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
-@section('variable_section')
-      @php
-         $activeMenu = 0;
-         $activeMenuSub = 0;
-      @endphp
-  @show
 <title>@yield('title')</title>
 <meta name="description" content="" />
 <meta name="keywords" content="" />
@@ -31,12 +25,16 @@
 <link rel="stylesheet" href="{{asset('admin/assets/css/jsvectormap.min.css')}}">
 <link rel="stylesheet" href="{{asset('admin/assets/css/lightpick.css')}}">
 <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/custom.css')}}">
 
 @yield('stylesheet')
 
 </head>
 
  <body class="boxed-size">
+
+    @yield('variable_section')
+
 
   @include('includes.admin.sidebar-left')
 

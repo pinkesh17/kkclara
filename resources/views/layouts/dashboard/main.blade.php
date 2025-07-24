@@ -6,97 +6,77 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link rel="canonical" href="" />
-<link rel="icon" type="image/x-icon" href="{{asset('assets/img/favicon/favicon.ico')}}" />
 
-
-
+<link rel="icon" type="image/png" href="{{asset('admin/assets/images/favicon.png')}}/">
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Favicon -->
-<link href="{{asset('assets/images/favicon.ico')}}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
-<link href="{{asset('assets/images/favicon.ico')}} images/favicon.ico" sizes="128x128" rel="shortcut icon" />
-<!-- Apple Touch Icon -->
-<link href="{{asset('assets/images/apple-touch-icon-60x60.png')}}" sizes="60x60" rel="apple-touch-icon">
-<link href="{{asset('assets/images/apple-touch-icon-72x72.png')}} " sizes="72x72" rel="apple-touch-icon">
-<link href="{{asset('assets/images/apple-touch-icon-114x114.png')}}" sizes="114x114" rel="apple-touch-icon">
-<link href="{{asset('assets/img/images/apple-touch-icon-180x180.png')}}" sizes="180x180" rel="apple-touch-icon">
-
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <meta name="robots" content="noindex, nofollow" />
 
-<!-- css file -->
-<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/jquery-ui.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/ace-responsive-menu.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/menu.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/fontawesome.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/flaticon.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/bootstrap-select.min.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/animate.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/slider.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/ud-custom-spacing.css')}}">
-<!-- Responsive stylesheet -->
-<link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
-<link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/sidebar-menu.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/simplebar.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/apexcharts.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/prism.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/rangeslider.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/quill.snow.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/google-icon.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/remixicon.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/swiper-bundle.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/fullcalendar.main.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/jsvectormap.min.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/lightpick.css')}}">
+<link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
 
 @yield('stylesheet')
 
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-
 </head>
 
-<body>
+ <body class="boxed-size">
+
+  @yield('variable_section')
 
 
+  @include('includes.dashboard.sidebar-left')
 
-<div class="wrapper">
-  <div class="preloader"></div>
+  <div class="container-fluid">
+    <div class="main-content d-flex flex-column">
 
-  @include('includes.dashboard.header-main')
-
-  <div class="dashboard_content_wrapper">
-    <div class="dashboard dashboard_wrapper pr30 pr0-xl">
-
-      @include('includes.dashboard.sidebar-left')
-
+      @include('includes.dashboard.header-main')
 
       @yield('layoutContent')
+
+      @include('includes.dashboard.footer-main')
+
     </div>
   </div>
 
-  <a class="scrollToHome" href="#"><i class="fas fa-angle-up"></i></a>
-</div>
+  @include('includes.dashboard.theme-setting')
 
 
 
 
-
-
-    <script src="{{asset('assets/js/jquery-3.6.4.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery-migrate-3.0.0.min.js')}}"></script>
-    <script src="{{asset('assets/js/popper.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.mmenu.all.js')}}"></script>
-    <script src="{{asset('assets/js/ace-responsive-menu.js')}}"></script>
-    <script src="{{asset('assets/js/jquery-scrolltofixed-min.js')}}"></script>
-    <script src="{{asset('assets/js/wow.min.js')}}"></script>
-    <script src="{{asset('assets/js/owl.js')}}"></script>
-    <script src="{{asset('assets/js/parallax.js')}}"></script>
-    <!-- Custom script for all pages -->
-    <script src="{{asset('assets/js/script.js')}}"></script>
-
-
+<script src="{{asset('admin/assets/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/sidebar-menu.js')}}"></script>
+<script src="{{asset('admin/assets/js/dragdrop.js')}}"></script>
+<script src="{{asset('admin/assets/js/rangeslider.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/quill.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/data-table.js')}}"></script>
+<script src="{{asset('admin/assets/js/prism.js')}}"></script>
+<script src="{{asset('admin/assets/js/clipboard.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/feather.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/simplebar.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/apexcharts.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/echarts.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/swiper-bundle.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/fullcalendar.main.js')}}"></script>
+<script src="{{asset('admin/assets/js/jsvectormap.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/world-merc.js')}}"></script>
+<script src="{{asset('admin/assets/js/moment.min.js')}}"></script>
+<script src="{{asset('admin/assets/js/lightpick.js')}}"></script>
+<script src="{{asset('admin/assets/js/custom/apexcharts.js')}}"></script>
+<script src="{{asset('admin/assets/js/custom/echarts.js')}}"></script>
+<script src="{{asset('admin/assets/js/custom/custom.js')}}"></script>
     @yield('scripts')
 
 

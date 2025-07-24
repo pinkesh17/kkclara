@@ -5,10 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\RegisterController;
 
-use App\Http\Controllers\UserDashboard\DashboardController;
-use App\Http\Controllers\UserDashboard\ProfileController;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\ProfileController;
 
-use App\Http\Controllers\UserDashboard\SettingController;
+use App\Http\Controllers\Dashboard\SettingController;
 
 
 

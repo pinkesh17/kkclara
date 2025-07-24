@@ -36,7 +36,7 @@
     @csrf
     <div class="row wow fadeInRight" data-wow-delay="300ms">
       <div class="col-xl-6 mx-auto">
-        <div class="log-reg-form search-modal form-style1 bgc-white p50 p30-sm default-box-shadow1 bdrs12">
+        <div class="log-reg-form search-modal form-style1 bgc-white p40 p30-sm default-box-shadow1 bdrs12">
           <div class="mb30">
             <h2 class="h3 text-center">Log In</h2>
 
@@ -49,7 +49,7 @@
           </div>
           <div class="mb20">
             <label class="form-label fw600 dark-color" for="username">Username</label>
-            <input type="text" id="username" name="username" value="{{old('username')}}" class="form-control" required>
+            <input type="text" id="username" name="username" {{--value="{{old('username')}}" --}} value="1234567916" class="form-control" required>
             @error('username')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

@@ -1,0 +1,31 @@
+.name-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #3498db;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  line-height: 32px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+
+.avatar-a, .avatar-q { background-color: #1abc9c; }
+.avatar-b, .avatar-r { background-color: #2ecc71; }
+.avatar-c, .avatar-s { background-color: #3498db; }
+.avatar-d, .avatar-t { background-color: #9b59b6; }
+.avatar-e, .avatar-u { background-color: #34495e; }
+.avatar-f, .avatar-v { background-color: #16a085; }
+.avatar-g, .avatar-w { background-color: #27ae60; }
+.avatar-h, .avatar-x { background-color: #2980b9; }
+.avatar-i, .avatar-y { background-color: #8e44ad; }
+.avatar-j, .avatar-z { background-color: #2c3e50; }
+.avatar-k { background-color: #f1c40f; }
+.avatar-l { background-color: #e67e22; }
+.avatar-m { background-color: #e74c3c; }
+.avatar-n { background-color: #95a5a6; }
+.avatar-o { background-color: #f39c12; }
+.avatar-p { background-color: #d35400; }

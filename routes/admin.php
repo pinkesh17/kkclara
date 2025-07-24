@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserManagementController;
+
+
 
 
 Route::namespace('Admin')->prefix('webadmin')->group(function () {
@@ -17,6 +20,13 @@ Route::namespace('Admin')->prefix('webadmin')->group(function () {
 
 
     Route::get('/',[DashboardController::class, 'index'])->name('webadmin');
+
+
+    Route::get('/users',[UserManagementController::class, 'index'])->name('users');
+    Route::get('/add-user',[UserManagementController::class, 'addUser'])->name('add-user');
+    Route::post('/add-user',[UserManagementController::class, 'addUserPost'])->name('add-user');
+
+    
 
 
        

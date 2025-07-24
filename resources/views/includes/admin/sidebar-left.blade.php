@@ -2,11 +2,10 @@
 <div class="preloader" id="preloader">
     <div class="preloader">
         <div class="waviy position-relative">
-            <span class="d-inline-block">T</span>
-            <span class="d-inline-block">R</span>
-            <span class="d-inline-block">E</span>
-            <span class="d-inline-block">Z</span>
-            <span class="d-inline-block">O</span>
+            <span class="d-inline-block">K</span>
+            <span class="d-inline-block">K</span>
+            <span class="d-inline-block">S</span>
+            <span class="d-inline-block">N</span>
         </div>
     </div>
 </div>
@@ -17,7 +16,7 @@
     <div class="logo position-relative">
         <a href="{{route('webadmin')}}" class="d-block text-decoration-none position-relative">
             <img src="{{asset('admin/assets/images/logo-icon.png')}}" alt="logo-icon">
-            <span class="logo-text fw-bold text-dark">Trezo</span>
+            <span class="logo-text fw-bold text-dark">KKSN</span>
         </a>
         <button class="sidebar-burger-menu bg-transparent p-0 border-0 opacity-0 z-n1 position-absolute top-50 end-0 translate-middle-y" id="sidebar-burger-menu">
             <i data-feather="x"></i>
@@ -37,6 +36,42 @@
                     <span class="title">Dashboard</span>
                 </a>
             </li>
+
+            <li class="menu-item @if($activeMenu===2) open @endif">
+                <a href="javascript:void(0);" class="menu-link menu-toggle @if($activeMenu===2) active @endif">
+                    <span class="material-symbols-outlined menu-icon">person</span>
+                    <span class="title">Users {{$activeMenu}}</span>
+                </a>
+                <ul class="menu-sub">
+
+                    <li class="menu-item">
+                        <a href="{{route('users')}}" class="menu-link @if($activeMenuSub===201) active @endif">
+                            Users List
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{route('add-user')}}" class="menu-link @if($activeMenuSub===202) active @endif">
+                            Add User
+                        </a>
+                    </li>
+
+
+                    <li class="menu-item">
+                        <a href="team-members.html" class="menu-link">
+                            Team Members
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">
+                        <a href="add-user.html" class="menu-link">
+                            Add User
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
 
             <li class="menu-item open">
                 <a href="javascript:void(0);" class="menu-link menu-toggle active">
@@ -945,29 +980,6 @@
                 </ul>
             </li>
 
-            <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle active">
-                    <span class="material-symbols-outlined menu-icon">person</span>
-                    <span class="title">Users</span>
-                </a>
-                <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="team-members.html" class="menu-link">
-                            Team Members
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="users-list.html" class="menu-link">
-                            Users List
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="add-user.html" class="menu-link">
-                            Add User
-                        </a>
-                    </li>
-                </ul>
-            </li>
 
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle active">
@@ -1458,13 +1470,13 @@
                 </ul>
             </li>
 
-            <li class="menu-item">
-                <a href="logout.html" class="menu-link">
+             <li class="menu-item">
+                <a class="menu-link" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form-side').submit();">
                     <span class="material-symbols-outlined menu-icon">logout</span>
                     <span class="title">Logout</span>
                 </a>
+                <form id="logout-form-side" action="{{route('logout')}}" method="POST" class="d-none">@csrf</form>
             </li>
         </ul>
     </aside>
 </div>
-<!-- End Sidebar Area -->

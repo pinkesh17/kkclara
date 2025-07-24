@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\UserDashboard;
+namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 
@@ -17,7 +17,7 @@ use App\Traits\SettingTrait;
 
 //use App\Traits\BlogHelper;
 
-class ProfileController extends Controller{
+class SettingController extends Controller{
 
    use SettingTrait; // Import the trait
 
@@ -34,10 +34,27 @@ class ProfileController extends Controller{
 
     public function index(Request $request){
 
-       return view('users.dashboard.setting.setting');
+       return view('users.dashboard.settings.setting');
     }
 
-    public function  profileInformation(Request $request){
+    public function  saveProfile(Request $request){
+
+
+            print_r($request->all());
+
+   
+      
+    }
+
+
+
+
+
+
+
+
+
+    public function  profileInfo(Request $request){
 
       $prefixes =  $this->getPrefixes();
      /* $years =  $this->getYears();
@@ -45,12 +62,15 @@ class ProfileController extends Controller{
       $months =  $this->getMonths();*/
 
       
-       return view('users.dashboard.setting.profile-information', ['prefixes'=>$prefixes]);
+       return view('users.dashboard.settings.profile-information', ['prefixes'=>$prefixes]);
     }
 
-    public function  profileInformationPost(Request $request){
+    public function  profileInfoPost(Request $request){
 
-      $this->validator($request->all())->validate();
+
+            print_r($request->all());
+
+     /* $this->validator($request->all())->validate();
 
 
       $convertedDate = Carbon::createFromFormat('d-m-Y', $request->post('date_of_birth'))->format('Y-m-d');
@@ -65,7 +85,7 @@ class ProfileController extends Controller{
          ]);
 
          return redirect()->route('profile-information');
-
+**/
       
     }
 
@@ -85,7 +105,7 @@ class ProfileController extends Controller{
       $months =  $this->getMonths();
 
       
-       return view('users.dashboard.setting.address-update', ['prefixes'=>$prefixes, 'years'=>$years, 'days'=>$days, 'months'=>$months]);
+       return view('users.dashboard.settings.address-update', ['prefixes'=>$prefixes, 'years'=>$years, 'days'=>$days, 'months'=>$months]);
     }
 
 
