@@ -79,14 +79,16 @@
                             <tr>
                                 <th scope="col">User</th>
                                 <th scope="col">User ID</th>
+                                <th scope="col">Profile<br/>Status</th>
 
-                                <th scope="col">F. Name</th>
-                                <th scope="col">L. Name</th>
+                                <th scope="col">First<br/>Name</th>
+                                <th scope="col">Last<br/> Name</th>
                                 <th scope="col">Gender</th>
                                 <th scope="col">Mobile</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">DOB</th>
                                 <th scope="col">Role</th> 
+                                <th scope="col">Status</th>
                                 <th scope="col">Join Date</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -100,87 +102,80 @@
                                 <td>
                                     <div class="d-flex align-items-center">
 
-                                        @if(!empty($dt['profile_picture']))
+                                        @if(!empty($dt->profile_picture))
                                             <img src="assets/images/user-6.jpg" class="wh-40 rounded-3" alt="user">
                                         @else
-                                        <div class="name-logo d-inline-block avatar-{{$dt['dp_name_first']}}">{{$dt['dp_name']}}</div>
+                                        <div class="name-logo d-inline-block avatar-{{$dt->dp_name_first}}">{{$dt->dp_name}}</div>
                                         @endif
 
                                     </div>
                                 </td>
-                                <td class="text-body">{{$dt['id']}}</td>
+                                <td class="text-body">{{$dt->id}}</td>
 
-                                <td class="text-body">{{$dt['first_name']}}</td>
-                                <td class="text-body">{{$dt['last_name']}}</td>
-                                <td class="text-body">{{$dt['gender_name']}}</td>
+                                <td class="text-body">
 
-                                <td class="text-secondary">{{$dt['phone']}}</td>
+                                    @php
+                                        $profileColor = "#FD5812";
+                                        $profile = 30;
+                                        if($profile > 80){
+                                            $profileColor = "#30ad0d";
+                                        }
+                                        elseif($profile > 60){
+                                            $profileColor = "#3584FC";
+
+                                        }
+                                        elseif($profile > 40){
+                                            $profileColor = "#f3c231";
+                                        }
+
+                                    @endphp
+
+
+                                    <div style="position:relative;width: 50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background: conic-gradient({{$profileColor}} {{$profile}}%,#ECEEF2 {{$profile}}%);">
+                                        <div style="position:absolute;width:80%;height:80%;background-color:#ffffff; border-radius:50%; display:flex;align-items:center; justify-content:center;">
+                                            <p class="text-body fw-semibold" style="font-size: 12px;">{{$profile}}%</p>
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                                <td class="text-body">{{$dt->first_name}}</td>
+                                <td class="text-body">{{$dt->last_name}}</td>
+                                <td class="text-body">{{$dt->gender_name}}</td>
+
+                                <td class="text-secondary">{{$dt->phone}}</td>
                                 <td class="text-secondary">
-                                    <span class="badge bg-primary bg-opacity-10 text-primary p-2 fs-12 fw-normal">Confirmed</span>
-
-                                    <span class="badge bg-success bg-opacity-10 text-success p-2 fs-12 fw-normal">In Progress</span>
-
-                                    <span class="badge bg-warning bg-opacity-10 text-warning p-2 fs-12 fw-normal">Pending</span>
-
-                                    <span class="badge bg-danger bg-opacity-10 text-danger p-2 fs-12 fw-normal">Rejected</span>
-
-
-                                    {{$dt['email']}}
+                                    {{$dt->email}}
                                 </td>
                                 <td class="text-body">
-                                    {{$dt['dob']}}
+                                    {{$dt->dob}}
 
-                                    <div style=" 
-                                                        position: relative; 
-                                                        width: 50px; 
-                                                        height: 50px; 
-                                                        border-radius: 50%; 
-                                                        display: flex; 
-                                                        align-items: center; 
-                                                        justify-content: center; 
-                                                        background: conic-gradient(#AD63F6 75%, #ECEEF2 75%);"
-                                                    >
-                                                        <div style="
-                                                            position: absolute; 
-                                                            width: 80%; 
-                                                            height: 80%; 
-                                                            background-color: #ffffff; 
-                                                            border-radius: 50%; 
-                                                            display: flex; 
-                                                            align-items: center; 
-                                                            justify-content: center;"
-                                                        >
-                                                            <p class="text-body fw-semibold" style="font-size: 12px;">75%</p>
-                                                        </div>
-                                                    </div>
+                                    
                                 </td>
                                 <td class="text-body">
-                                    {{$dt['rolem']}}
-
-                                    <div style=" 
-                                                        position: relative; 
-                                                        width: 50px; 
-                                                        height: 50px; 
-                                                        border-radius: 50%; 
-                                                        display: flex; 
-                                                        align-items: center; 
-                                                        justify-content: center; 
-                                                        background: conic-gradient(#37D80A 80%, #ECEEF2 80%);"
-                                                    >
-                                                        <div style="
-                                                            position: absolute; 
-                                                            width: 80%; 
-                                                            height: 80%; 
-                                                            background-color: #ffffff; 
-                                                            border-radius: 50%; 
-                                                            display: flex; 
-                                                            align-items: center; 
-                                                            justify-content: center;"
-                                                        >
-                                                            <p class="text-body fw-semibold" style="font-size: 12px;">80%</p>
-                                                        </div>
+                                    {{$dt->userRole->role}}
                                 </td>
-                                <td class="text-secondary">{{$dt['created_at']}}</td>
+
+                                <td class="text-secondary">
+                                    @if($dt->status > 10)
+                                        <span class="badge bg-danger bg-opacity-10 text-danger p-2 fs-12 fw-normal">{{$dt->userStatus->status}}</span>
+
+                                    @elseif($dt->status == 1)
+                                        <span class="badge bg-success bg-opacity-10 text-success p-2 fs-12 fw-normal">{{$dt->userStatus->status}}</span>
+
+                                    @elseif($dt->status == 2)
+                                        <span class="badge bg-warning bg-opacity-10 text-warning p-2 fs-12 fw-normal">{{$dt->userStatus->status}}</span>
+                                    @elseif($dt->status == 3)
+                                         <span class="badge bg-danger bg-opacity-10 text-danger p-2 fs-12 fw-normal">{{$dt->userStatus->status}}</span>
+                                    @else
+                                        <span class="badge bg-primary bg-opacity-10 text-primary p-2 fs-12 fw-normal">{{$dt->userStatus->status}}</span>
+                                    @endif
+
+
+                                </td>
+
+
+                                <td class="text-secondary">{{$dt->created_date_str}}</td>
  
                                 <td>
                                     <div class="d-flex align-items-center gap-1">
@@ -203,55 +198,6 @@
 
                         </tbody>
                     </table>
-
-                    <div style=" 
-                                                        position: relative; 
-                                                        width: 50px; 
-                                                        height: 50px; 
-                                                        border-radius: 50%; 
-                                                        display: flex; 
-                                                        align-items: center; 
-                                                        justify-content: center; 
-                                                        background: conic-gradient(#3584FC 75%, #ECEEF2 75%);"
-                                                    >
-                                                        <div style="
-                                                            position: absolute; 
-                                                            width: 80%; 
-                                                            height: 80%; 
-                                                            background-color: #ffffff; 
-                                                            border-radius: 50%; 
-                                                            display: flex; 
-                                                            align-items: center; 
-                                                            justify-content: center;"
-                                                        >
-                                                            <p class="text-body fw-semibold" style="font-size: 12px;">75%</p>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div style=" 
-                                                        position: relative; 
-                                                        width: 50px; 
-                                                        height: 50px; 
-                                                        border-radius: 50%; 
-                                                        display: flex; 
-                                                        align-items: center; 
-                                                        justify-content: center; 
-                                                        background: conic-gradient(#FD5812 80%, #ECEEF2 80%);"
-                                                    >
-                                                        <div style="
-                                                            position: absolute; 
-                                                            width: 80%; 
-                                                            height: 80%; 
-                                                            background-color: #ffffff; 
-                                                            border-radius: 50%; 
-                                                            display: flex; 
-                                                            align-items: center; 
-                                                            justify-content: center;"
-                                                        >
-                                                            <p class="text-body fw-semibold" style="font-size: 12px;">80%</p>
-                                                        </div>
-                                                    </div>
 
                 </div>
 

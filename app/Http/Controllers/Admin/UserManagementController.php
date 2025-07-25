@@ -29,40 +29,14 @@ class UserManagementController extends Controller{
    */
   public function index(Request $request){
     // dd('UserManagement');
-    $users = User::all();
-    $userCount = $users->count();
+    $users1 = User::all();
+    $userCount = $users1->count();
     $verified = User::whereNotNull('email_verified_at')->get()->count();
     $notVerified = User::whereNull('email_verified_at')->get()->count();
-    $usersUnique = $users->unique(['email']);
-    $userDuplicates = $users->diff($usersUnique)->count();
-
-   // dd($userCount);
+    $usersUnique = $users1->unique(['email']);
+    $userDuplicates = $users1->diff($usersUnique)->count();
 
 
-   /* $columns = [
-        1 => 'id',
-        2 => 'username',
-        3 => 'prefix',
-        4 => 'first_name',
-        5 => 'last_name',
-        6 => 'phone',
-        7 => 'phone_verified_at',
-        8 => 'email',
-        9 => 'email_verified_at',
-        10 => 'date_of_birth',
-        11 => 'gender',
-        12 => 'profile_picture',
-        13 => 'steps',
-        14 => 'role',
-        15 => 'status',
-        16 => 'user_role.role_name',
-        17 => 'user_role.role',
-        18 => 'user_genders.gender',
-        19 => 'created_at',
-        20 => 'updated_at'
-    ];*/
-
-    
 
     // Total records without filtering
     $totalData = User::count();
@@ -92,53 +66,31 @@ class UserManagementController extends Controller{
 
     // Pagination, Ordering, and Fetch
 
-    $users = User::select('users.*', 'user_role.role_name as role_name', 'user_role.role as rolem', 'user_gender.gender as gender_name')
-    ->leftJoin('user_role', 'users.role', '=', 'user_role.role_id')
-    ->leftJoin('user_gender', 'users.gender', '=', 'user_gender.gender_id')
-    ->limit($limit)
-    ->orderBy($order, $dir)
-    ->get();
 
 
-    /*$users = $query->offset($start)
-        ->limit($limit)
-        ->orderBy($order, $dir)
-        ->get();*/
+    $users = User::with([
+        'userGender:gender_id,gender',
+        'userStatus:id,status',
+        'userRole:role_id,role_name,role',
+    ])
+    ->select('users.*')
+    ->where('id', '>',0)
+    ->offset(0)
+    ->limit(10)
+    ->get()
+    ->map(function ($user) {
+        $user->dp_name = getInitials($user->first_name, $user->last_name);
+        $user->dp_name_first = getFirstLetter($user->first_name);
 
-    // Prepare data
-    $data = [];
-    $index = $start;
+        $user->dob = sortDateFormate1($user->date_of_birth);
 
-    foreach ($users as $user) {
-        $data[] = [
-            'id' => $user->id,
-            'fake_id' => ++$index,
-            'username' => $user->username,
-            'prefix' => $user->prefix,
-            'first_name' => $user->first_name,
-            'last_name' => $user->last_name,
-            'dp_name' => getInitials($user->first_name, $user->last_name),
-            'dp_name_first' => getFirstLetter($user->first_name),
-            'phone' => $user->phone,
-            'phone_verified_at' => $user->phone_verified_at,
-            'email' => $user->email,
-            'email_verified_at' => $user->email_verified_at,
-            'dob' => sortDateFormate1($user->date_of_birth),
-            'gender' => $user->gender,
-            'profile_picture' => $user->profile_picture,
-            'role' => $user->role,
-            'status' => $user->status,
-            'role_name' => $user->role_name,
-            'rolem' => $user->rolem,
-            'gender_name' => $user->gender_name,
-            'created_at' => sortDateFormate1($user->created_at),
-            'updated_at' => sortDateFormate1($user->updated_at),
-            
-
-        ];
-    }
+        $user->created_date_str = sortDateFormate1($user->created_at);
+        $user->updated_date_str = sortDateFormate1($user->updated_at);
+        return $user;
+    });
 
 
+    //dd($users);
 
 
     return view('admin.users.users', [
@@ -149,7 +101,7 @@ class UserManagementController extends Controller{
       'draw' => intval($request->input('draw')),
       'recordsTotal' => intval($totalData),
       'recordsFiltered' => intval($totalFiltered),
-      'data' => $data,
+      'data' => $users,
     ]);
 
     // Return DataTables-compatible JSON
@@ -171,6 +123,27 @@ class UserManagementController extends Controller{
       'userDuplicates' => $userDuplicates,
     ]);*/
   }
+
+  public function userData(){
+
+    $users = User::with([
+        'status:id,status',
+        'role:id,name'
+    ])
+    ->select('users.*') // Must include 'status' and 'role' foreign keys
+    ->where('id', '>', 100)
+    ->offset(0)
+    ->limit(10)
+    ->get();
+
+
+
+    print_r($users);
+
+    echo "userData";
+  }
+
+  
 
 
   public function addUser(){

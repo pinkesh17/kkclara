@@ -14,7 +14,7 @@ class AdminMiddleware{
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next,  string $roles): Response{
+    public function handle(Request $request, Closure $next): Response{
 
         //...$roles
 
@@ -26,7 +26,7 @@ class AdminMiddleware{
        //dd(Auth::user()->id);
 
 
-        if(Auth::check() && Auth::user()->role == $roles){
+        if(Auth::check() && Auth::user()->role > 20){
 
             /*dd("IN IF");*/
 

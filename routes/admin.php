@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\UserManagementController;
 
 
 
-Route::namespace('Admin')->prefix('webadmin')->group(function () {
+Route::middleware(['admin'])->namespace('Admin')->prefix('webadmin')->group(function () {
 
 
     /*Route::middleware(['userSteps'])->group(function () {
@@ -25,6 +25,8 @@ Route::namespace('Admin')->prefix('webadmin')->group(function () {
     Route::get('/users',[UserManagementController::class, 'index'])->name('users');
     Route::get('/add-user',[UserManagementController::class, 'addUser'])->name('add-user');
     Route::post('/add-user',[UserManagementController::class, 'addUserPost'])->name('add-user');
+
+    Route::get('/user-data',[UserManagementController::class, 'userData'])->name('user-data');
 
     
 
