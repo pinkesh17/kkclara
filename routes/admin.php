@@ -26,6 +26,13 @@ Route::middleware(['admin'])->namespace('Admin')->prefix('webadmin')->group(func
     Route::get('/add-user',[UserManagementController::class, 'addUser'])->name('add-user');
     Route::post('/add-user',[UserManagementController::class, 'addUserPost'])->name('add-user');
 
+
+    Route::get('/add-user-child',[UserManagementController::class, 'addUserChild'])->name('add-user-child');
+    Route::post('/add-user-child',[UserManagementController::class, 'addUserChildPost'])->name('add-user-child');
+
+
+
+
     Route::get('/user-data',[UserManagementController::class, 'userData'])->name('user-data');
 
     

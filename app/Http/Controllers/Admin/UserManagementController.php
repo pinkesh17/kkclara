@@ -151,21 +151,37 @@ class UserManagementController extends Controller{
     $genders =  $this->getGender();
     $status =  $this->getStatus();
 
-    
-
      return view('admin.users.add-user', 
       [
         'prefixes'=>$prefixes,
         'genders'=>$genders,
         'status'=>$status
       ]);
-
-
   }
+
+  public function addUserChild(){
+    $prefixes =  $this->getPrefixes();
+    $genders =  $this->getGender();
+    $status =  $this->getStatus();
+
+     return view('admin.users.add-user-child', 
+      [
+        'prefixes'=>$prefixes,
+        'genders'=>$genders,
+        'status'=>$status
+      ]);
+  }
+
+
+  
+
+
 
   public function addUserPost(Request $request){
 
     $this->validator($request->all())->validate();
+
+
 
     $otp =  randomOTP();
 
@@ -210,24 +226,34 @@ class UserManagementController extends Controller{
 
       */
 
-
-
   }
 
 
 
-
-
   protected function validator(array $data){
-        return Validator::make($data, [
-            'first_name' => ['required', 'string', 'min:2', 'max:30'],
-            'last_name' => ['required', 'string', 'min:2', 'max:30'],
-            'gender' => ['required'],
-            'status' => ['required'],
-            'phone' => ['nullable','digits:10'],
-            'email' => ['nullable','string', 'email']
-        ]
-    );
+
+        $isPrimary = $data['isPrimary'];
+
+        if($isPrimary==1){
+            return Validator::make($data, [
+              'first_name' => ['required', 'string', 'min:2', 'max:30'],
+              'last_name' => ['required', 'string', 'min:2', 'max:30'],
+              'gender' => ['required'],
+              'status' => ['required'],
+              'phone' => ['required','digits:10','unique:users'],
+              'email' => ['nullable','string', 'email']
+          ]);
+        }else{
+          return Validator::make($data, [
+              'first_name' => ['required', 'string', 'min:2', 'max:30'],
+              'last_name' => ['required', 'string', 'min:2', 'max:30'],
+              'gender' => ['required'],
+              'status' => ['required'],
+              'phone' => ['nullable','digits:10'],
+              'email' => ['nullable','string', 'email']
+          ]);
+        }
+
   }
 
   protected function createUser(array $data){
