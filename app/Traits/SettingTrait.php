@@ -14,6 +14,13 @@ use App\Models\UserStatus;
 
 
 
+use App\Models\LocationState;
+use App\Models\LocationDistrict;
+use App\Models\LocationBlock;
+use App\Models\LocationCity;
+
+
+
 
   
 trait SettingTrait{
@@ -32,6 +39,42 @@ trait SettingTrait{
         $status = UserStatus::orderBy('id')->get();
         return $status;
     }
+
+
+
+    public function getStates($country_id=null){
+        $status = LocationState::orderBy('state_id')->where('country_id', $country_id)->get();
+        return $status;
+    }
+
+    public function getDistricts($state_id=null){
+        $status = LocationDistrict::orderBy('district_id')->where('state_id', $state_id)->get();
+        return $status;
+    }
+
+    public function getDlocks(){
+        $status = UserStatus::orderBy('id')->get();
+        return $status;
+    }
+
+     public function getCities(){
+        $status = UserStatus::orderBy('id')->get();
+        return $status;
+    }
+
+
+
+    /*public function getPanchayat(){
+        $status = UserStatus::orderBy('id')->get();
+        return $status;
+    }*/
+
+    
+
+
+
+
+
 
     
 

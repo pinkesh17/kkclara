@@ -22,6 +22,9 @@ Route::middleware(['admin'])->namespace('Admin')->prefix('webadmin')->group(func
     Route::get('/',[DashboardController::class, 'index'])->name('webadmin');
 
 
+
+    Route::get('/autocomplete-users',[UserManagementController::class, 'autocomplete'])->name('users.autocomplete');
+
     Route::get('/users',[UserManagementController::class, 'index'])->name('users');
     Route::get('/add-user',[UserManagementController::class, 'addUser'])->name('add-user');
     Route::post('/add-user',[UserManagementController::class, 'addUserPost'])->name('add-user');
@@ -29,6 +32,15 @@ Route::middleware(['admin'])->namespace('Admin')->prefix('webadmin')->group(func
 
     Route::get('/add-user-child',[UserManagementController::class, 'addUserChild'])->name('add-user-child');
     Route::post('/add-user-child',[UserManagementController::class, 'addUserChildPost'])->name('add-user-child');
+
+
+
+    Route::get('/add-address/{id?}',[UserManagementController::class, 'addAddress'])->name('users.add-address');
+    Route::post('/users.add-address',[UserManagementController::class, 'addAddressPost'])->name('users.add-address');
+
+
+
+    
 
 
 

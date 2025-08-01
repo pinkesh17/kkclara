@@ -1,7 +1,7 @@
 @extends('layouts.admin.main')
 
-@section('title', 'Add Usert')
-@section('description', 'Add User')
+@section('title', 'Add Address')
+@section('description', 'Add Address')
 @section('canonical', URL::current())
 
 
@@ -9,7 +9,7 @@
 @section('variable_section')
     @php
         $activeMenu = 2;
-        $activeMenuSub = 202;
+        $activeMenuSub = 201;
     @endphp
 @endsection
 
@@ -17,7 +17,7 @@
 
 <div class="main-content-container overflow-hidden">
     <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
-        <h3 class="mb-0">Add User</h3>
+        <h3 class="mb-0">Add Address for {{ $user->first_name }} {{ $user->last_name }}</h3>
 
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb align-items-center mb-0 lh-1">
@@ -34,7 +34,7 @@
                 </li>
 
                 <li class="breadcrumb-item active" aria-current="page">
-                    <span class="fw-medium">Add User</span>
+                    <span class="fw-medium">Add Address</span>
                 </li>
 
                 
@@ -57,24 +57,53 @@
                   @endif
 
 
-
-
                 <div class="card-body p-4">
-                    <form id="userForm" class="error-forms" method="POST" action="{{route('add-user')}}" autocomplete="off" novalidate>
+                    <form id="userForm" class="error-forms" method="POST" action="{{route('users.add-address')}}" autocomplete="off" novalidate>
                         @csrf
                         <div class="row">
 
-                            <div class="col-lg-3 col-sm-3">
-                                <div class="form-group mb-4">
-                                    <label class="label text-secondary" for="prefix">Prefix</label>
-                                    <select class="form-select form-control" id="prefix" name="prefix">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group mb-4 select2-t1">
+                                    <label class="label text-secondary" for="state">State</label>
+                                    <select class="form-select form-control js-select2" id="state" name="state">
                                         <option value="">Select</option>
-                                        @foreach($prefixes as $prefix)
-                                        <option value="{{$prefix->id}}">{{$prefix->prefix}}</option>
+                                        @foreach($states as $state)
+                                        <option value="{{$state->state_id}}">{{$state->state_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group mb-4 select2-t1">
+                                    <label class="label text-secondary" for="district">District</label>
+                                    <select class="form-select form-control" id="district" name="district">
+                                        <option value="">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group mb-4 select2-t1">
+                                    <label class="label text-secondary" for="block">Block</label>
+                                    <select class="form-select form-control js-select2" id="block" name="block">
+                                        <option value="">Select</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group mb-4 select2-t1">
+                                    <label class="label text-secondary" for="city">Village/City</label>
+                                    <select class="form-select form-control js-select2" id="city" name="city">
+                                        <option value="">Select</option>
+                                        @foreach($states as $state)
+                                        <option value="{{$state->state_id}}">{{$state->state_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
 
 
                             <div class="col-lg-5 col-sm-5">
@@ -106,17 +135,7 @@
 
 
 
-                            <div class="col-lg-4 col-sm-4">
-                                <div class="form-group select2-t1  mb-4">
-                                    <label class="label text-secondary" for="gender">Gender*</label>
-                                    <select class="form-select form-control" id="gender" name="gender" required>
-                                        <option value="">Select</option>
-                                        @foreach($genders as $gender)
-                                        <option value="{{$gender->gender_id}}">{{$gender->gender}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                           
 
                             <div class="col-lg-4 col-sm-4">
                                 <div class="form-group mb-4">
@@ -125,17 +144,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-sm-4">
-                                <div class="form-group select2-t1  mb-4">
-                                    <label class="label text-secondary" for="status">Status*</label>
-                                    <select class="form-select form-control" id="status" name="status" required>
-                                        <option value="">Select</option>
-                                        @foreach($status as $sts)
-                                        <option value="{{$sts->id}}">{{$sts->status}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                        
 
                             
 
@@ -194,7 +203,7 @@
 @section('scripts')
 <script>
 $(document).ready(function() {
-    $('.js-select2').select2({
+    $('.js-select2, #district, #block').select2({
         placeholder: 'Select an option'
     });
     $('.my-datepicker').datepicker({
@@ -203,7 +212,56 @@ $(document).ready(function() {
        autoclose: true,
        todayHighlight: true,
        format: 'dd-mm-yyyy' 
-   });
+    });
+    $('#state').on('change', function () {
+        let state_id = $(this).val();
+        $('#district').empty().trigger('change');
+        $.ajax({
+            url: "{{route('helpers.districts')}}?id="+ state_id,
+            type: 'GET',
+            success: function (districts) {
+              $('#district').empty();
+
+              districts.forEach(district => {
+
+                const option = new Option(district.district_name, district.district_id, false, false);
+                $('#district').append('<option value="">Select</option>');
+                $('#district').append(option);
+              });
+
+              $('#district').trigger('change');
+            }
+          });
+    });
+
+    $('#district').on('change', function () {
+
+        let district_id = $(this).val();
+
+        if (!district_id) return;
+
+        console.log(district_id);
+
+        $('#blocks').empty().trigger('change');
+        $.ajax({
+            url: "{{route('helpers.blocks')}}?id="+ district_id,
+            type: 'GET',
+            success: function (blocks) {
+              $('#blocks').empty();
+
+              blocks.forEach(block => {
+
+                const option = new Option(block.block_name, block.block_id, false, false);
+                $('#blocks').append('<option value="">Select</option>');
+                $('#blocks').append(option);
+              });
+
+              $('#blocks').trigger('change');
+            }
+          });
+    });
+
+
 
 
   $("#userForm").validate({

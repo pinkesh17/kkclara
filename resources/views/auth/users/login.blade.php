@@ -49,7 +49,7 @@
           </div>
           <div class="mb20">
             <label class="form-label fw600 dark-color" for="username">Username</label>
-            <input type="text" id="username" name="username" {{--value="{{old('username')}}" --}} value="1234567916" class="form-control" required>
+            <input type="text" id="username" name="username" {{--value="{{old('username')}}" --}} value="1234567900" class="form-control" required>
             @error('username')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

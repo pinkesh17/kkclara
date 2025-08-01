@@ -20,6 +20,9 @@ Route::get('/two', [HomeController::class, 'two'])->name('two');;
 Auth::routes();
 
 
+
+
+require __DIR__.'/helpers.php';
 require __DIR__.'/authuser.php';
 require __DIR__.'/admin.php';
 

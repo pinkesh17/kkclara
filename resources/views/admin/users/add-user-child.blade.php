@@ -9,7 +9,7 @@
 @section('variable_section')
     @php
         $activeMenu = 2;
-        $activeMenuSub = 202;
+        $activeMenuSub = 203;
     @endphp
 @endsection
 
@@ -60,21 +60,19 @@
 
 
                 <div class="card-body p-4">
-                    <form id="userForm" class="error-forms" method="POST" action="{{route('add-user')}}" autocomplete="off" novalidate>
+                    <form id="userForm" class="error-forms" method="POST" action="{{route('add-user-child')}}" autocomplete="off" novalidate>
                         @csrf
+                        <input type="hidden" id="username" name="username" value="{{old('username')}}" required>
                         <div class="row">
 
-                         <div class="col-lg-3 col-sm-3">
+                            <div class="col-lg-3 col-sm-3">
                                 <div class="form-group mb-4">
-                                    <label class="label text-secondary" for="prefix">Primary Account?</label>
-                                    <div>
-                                        <input class="form-check-input" type="radio" name="isPrimary" id="isPrimary1" value="1" checked>
-                                        <label class="form-check-label" for="isPrimary1">YES</label> &nbsp; &nbsp; 
-                                        <input class="form-check-input" type="radio" name="isPrimary"  id="isPrimary2" value="0">
-                                        <label class="form-check-label" for="isPrimary2">NO</label>
-                                    </div> 
+                                    <label class="label text-secondary" for="userq">Select Parrent*</label>
+                                    <input type="text" id="userq" name="userq" value="" class="form-control" required>
                                 </div>
                             </div>
+
+                            
 
                             <div class="col-lg-5 col-sm-5">
                                 <div class="form-group mb-4">
@@ -211,6 +209,99 @@
 @section('scripts')
 <script>
 $(document).ready(function() {
+
+
+function autocompleteLabelAction(item) {
+    $("#username").val(item.id);
+    $("#userq").val(item.value);
+    
+    autocompleteInstance.close();
+}
+
+$.widget("custom.autocompletePlus", $.ui.autocomplete, {
+  _create: function () {
+    this._super();
+
+    // Remove default handlers for both mouse and pointer/touch
+    this._off(this.menu.element, "mousedown menufocus menuselect");
+    this._off(this.menu.element, "pointerdown");
+    this._on(this.menu.element, {
+    mousedown: function (event, ui) {},
+    menufocus: function (event, ui) {},
+    menuselect: function (event, ui) {
+        const item = ui.item.data("ui-autocomplete-item");
+        autocompleteLabelAction(item)    
+      }
+    });
+  }
+});
+  
+
+const autocompleteInstance = $("#userq").autocompletePlus({
+    delay: 500,
+    minLength: 3,
+    html: true,
+    source: function(request, response) {
+        $.ajax({
+            url: "{{ route('users.autocomplete') }}",
+            data:{
+                query: request.term
+            },
+            success: function(data) {
+                const transformed = $.map(data, function(item) {
+                    return {
+                        label: item.name,
+                        value: item.name,
+                        id: item.id
+                    };
+                });
+                response(transformed);
+            },
+            error: function() {
+                response([]);
+            }
+        });
+    },
+    select: function (event, ui) {
+        /*$(event.target).autocompletePlus("close");*/
+
+    },
+    open: function(event, ui) {},
+    close: function(event, ui) {}
+}).autocompletePlus("instance");
+
+autocompleteInstance.widget().addClass("search-main-bar");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $('.js-select2').select2({
         placeholder: 'Select an option'
     });
@@ -225,6 +316,15 @@ $(document).ready(function() {
 
   $("#userForm").validate({
     rules: {
+
+    "userq": {
+        required: true,
+        minlength: 3
+      },
+      "username": {
+        required: true,
+        minlength: 8
+      },
       "first_name": {
         required: true,
         minlength: 2
@@ -259,6 +359,15 @@ $(document).ready(function() {
 
 
     },
+
+    errorPlacement: function (error, element) {
+        // Handle placement for Select2
+        if (element.hasClass("select2-hidden-accessible")) {
+          error.insertAfter(element.next('.select2')); // place after select2 DOM
+        } else {
+          error.insertAfter(element); // default
+        }
+      },
 
 
 

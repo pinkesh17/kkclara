@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
 use App\Traits\SettingTrait;
+use App\Traits\AutocompleteTrait;
 
 
 
@@ -21,12 +22,21 @@ use App\Traits\SettingTrait;
 class UserManagementController extends Controller{
 
   use SettingTrait; // Import the trait
+  use AutocompleteTrait;
 
 
   /**
    * Redirect to user-management view.
    *
    */
+
+  public function autocomplete(Request $request){
+    $search = $request->get('query');
+    $users = $this->autocompleteUsername($search);
+    return $users;
+
+  }
+
   public function index(Request $request){
     // dd('UserManagement');
     $users1 = User::all();
@@ -229,32 +239,70 @@ class UserManagementController extends Controller{
   }
 
 
+  public function addUserChildPost(Request $request){
+
+    $this->validatorChild($request->all())->validate();
+    $otp =  randomOTP();
+
+    $userData = [
+        'prefix' => $request->post('prefix'),
+        'first_name' => $request->post('first_name'),
+        'last_name' => $request->post('last_name'),
+        'phone' => $request->post('phone'),
+        'email' => $request->post('email'),
+        'gender' => $request->post('gender'),
+        'date_of_birth' => $request->post('date_of_birth'),
+        'status' => $request->post('status'),
+        'password' => $otp,
+        
+    ];
+
+
+    $user = $this->createUser($userData);
+    $this->updateUserId($user->id);
+
+     return redirect()->back()
+            ->withErrors([
+            'otp_error' => ['Incorrect OTP. Please try again' .$otp ],
+          ]);
+
+  }
+
+
 
   protected function validator(array $data){
 
-        $isPrimary = $data['isPrimary'];
-
-        if($isPrimary==1){
-            return Validator::make($data, [
-              'first_name' => ['required', 'string', 'min:2', 'max:30'],
-              'last_name' => ['required', 'string', 'min:2', 'max:30'],
-              'gender' => ['required'],
-              'status' => ['required'],
+       return Validator::make($data, [
               'phone' => ['required','digits:10','unique:users'],
-              'email' => ['nullable','string', 'email']
-          ]);
-        }else{
-          return Validator::make($data, [
+              'first_name' => ['required', 'string', 'min:2', 'max:30'],
               'first_name' => ['required', 'string', 'min:2', 'max:30'],
               'last_name' => ['required', 'string', 'min:2', 'max:30'],
               'gender' => ['required'],
               'status' => ['required'],
-              'phone' => ['nullable','digits:10'],
               'email' => ['nullable','string', 'email']
-          ]);
-        }
+        ]);
 
   }
+
+
+  protected function validatorChild(array $data){
+
+       return Validator::make($data, [
+              'username' => ['required', 'digits:10'],
+              'phone' => ['nullable','digits:10'],
+              'first_name' => ['required', 'string', 'min:2', 'max:30'],
+              'first_name' => ['required', 'string', 'min:2', 'max:30'],
+              'last_name' => ['required', 'string', 'min:2', 'max:30'],
+              'gender' => ['required'],
+              'status' => ['required'],
+              'email' => ['nullable','string', 'email']
+          ]);
+
+  }
+
+
+
+
 
   protected function createUser(array $data){
 
@@ -276,6 +324,33 @@ class UserManagementController extends Controller{
         $saveData = ["username" => $id];
         User::updateOrCreate(['id' => $id], $saveData);
   }
+
+
+   public function addAddress($id){
+
+    $user = User::findOrFail($id); 
+
+    /*$prefixes =  $this->getPrefixes();
+    $genders =  $this->getGender();
+    $status =  $this->getStatus();*/
+
+    $states =  $this->getStates(78);
+    $districts =  $this->getDistricts(5);
+
+    
+
+
+
+     return view('admin.users.add-address', 
+      [
+        'user' => $user,
+        'states'=>$states,
+        'districts' => $districts
+      ]);
+  }
+
+
+
 
 
 

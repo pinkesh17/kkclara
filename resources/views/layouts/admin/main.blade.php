@@ -12,6 +12,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <meta name="robots" content="noindex, nofollow" />
 
+
 <link rel="stylesheet" href="{{asset('admin/assets/css/sidebar-menu.css')}}">
 <link rel="stylesheet" href="{{asset('admin/assets/css/simplebar.css')}}">
 <link rel="stylesheet" href="{{asset('admin/assets/css/apexcharts.css')}}">
@@ -28,6 +29,7 @@
 
 
 <link rel="stylesheet" href="{{asset('vendors/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset('vendors/jquery-ui/jquery-ui.css')}}">
 
 <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
 
@@ -63,6 +65,7 @@
 
 
 <script src="{{asset('admin/assets/js/jquery-3.7.1.min.js')}}"></script>
+<script src="{{asset('vendors/jquery-ui/jquery.ui.autocomplete.js')}}"></script>
 <script src="{{asset('admin/assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('admin/assets/js/sidebar-menu.js')}}"></script>
 <script src="{{asset('admin/assets/js/dragdrop.js')}}"></script>

@@ -56,6 +56,12 @@
                         </a>
                     </li>
 
+                    <li class="menu-item">
+                        <a href="{{route('add-user-child')}}" class="menu-link @if($activeMenuSub===203) active @endif">
+                            Add Child User
+                        </a>
+                    </li>
+
 
                     <li class="menu-item">
                         <a href="team-members.html" class="menu-link">
