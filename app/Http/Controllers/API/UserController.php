@@ -32,8 +32,10 @@ class UserController extends Controller{
 
 
             $user = Auth::user();
-            $tokenResult = $user->createToken('flutter-app-token');
+            $tokenResult = $user->createToken('auth_app_token');
             $token = $tokenResult->plainTextToken;
+
+            //$token = $user->createToken('auth_token')->plainTextToken;
 
             // Set expiry for token (e.g., 7 days from now)
            // $tokenResult->accessToken->expires_at = Carbon::now()->addDays(7);
@@ -75,7 +77,49 @@ class UserController extends Controller{
             //$tokenResult->accessToken->expires_at = Carbon::now()->addDays(7);
            // $tokenResult->accessToken->save();
         
-            return Response(['token' => $token],200);
+            /*return Response(['token' => $token],200);/*/
+
+            $dp_name = getInitials($user->first_name, $user->last_name);
+            $dp_name_first = getFirstLetter($user->first_name);
+
+
+            return Response([
+                'token' => $token,
+                'user' => [
+                    'id' => $user->id,
+                    'first_name' => $user->first_name,
+                    'last_name' => $user->last_name,
+                    'dp_name' => $dp_name,
+                    'dp_name_first' => $dp_name_first,
+                    'email' => $user->email,
+                    'phone' => $user->phone,
+                    'role' => $user->role,
+                    'image' => $user->profile_picture,
+                ]
+            ], 200);
+
+            /*return response()->json([
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+                'user' => $user
+            ]);*/
+
+
+
+            /*return response()->json([
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+                'user' => [
+                    'id' => $user->id,
+                    'prefix' => $user->prefix,
+                    'first_name' => $user->first_name,
+                    'last_name' => $user->last_name,
+                    'email' => $user->email,
+                    'phone' => $user->phone,
+                    'role' => $user->role,
+                    'image' => $user->profile_picture,
+                ]
+            ]);*/
         }
 
         return Response(['message' => 'email or password wrong'],401);
