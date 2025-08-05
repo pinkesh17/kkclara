@@ -56,6 +56,8 @@ class User extends Authenticatable
         ];
     }
 
+
+
     public function userRole(){
 
         /*
@@ -77,6 +79,13 @@ class User extends Authenticatable
         return $this->belongsTo(UserStatus::class, 'status', 'id');
 
     }
+
+    public function userAddress(){
+        return $this->hasOne(UserAddress::class);
+    }
+
+
+
 
     public function userRelatives(){
 

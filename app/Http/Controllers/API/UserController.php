@@ -31,9 +31,35 @@ class UserController extends Controller{
         if(Auth::attempt($request->all())){
 
 
-            $user = Auth::user();
+           /* $user = Auth::user();
             $tokenResult = $user->createToken('auth_app_token');
+            $token = $tokenResult->plainTextToken;*/
+
+
+            $user = Auth::user();
+            
+
+
+            // For web app
+           // $webToken = $user->createToken('web_app_token')->plainTextToken;
+
+            // For mobile app
+           // $mobileToken = $user->createToken('mobile_app_token')->plainTextToken;
+
+            $user->tokens()->where('name', 'mobile_app_token')->delete(); 
+
+            $tokenResult = $user->createToken('mobile_app_token');
             $token = $tokenResult->plainTextToken;
+
+
+
+            // Set expiry manually
+            $user->tokens()->latest()->first()->update([
+                'expires_at' => now()->addDays(2), // Token expires in 7 days
+            ]);
+
+            $tokenModel = $user->tokens()->latest()->first();
+            $tokenModel->update(['expires_at' => now()->addDays(7)]);
 
             //$token = $user->createToken('auth_token')->plainTextToken;
 
@@ -85,6 +111,7 @@ class UserController extends Controller{
 
             return Response([
                 'token' => $token,
+                'expires_at' => $tokenModel->expires_at,
                 'user' => [
                     'id' => $user->id,
                     'first_name' => $user->first_name,
@@ -134,8 +161,14 @@ class UserController extends Controller{
 
             $user = Auth::user();
 
-            return Response(['data' => $user],200);
+            return Response([
+                    'status' => 1,
+                    'data' => $user
+            ],200);
         }
+
+
+
 
         return Response(['data' => 'Unauthorized'],401);
     }

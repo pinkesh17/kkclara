@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\Admin\SettingController;
+
+
 
 
 
@@ -42,6 +45,9 @@ Route::middleware(['admin'])->namespace('Admin')->prefix('webadmin')->group(func
 
     
 
+    /*Setting*/
+
+    Route::get('/my-profile',[SettingController::class, 'index'])->name('my-profile');
 
 
 

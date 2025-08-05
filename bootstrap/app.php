@@ -22,6 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'htmlMinifier' => HtmlMinifierMiddleware::class,
             'userSteps' => UserStepsMiddleware::class,
             'admin' => AdminMiddleware::class,
+            'check.token.expiry' => \App\Http\Middleware\CheckTokenExpiryMiddleware::class,
             
         ]);
 

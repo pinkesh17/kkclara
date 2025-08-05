@@ -19,10 +19,16 @@ use App\Http\Controllers\API\UserController;
 
 
 
-
+/*
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+*/
+
+Route::middleware(['auth:sanctum', 'check.token.expiry'])->group(function () {
+    Route::get('/user', [UserController::class, 'userDetails']);
+    // Add other protected routes here
 });
 
 
@@ -30,13 +36,14 @@ Route::post('login',[UserController::class,'loginUser']);
 
 
 Route::group(['middleware' => 'auth:sanctum'],function(){
-    Route::get('user',[UserController::class,'userDetails']);
+    //Route::get('user',[UserController::class,'userDetails']);
     Route::get('logout',[UserController::class,'logout']);
 });
 
 
-
+/*
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+*/

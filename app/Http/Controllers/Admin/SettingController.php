@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\UserDashboard;
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 
@@ -21,12 +23,6 @@ class SettingController extends Controller{
 
    use SettingTrait; // Import the trait
 
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct(){
         $this->middleware('auth');
     }
@@ -34,8 +30,23 @@ class SettingController extends Controller{
 
     public function index(Request $request){
 
-       return view('users.dashboard.settings.setting');
+        $user = Auth::user()->select('id','is_primary','first_name','last_name','email','email_verified_at','phone','phone_verified_at', 'date_of_birth', 'profile_picture', 'role', 'status')
+        ->with([
+            'userAddress:address_id,state,district,block,city,panchayat,postal_code',
+            'userGender:gender_id,gender',
+            'userRole:role_id,role_name,role'
+        ])
+        ->find(Auth::id());
+
+
+
+        dd($user);
+
+       return view('admin.settings.profile');
     }
+
+
+
 
     public function  saveProfile(Request $request){
 
