@@ -11,7 +11,11 @@ use Validator;
 
 use Illuminate\Support\Carbon;
 
+use App\Traits\ApiResponse;
+
 class UserController extends Controller{
+
+    use ApiResponse;
 
 
     /**
@@ -25,7 +29,7 @@ class UserController extends Controller{
    
         if($validator->fails()){
 
-            return Response(['message' => $validator->errors()],401);
+            return Response(['success'=> false, 'message' => $validator->errors()],401);
         }
    
         if(Auth::attempt($request->all())){
@@ -110,8 +114,11 @@ class UserController extends Controller{
 
 
             return Response([
+                'success'=> true,
+                'message' => 'You are successfully logged in',
                 'token' => $token,
                 'expires_at' => $tokenModel->expires_at,
+
                 'user' => [
                     'id' => $user->id,
                     'first_name' => $user->first_name,
@@ -149,7 +156,7 @@ class UserController extends Controller{
             ]);*/
         }
 
-        return Response(['message' => 'email or password wrong'],401);
+        return Response(['success'=> false, 'message' => 'email or password wrong.'],401);
     }
 
 
@@ -162,7 +169,8 @@ class UserController extends Controller{
             $user = Auth::user();
 
             return Response([
-                    'status' => 1,
+                    'success'=> true,
+                    'message' => 'User dtails',
                     'data' => $user
             ],200);
         }
@@ -170,8 +178,12 @@ class UserController extends Controller{
 
 
 
-        return Response(['data' => 'Unauthorized'],401);
+        return Response(['success'=> false, 'message' => 'Unauthorized user.', 'data' => 'Unauthorized.'],401);
     }
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -181,7 +193,7 @@ class UserController extends Controller{
 
         $user->currentAccessToken()->delete();
         
-        return Response(['data' => 'User Logout successfully.'],200);
+        return Response(['success'=> true, 'message' => 'Logout successfully.', 'data' => 'User Logout successfully.'],200);
     }
 
 

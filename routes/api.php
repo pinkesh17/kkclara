@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 */
 
 Route::middleware(['auth:sanctum', 'check.token.expiry'])->group(function () {
-    Route::get('/user', [UserController::class, 'userDetails']);
+    Route::post('/user', [UserController::class, 'userDetails']);
     // Add other protected routes here
 });
 

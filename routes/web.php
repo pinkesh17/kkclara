@@ -17,7 +17,12 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/two', [HomeController::class, 'two'])->name('two');;
 
 
+
+
+
 Auth::routes();
+
+
 
 
 
@@ -26,6 +31,12 @@ require __DIR__.'/helpers.php';
 require __DIR__.'/authuser.php';
 require __DIR__.'/admin.php';
 
+
+/*
+Route::get('/{any}', function () {
+    return view('welcome');
+})->where('any', '^(?!api).*$');
+*/
 
 /*
 Route::get('/', [HomeController::class, 'index']);
