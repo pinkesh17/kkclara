@@ -53,10 +53,33 @@ return Application::configure(basePath: dirname(__DIR__))
                     $message = $e->getMessage();
                 }
 
-                return response()->json([
+               /* return response()->json([
                     'success' => false,
                     'message' => $message,
-                ], $status);
+                ], $status);*/
+
+
+                $response = [
+                    'success' => false,
+                    'message' => $message,
+                    'status' => $status,
+                ];
+
+                // Add full error info in local environment
+                if (app()->isLocal()) {
+                    $response['error'] = [
+                        'exception' => get_class($e),
+                        'message' => $e->getMessage(),
+                        'file' => $e->getFile(),
+                        'line' => $e->getLine(),
+                        'trace' => collect($e->getTrace())->take(5), // limit stack trace depth
+                    ];
+                }
+
+                return response()->json($response, $status);
+
+
+
             }
 
             // Default HTML error page for non-API requests

@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\LocationController;
+
 
 
 /*
@@ -19,16 +21,21 @@ use App\Http\Controllers\API\UserController;
 
 
 
-/*
+ 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-*/
+
+
 
 Route::middleware(['auth:sanctum', 'check.token.expiry'])->group(function () {
     Route::post('/user', [UserController::class, 'userDetails']);
     // Add other protected routes here
+
+
+
+    Route::get('/countries', [LocationController::class, 'countries']);
+   
+    /*Route::get('/states/{countryId}', [LocationController::class, 'states']);
+    Route::get('/cities/{stateId}', [LocationController::class, 'cities']);*/
 });
 
 

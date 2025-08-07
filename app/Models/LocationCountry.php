@@ -5,36 +5,29 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Address extends Model
+class LocationCountry extends Model
 {
     use HasFactory;
 
-    protected $table = 'addresses';
-    protected $primaryKey = 'address_id';
+    /*protected $table = 'addresses';
+    protected $primaryKey = 'address_id';*/
 
-    public $timestamps = true;
+    //public $timestamps = true;
 
     protected $fillable = [
-        'user_id',
         'country',
-        'state',
-        'district',
-        'block',
-        'panchayat',
-        'city',
-        'postal_code',
-        'address_line1',
-        'address_line2',
-        'landmark',
-        'type',
-        'created_at',
-        'updated_at',
+        'country_code',
+        'capital'
     ];
 
     // Relationships
 
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function states(){
+        return $this->hasMany(LocationState::class);
+    }
 }
+
