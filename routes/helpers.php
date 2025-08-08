@@ -9,8 +9,14 @@ use App\Http\Controllers\Helpers\LocationHelpeController;
 
     Route::namespace('Helpers')->prefix('helpers')->group(function () {
 
+        Route::get('/zipcode', [LocationHelpeController::class, 'zipcode'])->name('helpers.zipcode');
+        Route::get('/posts', [LocationHelpeController::class, 'posts'])->name('helpers.posts');
+
+
         Route::get('/districts', [LocationHelpeController::class, 'districts'])->name('helpers.districts');
-        Route::get('/blocks', [LocationHelpeController::class, 'blocks'])->name('helpers.blocks');;
+        Route::get('/blocks', [LocationHelpeController::class, 'blocks'])->name('helpers.blocks');
+
+
     });
 
 

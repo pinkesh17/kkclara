@@ -15,9 +15,13 @@ class LocationPincode extends Model
     //public $timestamps = true;
 
     protected $fillable = [
-        'country',
-        'country_code',
-        'capital'
+        'office_name',
+        'pincode',
+        'district',
+        'state',
+        'latitude',
+        'longitude'
+
     ];
 
     // Relationships
@@ -30,4 +34,5 @@ class LocationPincode extends Model
         return $this->hasMany(LocationState::class);
     }
 }
+
 

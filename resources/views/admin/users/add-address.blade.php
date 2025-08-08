@@ -64,33 +64,38 @@
 
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group mb-4 select2-t1">
-                                    <label class="label text-secondary" for="state">State</label>
-                                    <select class="form-select form-control js-select2" id="state" name="state">
+                                    <label class="label text-secondary" for="pincode">Select Pincode</label>
+                                    <select class="form-select form-control js-select2" id="pincode-select" name="pincode">
                                         <option value="">Select</option>
-                                        @foreach($states as $state)
-                                        <option value="{{$state->state_id}}">{{$state->state_name}}</option>
-                                        @endforeach
+                                       
                                     </select>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 col-sm-6">
-                                <div class="form-group mb-4 select2-t1">
+                                <div class="form-group mb-4">
+                                    <label class="label text-secondary" for="post">Post</label>
+                                    <select class="form-select form-control" id="post" name="post"></select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group mb-4">
+                                    <label class="label text-secondary" for="state">State</label>
+                                    <select class="form-select form-control" id="state" name="state"></select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="form-group mb-4">
                                     <label class="label text-secondary" for="district">District</label>
                                     <select class="form-select form-control" id="district" name="district">
-                                        <option value="">Select</option>
+
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-sm-6">
-                                <div class="form-group mb-4 select2-t1">
-                                    <label class="label text-secondary" for="block">Block</label>
-                                    <select class="form-select form-control js-select2" id="block" name="block">
-                                        <option value="">Select</option>
-                                    </select>
-                                </div>
-                            </div>
+
 
                             <div class="col-lg-6 col-sm-6">
                                 <div class="form-group mb-4 select2-t1">
@@ -203,7 +208,7 @@
 @section('scripts')
 <script>
 $(document).ready(function() {
-    $('.js-select2, #district, #block').select2({
+    $('.js-select2').select2({
         placeholder: 'Select an option'
     });
     $('.my-datepicker').datepicker({
@@ -213,53 +218,81 @@ $(document).ready(function() {
        todayHighlight: true,
        format: 'dd-mm-yyyy' 
     });
-    $('#state').on('change', function () {
-        let state_id = $(this).val();
-        $('#district').empty().trigger('change');
-        $.ajax({
-            url: "{{route('helpers.districts')}}?id="+ state_id,
-            type: 'GET',
-            success: function (districts) {
-              $('#district').empty();
 
-              districts.forEach(district => {
-
-                const option = new Option(district.district_name, district.district_id, false, false);
-                $('#district').append('<option value="">Select</option>');
-                $('#district').append(option);
-              });
-
-              $('#district').trigger('change');
-            }
-          });
+    $('#pincode-select').select2({
+      placeholder: 'Select a user',
+      minimumInputLength: 2,
+      ajax: {
+        url: "{{route('helpers.zipcode')}}",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            q: params.term // search term
+          };
+        },
+        processResults: function (data) {
+          return {
+            results: data.map(function (pincode) {
+              return {
+                id: pincode.id,
+                text: `${pincode.pincode}`,
+                office_name: pincode.office_name,
+                pincode: pincode.pincode,
+                district: pincode.district,
+                state: pincode.state,
+                latitude: pincode.latitude,
+                longitude: pincode.longitude
+              };
+            })
+          };
+        },
+        cache: true
+      }
     });
 
-    $('#district').on('change', function () {
 
-        let district_id = $(this).val();
+    $('#pincode-select').on('select2:select', function (e) {
+      const data = e.params.data;
 
-        if (!district_id) return;
+      console.log(data);
 
-        console.log(district_id);
+      getPost(data.pincode);
 
-        $('#blocks').empty().trigger('change');
+
+      
+
+
+
+      $('#district').html(`<option value="${data.district}">${data.district}</option>`);
+      $('#state').html(`<option value="${data.state}">${data.state}</option>`);
+
+    });
+
+
+    function getPost(zip){
+
         $.ajax({
-            url: "{{route('helpers.blocks')}}?id="+ district_id,
+            url: "{{route('helpers.posts')}}?zip="+zip,
             type: 'GET',
-            success: function (blocks) {
-              $('#blocks').empty();
+            success: function (zipcodes) {
 
-              blocks.forEach(block => {
+                console.log(zipcodes);
+              $('#post').empty();
 
-                const option = new Option(block.block_name, block.block_id, false, false);
-                $('#blocks').append('<option value="">Select</option>');
-                $('#blocks').append(option);
+              $('#post').append('<option value="">Select</option>');
+
+              zipcodes.forEach(zipcode => {
+
+                const option = new Option(zipcode.office_name, zipcode.id, false, false);
+
+                $('#post').append(option);
               });
-
-              $('#blocks').trigger('change');
             }
           });
-    });
+
+
+    }
 
 
 
